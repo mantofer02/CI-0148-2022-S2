@@ -50,33 +50,77 @@ class myPCA:
         v = self.get_sorted_eighen_matrix()
         return self.data.dot(v)
 
-    def plot_components(self):
-
+    def plot_my_pca(self, axis):
+        my_eighen_v, my_eighen_m = self.get_eighen_values()
         my_c = self.get_correlation_matrix()
-        figure, axis = plt.subplots(2)
 
-        print(my_c[0])
-
-        axis[0].scatter(np.ravel(my_c[:, 0]), np.ravel(my_c[:, 1]), c=[
+        axis[0][0].scatter(np.ravel(my_c[:, 0]), np.ravel(my_c[:, 1]), c=[
             'b' if i == 1 else 'r' for i in self.df['Survived']])
-        axis[0].set_title('Marco\'s PCA')
+        axis[0][0].set_title('Marco\'s PCA')
+        axis[0][0].set_xlabel('PCA 1 (%.2f%% inertia)' %
+                              (my_eighen_v[0] / len(my_eighen_m),))
+        axis[0][0].set_ylabel('PCA 2 (%.2f%% inertia)' %
+                              (my_eighen_v[1] / len(my_eighen_m),))
 
+    def plot_sk_pca(self, axis):
         scaler = StandardScaler()
         df_scaled = scaler.fit_transform(self.df)
         pca = PCA()
         C = pca.fit_transform(df_scaled)
         inertia = pca.explained_variance_ratio_
         V = pca.transform(np.identity(df_scaled.shape[1]))
-
-        print("DIFERENCIA")
-        print(C[0])
-        input()
-
-        axis[1].scatter(np.ravel(C[:, 0]), np.ravel(C[:, 1]), c=[
+        axis[1][0].scatter(np.ravel(C[:, 0]), np.ravel(C[:, 1]), c=[
             'b' if i == 1 else 'r' for i in self.df['Survived']])
-        axis[1].set_title("scikit-learn\'s PCA")
+        axis[1][0].set_title("scikit-learn\'s PCA")
 
-        axis[1].set_xlabel('PCA 1 (%.2f%% inertia)' % (inertia[0],))
-        axis[1].set_ylabel('PCA 2 (%.2f%% inertia)' % (inertia[0],))
+        axis[1][0].set_xlabel('PCA 1 (%.2f%% inertia)' % (inertia[0],))
+        axis[1][0].set_ylabel('PCA 2 (%.2f%% inertia)' % (inertia[0],))
+
+    def plot_sk_circle(self, axis):
+        # axis[1][1].figure(figsize=(15, 15))
+
+        scaler = StandardScaler()
+        df_scaled = scaler.fit_transform(self.df)
+        pca = PCA()
+        C = pca.fit_transform(df_scaled)
+
+        axis[1][1].axhline(0, color='b')
+        axis[1][1].axvline(0, color='b')
+        for i in range(0, self.df.shape[1]):
+            axis[1][1].arrow(0, 0, C[0][i],  # x - PC1
+                             C[1][i],  # y - PC2
+                             head_width=0.05, head_length=0.05)
+            axis[1][1].text(C[0][i] + 0.05, C[1][i] +
+                            0.05, self.df.columns.values[i])
+        an = np.linspace(0, 2 * np.pi, 100)
+        axis[1][1].plot(np.cos(an), np.sin(an), color="b")  # Circle
+        axis[1][1].axis('equal')
+        axis[1][1].set_title('Correlation Circle')
+
+    def plot_my_circle(self, axis):
+
+        my_eighen_v, my_eighen_m = self.get_eighen_values()
+        my_c = self.get_correlation_matrix()
+
+        axis[0][1].axhline(0, color='b')
+        axis[0][1].axvline(0, color='b')
+        for i in range(0, self.df.shape[1]):
+            axis[0][1].arrow(0, 0, my_c[i, 0],  # x - PC1
+                             my_c[i, 1],  # y - PC2
+                             head_width=0.05, head_length=0.05)
+            axis[0][1].text(my_c[i, 0] + 0.05, my_c[i, 1] +
+                            0.05, self.df.columns.values[i])
+        an = np.linspace(0, 2 * np.pi, 100)
+        axis[0][1].plot(np.cos(an), np.sin(an), color="black")  # Circle
+        axis[0][1].axis('equal')
+        axis[0][1].set_title('Correlation Circle')
+
+    def plot_components(self):
+
+        figure, axis = plt.subplots(2, 2, constrained_layout=True)
+        self.plot_my_pca(axis)
+        self.plot_sk_pca(axis)
+        self.plot_sk_circle(axis)
+        self.plot_my_circle(axis)
 
         plt.show()
