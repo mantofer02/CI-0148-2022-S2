@@ -39,7 +39,7 @@ class myPCA:
         for i in range(len(vector)):
             min_idx = i
             for j in range(i+1, len(vector)):
-                if vector[min_idx] > vector[j]:
+                if vector[min_idx] < vector[j]:
                     min_idx = j
 
             vector[i], vector[min_idx] = vector[min_idx], vector[i]
@@ -55,6 +55,8 @@ class myPCA:
         my_c = self.get_correlation_matrix()
         figure, axis = plt.subplots(2)
 
+        print(my_c[0])
+
         axis[0].scatter(np.ravel(my_c[:, 0]), np.ravel(my_c[:, 1]), c=[
             'b' if i == 1 else 'r' for i in self.df['Survived']])
         axis[0].set_title('Marco\'s PCA')
@@ -65,6 +67,10 @@ class myPCA:
         C = pca.fit_transform(df_scaled)
         inertia = pca.explained_variance_ratio_
         V = pca.transform(np.identity(df_scaled.shape[1]))
+
+        print("DIFERENCIA")
+        print(C[0])
+        input()
 
         axis[1].scatter(np.ravel(C[:, 0]), np.ravel(C[:, 1]), c=[
             'b' if i == 1 else 'r' for i in self.df['Survived']])
