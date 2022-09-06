@@ -38,11 +38,9 @@ def preprocess_df(df: pd.DataFrame) -> pd.DataFrame:
                      'Ticket', 'Cabin', 'Embarked'], inplace=True)
     df.dropna(inplace=True)
 
-    df = pd.get_dummies(df, prefix='Sex')
+    df = pd.get_dummies(df, columns=['Pclass', 'Sex'])
 
-    df.drop(columns=['Sex_female'], inplace=True)
-    df.rename(columns={'Sex_male': 'Male'}, inplace=True)
+    # df.drop(columns=['Sex_female'], inplace=True)
+    # df.rename(columns={'Sex_male': 'Male'}, inplace=True)
 
     return df
-
-
