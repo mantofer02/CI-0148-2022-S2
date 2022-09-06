@@ -46,4 +46,3 @@ def preprocess_df(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-myPCA(preprocess_df(load_df('titanic.csv')), load_data())
