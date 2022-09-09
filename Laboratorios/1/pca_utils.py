@@ -1,6 +1,5 @@
 import string
 import pandas as pd
-from myPCA import myPCA
 
 
 def load_data():
@@ -39,8 +38,5 @@ def preprocess_df(df: pd.DataFrame) -> pd.DataFrame:
     df.dropna(inplace=True)
 
     df = pd.get_dummies(df, columns=['Pclass', 'Sex'])
-
-    # df.drop(columns=['Sex_female'], inplace=True)
-    # df.rename(columns={'Sex_male': 'Male'}, inplace=True)
 
     return df
