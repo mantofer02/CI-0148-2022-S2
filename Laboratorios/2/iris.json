@@ -1,0 +1,148 @@
+{
+    "type": "split",
+    "gini": 0.6666666666666667,
+    "count": 150,
+    "split-type": "numerical",
+    "split-column": "petal-length",
+    "split-value": 2.0727272727272728,
+    "child-left": {
+        "type": "leaf",
+        "class": "Iris-setosa",
+        "count": 50
+    },
+    "child-right": {
+        "type": "split",
+        "gini": 0.5,
+        "count": 100,
+        "split-type": "numerical",
+        "split-column": "petal-width",
+        "split-value": 1.6818181818181817,
+        "child-left": {
+            "type": "split",
+            "gini": 0.14201183431952646,
+            "count": 52,
+            "split-type": "numerical",
+            "split-column": "petal-length",
+            "split-value": 5.036363636363636,
+            "child-left": {
+                "type": "split",
+                "gini": 0.04079861111111116,
+                "count": 48,
+                "split-type": "numerical",
+                "split-column": "petal-length",
+                "split-value": 4.818181818181818,
+                "child-left": {
+                    "type": "leaf",
+                    "class": "Iris-versicolor",
+                    "count": 45
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.4444444444444444,
+                    "count": 3,
+                    "split-type": "numerical",
+                    "split-column": "sepal-length",
+                    "split-value": 6.081818181818182,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": "Iris-virginica",
+                        "count": 1
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": "Iris-versicolor",
+                        "count": 2
+                    }
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.375,
+                "count": 4,
+                "split-type": "numerical",
+                "split-column": "sepal-length",
+                "split-value": 6.109090909090909,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.5,
+                    "count": 2,
+                    "split-type": "numerical",
+                    "split-column": "sepal-length",
+                    "split-value": 6.009090909090909,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": "Iris-versicolor",
+                        "count": 1
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": "Iris-virginica",
+                        "count": 1
+                    }
+                },
+                "child-right": {
+                    "type": "leaf",
+                    "class": "Iris-virginica",
+                    "count": 2
+                }
+            }
+        },
+        "child-right": {
+            "type": "split",
+            "gini": 0.07986111111111094,
+            "count": 48,
+            "split-type": "numerical",
+            "split-column": "petal-width",
+            "split-value": 1.7727272727272727,
+            "child-left": {
+                "type": "split",
+                "gini": 0.5,
+                "count": 2,
+                "split-type": "numerical",
+                "split-column": "sepal-length",
+                "split-value": 5.063636363636364,
+                "child-left": {
+                    "type": "leaf",
+                    "class": "Iris-virginica",
+                    "count": 1
+                },
+                "child-right": {
+                    "type": "leaf",
+                    "class": "Iris-versicolor",
+                    "count": 1
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.04253308128544431,
+                "count": 46,
+                "split-type": "numerical",
+                "split-column": "petal-length",
+                "split-value": 4.990909090909091,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.2777777777777777,
+                    "count": 6,
+                    "split-type": "numerical",
+                    "split-column": "sepal-width",
+                    "split-value": 3.0181818181818185,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": "Iris-virginica",
+                        "count": 5
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": "Iris-versicolor",
+                        "count": 1
+                    }
+                },
+                "child-right": {
+                    "type": "leaf",
+                    "class": "Iris-virginica",
+                    "count": 40
+                }
+            }
+        }
+    }
+}

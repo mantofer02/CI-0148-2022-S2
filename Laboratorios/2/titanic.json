@@ -1,0 +1,3125 @@
+{
+    "type": "split",
+    "gini": 0.4791473816678602,
+    "count": 1043,
+    "split-type": "categorical",
+    "split-column": "Sex",
+    "split-value": "male",
+    "child-left": {
+        "type": "split",
+        "gini": 0.24303079585496556,
+        "count": 657,
+        "split-type": "numerical",
+        "split-column": "Age",
+        "split-value": 7.572727272727273,
+        "child-left": {
+            "type": "split",
+            "gini": 0.49632653061224496,
+            "count": 35,
+            "split-type": "numerical",
+            "split-column": "SibSp",
+            "split-value": 2.2727272727272725,
+            "child-left": {
+                "type": "split",
+                "gini": 0.43388429752066116,
+                "count": 22,
+                "split-type": "numerical",
+                "split-column": "Age",
+                "split-value": 4.574545454545454,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.345679012345679,
+                    "count": 18,
+                    "split-type": "categorical",
+                    "split-column": "Pclass",
+                    "split-value": 3,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.48979591836734704,
+                        "count": 7,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 0.9972727272727273,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.375,
+                            "count": 4,
+                            "split-type": "numerical",
+                            "split-column": "Fare",
+                            "split-value": 9.051545454545455,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 1
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 3
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 3
+                        }
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.16528925619834722,
+                        "count": 11,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 1.2754545454545454,
+                        "child-left": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 6
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.31999999999999984,
+                            "count": 5,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 2.1818181818181817,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.5,
+                                "count": 2,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 23.272727272727273,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 1
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 1
+                                }
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 3
+                            }
+                        }
+                    }
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.375,
+                    "count": 4,
+                    "split-type": "categorical",
+                    "split-column": "Embarked",
+                    "split-value": "S",
+                    "child-left": {
+                        "type": "leaf",
+                        "class": 1,
+                        "count": 1
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": 0,
+                        "count": 3
+                    }
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.14201183431952646,
+                "count": 13,
+                "split-type": "numerical",
+                "split-column": "Parch",
+                "split-value": 1.0909090909090908,
+                "child-left": {
+                    "type": "leaf",
+                    "class": 0,
+                    "count": 8
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.31999999999999984,
+                    "count": 5,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 3.1818181818181817,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.5,
+                        "count": 2,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 1.1818181818181819,
+                        "child-left": {
+                            "type": "leaf",
+                            "class": 0,
+                            "count": 1
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 1
+                        }
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": 0,
+                        "count": 3
+                    }
+                }
+            }
+        },
+        "child-right": {
+            "type": "split",
+            "gini": 0.21693841047962703,
+            "count": 622,
+            "split-type": "categorical",
+            "split-column": "Pclass",
+            "split-value": 1,
+            "child-left": {
+                "type": "split",
+                "gini": 0.38166544923301693,
+                "count": 148,
+                "split-type": "numerical",
+                "split-column": "Age",
+                "split-value": 36.09090909090909,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.46875,
+                    "count": 56,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 33.727272727272734,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.41086419753086423,
+                        "count": 45,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 122.27272727272727,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.4558071585098612,
+                            "count": 37,
+                            "split-type": "numerical",
+                            "split-column": "Parch",
+                            "split-value": 1.0909090909090908,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.43102040816326526,
+                                "count": 35,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 24.272727272727273,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.17999999999999994,
+                                    "count": 10,
+                                    "split-type": "numerical",
+                                    "split-column": "Parch",
+                                    "split-value": 0.09090909090909091,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 7
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.4444444444444444,
+                                        "count": 3,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 21.181818181818183,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 2
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 1
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.48,
+                                    "count": 25,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 27.18181818181818,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.24489795918367352,
+                                        "count": 7,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 25.181818181818183,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.4444444444444444,
+                                            "count": 3,
+                                            "split-type": "numerical",
+                                            "split-column": "SibSp",
+                                            "split-value": 0.09090909090909091,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 1
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 2
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 4
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.345679012345679,
+                                        "count": 18,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 28.454545454545453,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.5,
+                                            "count": 4,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 36.66287272727273,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 2
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 2
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.24489795918367352,
+                                            "count": 14,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 30.136363636363637,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 7
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.40816326530612246,
+                                                "count": 7,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 52.27272727272727,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.2777777777777777,
+                                                    "count": 6,
+                                                    "split-type": "categorical",
+                                                    "split-column": "Embarked",
+                                                    "split-value": "C",
+                                                    "child-left": {
+                                                        "type": "split",
+                                                        "gini": 0.5,
+                                                        "count": 2,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 31.09090909090909,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 1
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 1
+                                                        }
+                                                    },
+                                                    "child-right": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 4
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 2
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 0,
+                            "count": 8
+                        }
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.39669421487603307,
+                        "count": 11,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 35.09090909090909,
+                        "child-left": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 4
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.48979591836734704,
+                            "count": 7,
+                            "split-type": "numerical",
+                            "split-column": "Parch",
+                            "split-value": 0.18181818181818182,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.48,
+                                "count": 5,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 31.06590909090909,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 2
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 3
+                                }
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 2
+                            }
+                        }
+                    }
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.3012759924385634,
+                    "count": 92,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 72.18181818181819,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.28982007003985033,
+                        "count": 91,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 52.45454545454545,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.36196495259982764,
+                            "count": 59,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 47.90909090909091,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.2498512790005949,
+                                "count": 41,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 45.18181818181818,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.328180737217598,
+                                    "count": 29,
+                                    "split-type": "categorical",
+                                    "split-column": "Embarked",
+                                    "split-value": "S",
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.38781163434903054,
+                                        "count": 19,
+                                        "split-type": "numerical",
+                                        "split-column": "SibSp",
+                                        "split-value": 0.09090909090909091,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.2777777777777777,
+                                            "count": 12,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 41.18181818181818,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 5
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.40816326530612246,
+                                                "count": 7,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 27.761363636363637,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.48,
+                                                    "count": 5,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 26.311363636363637,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 1,
+                                                        "count": 1
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.375,
+                                                        "count": 4,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 42.27272727272727,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 2
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 2
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 2
+                                                }
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.48979591836734704,
+                                            "count": 7,
+                                            "split-type": "numerical",
+                                            "split-column": "Parch",
+                                            "split-value": 0.09090909090909091,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.4444444444444444,
+                                                "count": 6,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 86.53295454545454,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.31999999999999984,
+                                                    "count": 5,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Age",
+                                                    "split-value": 41.36363636363636,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 2
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.4444444444444444,
+                                                        "count": 3,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 42.27272727272727,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.5,
+                                                            "count": 2,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 52.05038181818182,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 1
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            }
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.17999999999999994,
+                                        "count": 10,
+                                        "split-type": "numerical",
+                                        "split-column": "SibSp",
+                                        "split-value": 0.18181818181818182,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.31999999999999984,
+                                            "count": 5,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 29.807563636363636,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 4
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 5
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 12
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.49382716049382713,
+                                "count": 18,
+                                "split-type": "numerical",
+                                "split-column": "Parch",
+                                "split-value": 0.09090909090909091,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.48979591836734704,
+                                    "count": 14,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 50.18181818181818,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.5,
+                                        "count": 12,
+                                        "split-type": "numerical",
+                                        "split-column": "SibSp",
+                                        "split-value": 0.18181818181818182,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.31999999999999984,
+                                            "count": 5,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 48.18181818181818,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.5,
+                                                "count": 2,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 28.726890909090912,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 1
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 3
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.40816326530612246,
+                                            "count": 7,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 49.09090909090909,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 4
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.4444444444444444,
+                                                "count": 3,
+                                                "split-type": "numerical",
+                                                "split-column": "SibSp",
+                                                "split-value": 1.0909090909090908,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 2
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 2
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 4
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.1171875,
+                            "count": 32,
+                            "split-type": "categorical",
+                            "split-column": "Embarked",
+                            "split-value": "S",
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 18
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.24489795918367352,
+                                "count": 14,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 61.18181818181818,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.31999999999999984,
+                                    "count": 10,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 58.09090909090909,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.21875,
+                                        "count": 8,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 39.22916363636364,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.375,
+                                            "count": 4,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 31.045454545454547,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 3
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 4
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.5,
+                                        "count": 2,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 60.09090909090909,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 1
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 1
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 4
+                                }
+                            }
+                        }
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": 1,
+                        "count": 1
+                    }
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.15101746514981573,
+                "count": 474,
+                "split-type": "numerical",
+                "split-column": "Age",
+                "split-value": 32.0,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.1790354187835681,
+                    "count": 332,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 12.363636363636363,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.40816326530612246,
+                        "count": 14,
+                        "split-type": "numerical",
+                        "split-column": "SibSp",
+                        "split-value": 1.3636363636363635,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.5,
+                            "count": 8,
+                            "split-type": "numerical",
+                            "split-column": "SibSp",
+                            "split-value": 0.09090909090909091,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.375,
+                                "count": 4,
+                                "split-type": "numerical",
+                                "split-column": "Parch",
+                                "split-value": 1.0909090909090908,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 2
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.5,
+                                    "count": 2,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 8.090909090909092,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 1
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 1
+                                    }
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.375,
+                                "count": 4,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 9.09090909090909,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 2
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.5,
+                                    "count": 2,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 11.545454545454545,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 1
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 1
+                                    }
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 0,
+                            "count": 6
+                        }
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.1657568925279853,
+                        "count": 318,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 30.272727272727273,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.13519965277777768,
+                            "count": 288,
+                            "split-type": "categorical",
+                            "split-column": "Pclass",
+                            "split-value": 3,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.17233560090702937,
+                                "count": 210,
+                                "split-type": "categorical",
+                                "split-column": "Embarked",
+                                "split-value": "C",
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.31999999999999984,
+                                    "count": 25,
+                                    "split-type": "numerical",
+                                    "split-column": "Fare",
+                                    "split-value": 14.757954545454549,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.22684310018903586,
+                                        "count": 23,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 28.636363636363633,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.17999999999999994,
+                                            "count": 20,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 22.363636363636363,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.2975206611570247,
+                                                "count": 11,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 18.81818181818182,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 4
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.40816326530612246,
+                                                    "count": 7,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 4.304927272727273,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 1
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.4444444444444444,
+                                                        "count": 6,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 20.181818181818183,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.5,
+                                                            "count": 2,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.225381818181818,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.375,
+                                                            "count": 4,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Age",
+                                                            "split-value": 21.09090909090909,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "split",
+                                                                "gini": 0.4444444444444444,
+                                                                "count": 3,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Fare",
+                                                                "split-value": 7.225381818181818,
+                                                                "child-left": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 2
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 1
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 9
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.4444444444444444,
+                                            "count": 3,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 29.09090909090909,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 2
+                                            }
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 2
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.14901387874360839,
+                                    "count": 185,
+                                    "split-type": "numerical",
+                                    "split-column": "Fare",
+                                    "split-value": 6.322727272727272,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.5,
+                                        "count": 2,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 19.545454545454547,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 1
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 1
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.14130012840037032,
+                                        "count": 183,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 26.909090909090907,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.10425683709869205,
+                                            "count": 145,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 52.3534,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.09310968751528192,
+                                                "count": 143,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 10.168909090909091,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.10652965660770031,
+                                                    "count": 124,
+                                                    "split-type": "numerical",
+                                                    "split-column": "SibSp",
+                                                    "split-value": 0.18181818181818182,
+                                                    "child-left": {
+                                                        "type": "split",
+                                                        "gini": 0.08457984180436995,
+                                                        "count": 113,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 19.454545454545453,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.19132653061224492,
+                                                            "count": 28,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 8.0,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 13
+                                                            },
+                                                            "child-right": {
+                                                                "type": "split",
+                                                                "gini": 0.31999999999999984,
+                                                                "count": 15,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Fare",
+                                                                "split-value": 8.181818181818182,
+                                                                "child-left": {
+                                                                    "type": "split",
+                                                                    "gini": 0.5,
+                                                                    "count": 6,
+                                                                    "split-type": "numerical",
+                                                                    "split-column": "Fare",
+                                                                    "split-value": 8.059845454545455,
+                                                                    "child-left": {
+                                                                        "type": "split",
+                                                                        "gini": 0.48,
+                                                                        "count": 5,
+                                                                        "split-type": "numerical",
+                                                                        "split-column": "Age",
+                                                                        "split-value": 16.272727272727273,
+                                                                        "child-left": {
+                                                                            "type": "leaf",
+                                                                            "class": 0,
+                                                                            "count": 2
+                                                                        },
+                                                                        "child-right": {
+                                                                            "type": "split",
+                                                                            "gini": 0.4444444444444444,
+                                                                            "count": 3,
+                                                                            "split-type": "numerical",
+                                                                            "split-column": "Age",
+                                                                            "split-value": 18.09090909090909,
+                                                                            "child-left": {
+                                                                                "type": "leaf",
+                                                                                "class": 1,
+                                                                                "count": 1
+                                                                            },
+                                                                            "child-right": {
+                                                                                "type": "leaf",
+                                                                                "class": 0,
+                                                                                "count": 2
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "child-right": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 1
+                                                                    }
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 9
+                                                                }
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.04595155709342569,
+                                                            "count": 85,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.81249090909091,
+                                                            "child-left": {
+                                                                "type": "split",
+                                                                "gini": 0.1049382716049383,
+                                                                "count": 36,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Fare",
+                                                                "split-value": 7.1863636363636365,
+                                                                "child-left": {
+                                                                    "type": "split",
+                                                                    "gini": 0.24489795918367352,
+                                                                    "count": 7,
+                                                                    "split-type": "numerical",
+                                                                    "split-column": "Fare",
+                                                                    "split-value": 7.125027272727273,
+                                                                    "child-left": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 6
+                                                                    },
+                                                                    "child-right": {
+                                                                        "type": "leaf",
+                                                                        "class": 1,
+                                                                        "count": 1
+                                                                    }
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "split",
+                                                                    "gini": 0.06658739595719365,
+                                                                    "count": 29,
+                                                                    "split-type": "numerical",
+                                                                    "split-column": "Age",
+                                                                    "split-value": 21.0,
+                                                                    "child-left": {
+                                                                        "type": "split",
+                                                                        "gini": 0.19753086419753085,
+                                                                        "count": 9,
+                                                                        "split-type": "numerical",
+                                                                        "split-column": "Fare",
+                                                                        "split-value": 7.75,
+                                                                        "child-left": {
+                                                                            "type": "leaf",
+                                                                            "class": 0,
+                                                                            "count": 4
+                                                                        },
+                                                                        "child-right": {
+                                                                            "type": "split",
+                                                                            "gini": 0.31999999999999984,
+                                                                            "count": 5,
+                                                                            "split-type": "numerical",
+                                                                            "split-column": "Fare",
+                                                                            "split-value": 7.777272727272727,
+                                                                            "child-left": {
+                                                                                "type": "leaf",
+                                                                                "class": 0,
+                                                                                "count": 2
+                                                                            },
+                                                                            "child-right": {
+                                                                                "type": "split",
+                                                                                "gini": 0.4444444444444444,
+                                                                                "count": 3,
+                                                                                "split-type": "numerical",
+                                                                                "split-column": "Fare",
+                                                                                "split-value": 7.796181818181818,
+                                                                                "child-left": {
+                                                                                    "type": "leaf",
+                                                                                    "class": 0,
+                                                                                    "count": 2
+                                                                                },
+                                                                                "child-right": {
+                                                                                    "type": "leaf",
+                                                                                    "class": 0,
+                                                                                    "count": 1
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "child-right": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 20
+                                                                    }
+                                                                }
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 49
+                                                            }
+                                                        }
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.2975206611570247,
+                                                        "count": 11,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 18.636363636363637,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 4
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.40816326530612246,
+                                                            "count": 7,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Age",
+                                                            "split-value": 20.545454545454547,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "split",
+                                                                "gini": 0.2777777777777777,
+                                                                "count": 6,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Age",
+                                                                "split-value": 22.363636363636363,
+                                                                "child-left": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 2
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "split",
+                                                                    "gini": 0.375,
+                                                                    "count": 4,
+                                                                    "split-type": "numerical",
+                                                                    "split-column": "Age",
+                                                                    "split-value": 25.09090909090909,
+                                                                    "child-left": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 2
+                                                                    },
+                                                                    "child-right": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 2
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 19
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.5,
+                                                "count": 2,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 15.545454545454545,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 1
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                }
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.2659279778393353,
+                                            "count": 38,
+                                            "split-type": "categorical",
+                                            "split-column": "Embarked",
+                                            "split-value": "S",
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.23374726077428765,
+                                                "count": 37,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 27.272727272727273,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.46875,
+                                                    "count": 8,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 7.1284090909090905,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 1,
+                                                        "count": 1
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.40816326530612246,
+                                                        "count": 7,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 7.874590909090909,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.5,
+                                                            "count": 2,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.80110909090909,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.31999999999999984,
+                                                            "count": 5,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.9655000000000005,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 2
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 3
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.1284185493460166,
+                                                    "count": 29,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Age",
+                                                    "split-value": 28.545454545454547,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 14
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.23111111111111104,
+                                                        "count": 15,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 8.407545454545454,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 10
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.48,
+                                                            "count": 5,
+                                                            "split-type": "numerical",
+                                                            "split-column": "SibSp",
+                                                            "split-value": 0.2727272727272727,
+                                                            "child-left": {
+                                                                "type": "split",
+                                                                "gini": 0.4444444444444444,
+                                                                "count": 3,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Fare",
+                                                                "split-value": 9.484818181818182,
+                                                                "child-left": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 1
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "leaf",
+                                                                    "class": 1,
+                                                                    "count": 2
+                                                                }
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 2
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.025312294543063718,
+                                "count": 78,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 19.81818181818182,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.1171875,
+                                    "count": 16,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 18.545454545454547,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 11
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.31999999999999984,
+                                        "count": 5,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 12.886363636363637,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 3
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 2
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 62
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.3911111111111112,
+                            "count": 30,
+                            "split-type": "numerical",
+                            "split-column": "Fare",
+                            "split-value": 37.5432,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.345679012345679,
+                                "count": 27,
+                                "split-type": "categorical",
+                                "split-column": "Embarked",
+                                "split-value": "S",
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.3856332703213612,
+                                    "count": 23,
+                                    "split-type": "numerical",
+                                    "split-column": "Fare",
+                                    "split-value": 22.85530909090909,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.36281179138322006,
+                                        "count": 21,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 13.014036363636365,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.4152249134948096,
+                                            "count": 17,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 10.536,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.3911111111111112,
+                                                "count": 15,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 7.8447272727272725,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 3
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.4444444444444444,
+                                                    "count": 12,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 8.094727272727273,
+                                                    "child-left": {
+                                                        "type": "split",
+                                                        "gini": 0.49382716049382713,
+                                                        "count": 9,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 7.872,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 1
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.46875,
+                                                            "count": 8,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Age",
+                                                            "split-value": 30.636363636363637,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "split",
+                                                                "gini": 0.48979591836734704,
+                                                                "count": 7,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Age",
+                                                                "split-value": 31.09090909090909,
+                                                                "child-left": {
+                                                                    "type": "leaf",
+                                                                    "class": 1,
+                                                                    "count": 1
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "split",
+                                                                    "gini": 0.4444444444444444,
+                                                                    "count": 6,
+                                                                    "split-type": "numerical",
+                                                                    "split-column": "Fare",
+                                                                    "split-value": 7.909818181818182,
+                                                                    "child-left": {
+                                                                        "type": "leaf",
+                                                                        "class": 0,
+                                                                        "count": 1
+                                                                    },
+                                                                    "child-right": {
+                                                                        "type": "split",
+                                                                        "gini": 0.48,
+                                                                        "count": 5,
+                                                                        "split-type": "numerical",
+                                                                        "split-column": "Fare",
+                                                                        "split-value": 7.9363636363636365,
+                                                                        "child-left": {
+                                                                            "type": "leaf",
+                                                                            "class": 0,
+                                                                            "count": 3
+                                                                        },
+                                                                        "child-right": {
+                                                                            "type": "leaf",
+                                                                            "class": 0,
+                                                                            "count": 2
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "child-right": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 3
+                                                    }
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.5,
+                                                "count": 2,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 31.09090909090909,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 1
+                                                }
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 4
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.5,
+                                        "count": 2,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 31.09090909090909,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 1
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 1
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 4
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.4444444444444444,
+                                "count": 3,
+                                "split-type": "numerical",
+                                "split-column": "SibSp",
+                                "split-value": 0.18181818181818182,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 2
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.08093632215830193,
+                    "count": 142,
+                    "split-type": "numerical",
+                    "split-column": "SibSp",
+                    "split-value": 0.18181818181818182,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.1022644265887509,
+                        "count": 111,
+                        "split-type": "categorical",
+                        "split-column": "Embarked",
+                        "split-value": "S",
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.12070759625390237,
+                            "count": 93,
+                            "split-type": "numerical",
+                            "split-column": "Fare",
+                            "split-value": 14.181818181818183,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.13717421124828522,
+                                "count": 81,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 7.636363636363637,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 17
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.169921875,
+                                    "count": 64,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 36.27272727272727,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.08677685950413205,
+                                        "count": 22,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 12.525,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 17
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.31999999999999984,
+                                            "count": 5,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 34.18181818181818,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 3
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 2
+                                            }
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.20975056689342408,
+                                        "count": 42,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 47.81818181818182,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.26880000000000015,
+                                            "count": 25,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 8.136363636363637,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.375,
+                                                "count": 12,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 44.36363636363636,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.2975206611570247,
+                                                    "count": 11,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 7.904545454545455,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 5
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.4444444444444444,
+                                                        "count": 6,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 7.9363636363636365,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.4444444444444444,
+                                                            "count": 3,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Age",
+                                                            "split-value": 39.45454545454545,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 2
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 3
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.14201183431952646,
+                                                "count": 13,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 41.27272727272727,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 5
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.21875,
+                                                    "count": 8,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 10.911,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 4
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.375,
+                                                        "count": 4,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 42.18181818181818,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 3
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 1
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.11072664359861584,
+                                            "count": 17,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 59.81818181818182,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 13
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.375,
+                                                "count": 4,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 63.09090909090909,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 1
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 3
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 12
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 0,
+                            "count": 18
+                        }
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": 0,
+                        "count": 31
+                    }
+                }
+            }
+        }
+    },
+    "child-right": {
+        "type": "split",
+        "gini": 0.2766248758355929,
+        "count": 386,
+        "split-type": "categorical",
+        "split-column": "Pclass",
+        "split-value": 3,
+        "child-left": {
+            "type": "split",
+            "gini": 0.46182479224376727,
+            "count": 152,
+            "split-type": "numerical",
+            "split-column": "Fare",
+            "split-value": 25.0,
+            "child-left": {
+                "type": "split",
+                "gini": 0.42060037311323417,
+                "count": 133,
+                "split-type": "numerical",
+                "split-column": "Fare",
+                "split-value": 20.986363636363635,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.4012345679012346,
+                    "count": 126,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 5.881818181818182,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.12444444444444436,
+                        "count": 15,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 11.381818181818183,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.5,
+                            "count": 2,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 1.0909090909090908,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 1
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 1
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 13
+                        }
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.4249655060465871,
+                        "count": 111,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 9.263636363636364,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.345679012345679,
+                            "count": 63,
+                            "split-type": "categorical",
+                            "split-column": "Embarked",
+                            "split-value": "S",
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.41135734072022156,
+                                "count": 38,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 23.0,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.2975206611570247,
+                                    "count": 22,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 14.818181818181818,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 1
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.24489795918367352,
+                                        "count": 21,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 7.717045454545454,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 5
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.3046875,
+                                            "count": 16,
+                                            "split-type": "numerical",
+                                            "split-column": "SibSp",
+                                            "split-value": 0.36363636363636365,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.3550295857988165,
+                                                "count": 13,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 20.272727272727273,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.48,
+                                                    "count": 5,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 8.097727272727273,
+                                                    "child-left": {
+                                                        "type": "split",
+                                                        "gini": 0.375,
+                                                        "count": 4,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 7.800000000000001,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 2
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 2
+                                                        }
+                                                    },
+                                                    "child-right": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 1
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.21875,
+                                                    "count": 8,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Age",
+                                                    "split-value": 22.09090909090909,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 1,
+                                                        "count": 4
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.375,
+                                                        "count": 4,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Fare",
+                                                        "split-value": 7.927681818181818,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.5,
+                                                            "count": 2,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.860636363636363,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 2
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 3
+                                            }
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.4921875,
+                                    "count": 16,
+                                    "split-type": "numerical",
+                                    "split-column": "SibSp",
+                                    "split-value": 1.0909090909090908,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.49777777777777776,
+                                        "count": 15,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 7.168181818181818,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 1
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.5,
+                                            "count": 14,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 25.90909090909091,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 3
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.4628099173553719,
+                                                "count": 11,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 29.454545454545453,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.24489795918367352,
+                                                    "count": 7,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Age",
+                                                    "split-value": 27.09090909090909,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 1,
+                                                        "count": 4
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.4444444444444444,
+                                                        "count": 3,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 28.09090909090909,
+                                                        "child-left": {
+                                                            "type": "split",
+                                                            "gini": 0.5,
+                                                            "count": 2,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Fare",
+                                                            "split-value": 7.785981818181819,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 1
+                                                            },
+                                                            "child-right": {
+                                                                "type": "leaf",
+                                                                "class": 0,
+                                                                "count": 1
+                                                            }
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 1
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "split",
+                                                    "gini": 0.375,
+                                                    "count": 4,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Fare",
+                                                    "split-value": 7.919690909090909,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 2
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.5,
+                                                        "count": 2,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 30.09090909090909,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 1
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 1
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 1
+                                    }
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.21120000000000005,
+                                "count": 25,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 6.910609090909091,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 1
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.1527777777777779,
+                                    "count": 24,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 18.81818181818182,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 10
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.24489795918367352,
+                                        "count": 14,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 21.363636363636363,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.5,
+                                            "count": 2,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 19.181818181818183,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 1
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.1527777777777779,
+                                            "count": 12,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 30.363636363636363,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 7
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.31999999999999984,
+                                                "count": 5,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 31.818181818181817,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 1
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 4
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.48611111111111105,
+                            "count": 48,
+                            "split-type": "numerical",
+                            "split-column": "Parch",
+                            "split-value": 1.0909090909090908,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.49967126890203817,
+                                "count": 39,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 18.493181818181817,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.4996347699050402,
+                                    "count": 37,
+                                    "split-type": "numerical",
+                                    "split-column": "Fare",
+                                    "split-value": 10.922727272727272,
+                                    "child-left": {
+                                        "type": "split",
+                                        "gini": 0.42000000000000004,
+                                        "count": 10,
+                                        "split-type": "numerical",
+                                        "split-column": "SibSp",
+                                        "split-value": 0.09090909090909091,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.5,
+                                            "count": 6,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 38.45454545454545,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.48,
+                                                "count": 5,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 19.727272727272727,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 2
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 3
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 0,
+                                            "count": 4
+                                        }
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.49382716049382713,
+                                        "count": 27,
+                                        "split-type": "numerical",
+                                        "split-column": "Fare",
+                                        "split-value": 14.313654545454545,
+                                        "child-left": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 6
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.48979591836734704,
+                                            "count": 21,
+                                            "split-type": "numerical",
+                                            "split-column": "Fare",
+                                            "split-value": 14.727272727272728,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.24489795918367352,
+                                                "count": 7,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 17.454545454545453,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.4444444444444444,
+                                                    "count": 3,
+                                                    "split-type": "numerical",
+                                                    "split-column": "Age",
+                                                    "split-value": 14.727272727272727,
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 1
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.5,
+                                                        "count": 2,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 15.181818181818182,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 1,
+                                                            "count": 1
+                                                        },
+                                                        "child-right": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 1
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 4
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "split",
+                                                "gini": 0.48979591836734704,
+                                                "count": 14,
+                                                "split-type": "numerical",
+                                                "split-column": "Fare",
+                                                "split-value": 17.499236363636363,
+                                                "child-left": {
+                                                    "type": "split",
+                                                    "gini": 0.39669421487603307,
+                                                    "count": 11,
+                                                    "split-type": "categorical",
+                                                    "split-column": "Embarked",
+                                                    "split-value": "Q",
+                                                    "child-left": {
+                                                        "type": "leaf",
+                                                        "class": 0,
+                                                        "count": 1
+                                                    },
+                                                    "child-right": {
+                                                        "type": "split",
+                                                        "gini": 0.31999999999999984,
+                                                        "count": 10,
+                                                        "split-type": "numerical",
+                                                        "split-column": "Age",
+                                                        "split-value": 11.454545454545455,
+                                                        "child-left": {
+                                                            "type": "leaf",
+                                                            "class": 0,
+                                                            "count": 2
+                                                        },
+                                                        "child-right": {
+                                                            "type": "split",
+                                                            "gini": 0.21875,
+                                                            "count": 8,
+                                                            "split-type": "numerical",
+                                                            "split-column": "Age",
+                                                            "split-value": 25.636363636363637,
+                                                            "child-left": {
+                                                                "type": "leaf",
+                                                                "class": 1,
+                                                                "count": 4
+                                                            },
+                                                            "child-right": {
+                                                                "type": "split",
+                                                                "gini": 0.375,
+                                                                "count": 4,
+                                                                "split-type": "numerical",
+                                                                "split-column": "Age",
+                                                                "split-value": 26.90909090909091,
+                                                                "child-left": {
+                                                                    "type": "leaf",
+                                                                    "class": 0,
+                                                                    "count": 1
+                                                                },
+                                                                "child-right": {
+                                                                    "type": "leaf",
+                                                                    "class": 1,
+                                                                    "count": 3
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 3
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 2
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.19753086419753085,
+                                "count": 9,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 36.36363636363636,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 8
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.40816326530612246,
+                    "count": 7,
+                    "split-type": "numerical",
+                    "split-column": "Fare",
+                    "split-value": 21.354545454545455,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": 0,
+                        "count": 3
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.5,
+                        "count": 4,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 22.218181818181815,
+                        "child-left": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 2
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 0,
+                            "count": 2
+                        }
+                    }
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.3324099722991689,
+                "count": 19,
+                "split-type": "numerical",
+                "split-column": "Fare",
+                "split-value": 31.354545454545452,
+                "child-left": {
+                    "type": "leaf",
+                    "class": 0,
+                    "count": 9
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.48,
+                    "count": 10,
+                    "split-type": "numerical",
+                    "split-column": "Fare",
+                    "split-value": 32.79772727272727,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": 1,
+                        "count": 2
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.375,
+                        "count": 8,
+                        "split-type": "numerical",
+                        "split-column": "Parch",
+                        "split-value": 0.5454545454545454,
+                        "child-left": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 1
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.24489795918367352,
+                            "count": 7,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 12.545454545454545,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.5,
+                                "count": 2,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 9.090909090909092,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 0,
+                                    "count": 1
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 1
+                                }
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 5
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "child-right": {
+            "type": "split",
+            "gini": 0.07396449704142016,
+            "count": 234,
+            "split-type": "categorical",
+            "split-column": "Embarked",
+            "split-value": "S",
+            "child-left": {
+                "type": "split",
+                "gini": 0.09789802289282012,
+                "count": 155,
+                "split-type": "numerical",
+                "split-column": "Fare",
+                "split-value": 148.22727272727272,
+                "child-left": {
+                    "type": "split",
+                    "gini": 0.0843425605536332,
+                    "count": 136,
+                    "split-type": "numerical",
+                    "split-column": "Fare",
+                    "split-value": 21.875754545454544,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.1687398593834506,
+                        "count": 43,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 52.90909090909091,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.1356335514574658,
+                            "count": 41,
+                            "split-type": "numerical",
+                            "split-column": "SibSp",
+                            "split-value": 0.2727272727272727,
+                            "child-left": {
+                                "type": "split",
+                                "gini": 0.1022644265887509,
+                                "count": 37,
+                                "split-type": "numerical",
+                                "split-column": "Fare",
+                                "split-value": 13.363636363636363,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.1472,
+                                    "count": 25,
+                                    "split-type": "numerical",
+                                    "split-column": "Fare",
+                                    "split-value": 12.772727272727273,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 9
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.21875,
+                                        "count": 16,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 37.63636363636363,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.14201183431952646,
+                                            "count": 13,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 24.545454545454547,
+                                            "child-left": {
+                                                "type": "split",
+                                                "gini": 0.375,
+                                                "count": 4,
+                                                "split-type": "numerical",
+                                                "split-column": "Age",
+                                                "split-value": 19.09090909090909,
+                                                "child-left": {
+                                                    "type": "leaf",
+                                                    "class": 1,
+                                                    "count": 2
+                                                },
+                                                "child-right": {
+                                                    "type": "leaf",
+                                                    "class": 0,
+                                                    "count": 2
+                                                }
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 9
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "split",
+                                            "gini": 0.4444444444444444,
+                                            "count": 3,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 38.36363636363637,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 1
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 2
+                                            }
+                                        }
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 12
+                                }
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.375,
+                                "count": 4,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 24.545454545454547,
+                                "child-left": {
+                                    "type": "leaf",
+                                    "class": 1,
+                                    "count": 2
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.5,
+                                    "count": 2,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 27.272727272727273,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 1
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 1
+                                    }
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.5,
+                            "count": 2,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 55.18181818181818,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 1
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 1
+                            }
+                        }
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.04208579026477044,
+                        "count": 93,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 33.23939090909091,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.08317580340264641,
+                            "count": 46,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 23.85818181818182,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 17
+                            },
+                            "child-right": {
+                                "type": "split",
+                                "gini": 0.1284185493460166,
+                                "count": 29,
+                                "split-type": "numerical",
+                                "split-column": "Age",
+                                "split-value": 27.636363636363637,
+                                "child-left": {
+                                    "type": "split",
+                                    "gini": 0.31999999999999984,
+                                    "count": 5,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 25.09090909090909,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 4
+                                    },
+                                    "child-right": {
+                                        "type": "leaf",
+                                        "class": 0,
+                                        "count": 1
+                                    }
+                                },
+                                "child-right": {
+                                    "type": "split",
+                                    "gini": 0.07986111111111094,
+                                    "count": 24,
+                                    "split-type": "numerical",
+                                    "split-column": "Age",
+                                    "split-value": 37.81818181818182,
+                                    "child-left": {
+                                        "type": "leaf",
+                                        "class": 1,
+                                        "count": 12
+                                    },
+                                    "child-right": {
+                                        "type": "split",
+                                        "gini": 0.1527777777777779,
+                                        "count": 12,
+                                        "split-type": "numerical",
+                                        "split-column": "Age",
+                                        "split-value": 44.0,
+                                        "child-left": {
+                                            "type": "split",
+                                            "gini": 0.5,
+                                            "count": 2,
+                                            "split-type": "numerical",
+                                            "split-column": "Age",
+                                            "split-value": 42.18181818181818,
+                                            "child-left": {
+                                                "type": "leaf",
+                                                "class": 1,
+                                                "count": 1
+                                            },
+                                            "child-right": {
+                                                "type": "leaf",
+                                                "class": 0,
+                                                "count": 1
+                                            }
+                                        },
+                                        "child-right": {
+                                            "type": "leaf",
+                                            "class": 1,
+                                            "count": 10
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 47
+                        }
+                    }
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.18836565096952906,
+                    "count": 19,
+                    "split-type": "numerical",
+                    "split-column": "Age",
+                    "split-value": 7.545454545454546,
+                    "child-left": {
+                        "type": "leaf",
+                        "class": 0,
+                        "count": 1
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.1049382716049383,
+                        "count": 18,
+                        "split-type": "numerical",
+                        "split-column": "Fare",
+                        "split-value": 161.6818181818182,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.31999999999999984,
+                            "count": 5,
+                            "split-type": "numerical",
+                            "split-column": "SibSp",
+                            "split-value": 0.09090909090909091,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 4
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 1
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 13
+                        }
+                    }
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.02499599423169352,
+                "count": 79,
+                "split-type": "numerical",
+                "split-column": "Age",
+                "split-value": 46.81818181818182,
+                "child-left": {
+                    "type": "leaf",
+                    "class": 1,
+                    "count": 59
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.09500000000000008,
+                    "count": 20,
+                    "split-type": "numerical",
+                    "split-column": "Fare",
+                    "split-value": 71.52610909090909,
+                    "child-left": {
+                        "type": "split",
+                        "gini": 0.31999999999999984,
+                        "count": 5,
+                        "split-type": "numerical",
+                        "split-column": "Age",
+                        "split-value": 50.54545454545455,
+                        "child-left": {
+                            "type": "split",
+                            "gini": 0.5,
+                            "count": 2,
+                            "split-type": "numerical",
+                            "split-column": "Age",
+                            "split-value": 48.18181818181818,
+                            "child-left": {
+                                "type": "leaf",
+                                "class": 1,
+                                "count": 1
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": 0,
+                                "count": 1
+                            }
+                        },
+                        "child-right": {
+                            "type": "leaf",
+                            "class": 1,
+                            "count": 3
+                        }
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": 1,
+                        "count": 15
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,174 @@
+{
+    "type": "split",
+    "gini": 0.49935405449893955,
+    "count": 8124,
+    "split-type": "categorical",
+    "split-column": "odor",
+    "split-value": "n",
+    "child-left": {
+        "type": "split",
+        "gini": 0.06571336017400164,
+        "count": 3528,
+        "split-type": "categorical",
+        "split-column": "spore-print-color",
+        "split-value": "r",
+        "child-left": {
+            "type": "leaf",
+            "class": "p",
+            "count": 72
+        },
+        "child-right": {
+            "type": "split",
+            "gini": 0.02739197530864179,
+            "count": 3456,
+            "split-type": "categorical",
+            "split-column": "stalk-surface-below-ring",
+            "split-value": "y",
+            "child-left": {
+                "type": "split",
+                "gini": 0.40816326530612246,
+                "count": 56,
+                "split-type": "categorical",
+                "split-column": "gill-size",
+                "split-value": "b",
+                "child-left": {
+                    "type": "leaf",
+                    "class": "e",
+                    "count": 16
+                },
+                "child-right": {
+                    "type": "leaf",
+                    "class": "p",
+                    "count": 40
+                }
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.00469480968858127,
+                "count": 3400,
+                "split-type": "categorical",
+                "split-column": "cap-surface",
+                "split-value": "g",
+                "child-left": {
+                    "type": "leaf",
+                    "class": "p",
+                    "count": 4
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.0023529379121283167,
+                    "count": 3396,
+                    "split-type": "categorical",
+                    "split-column": "cap-shape",
+                    "split-value": "c",
+                    "child-left": {
+                        "type": "leaf",
+                        "class": "p",
+                        "count": 1
+                    },
+                    "child-right": {
+                        "type": "split",
+                        "gini": 0.0017657431768540732,
+                        "count": 3395,
+                        "split-type": "categorical",
+                        "split-column": "gill-size",
+                        "split-value": "b",
+                        "child-left": {
+                            "type": "leaf",
+                            "class": "e",
+                            "count": 3200
+                        },
+                        "child-right": {
+                            "type": "split",
+                            "gini": 0.030295857988165587,
+                            "count": 195,
+                            "split-type": "categorical",
+                            "split-column": "bruises",
+                            "split-value": "f",
+                            "child-left": {
+                                "type": "leaf",
+                                "class": "e",
+                                "count": 192
+                            },
+                            "child-right": {
+                                "type": "leaf",
+                                "class": "p",
+                                "count": 3
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "child-right": {
+        "type": "split",
+        "gini": 0.28753197429785327,
+        "count": 4596,
+        "split-type": "categorical",
+        "split-column": "stalk-root",
+        "split-value": "c",
+        "child-left": {
+            "type": "split",
+            "gini": 0.12275560765091376,
+            "count": 548,
+            "split-type": "categorical",
+            "split-column": "bruises",
+            "split-value": "t",
+            "child-left": {
+                "type": "leaf",
+                "class": "e",
+                "count": 512
+            },
+            "child-right": {
+                "type": "leaf",
+                "class": "p",
+                "count": 36
+            }
+        },
+        "child-right": {
+            "type": "split",
+            "gini": 0.13216891374650452,
+            "count": 4048,
+            "split-type": "categorical",
+            "split-column": "stalk-root",
+            "split-value": "r",
+            "child-left": {
+                "type": "leaf",
+                "class": "e",
+                "count": 192
+            },
+            "child-right": {
+                "type": "split",
+                "gini": 0.04855288304264738,
+                "count": 3856,
+                "split-type": "categorical",
+                "split-column": "odor",
+                "split-value": "a",
+                "child-left": {
+                    "type": "leaf",
+                    "class": "e",
+                    "count": 48
+                },
+                "child-right": {
+                    "type": "split",
+                    "gini": 0.024892309865122364,
+                    "count": 3808,
+                    "split-type": "categorical",
+                    "split-column": "odor",
+                    "split-value": "l",
+                    "child-left": {
+                        "type": "leaf",
+                        "class": "e",
+                        "count": 48
+                    },
+                    "child-right": {
+                        "type": "leaf",
+                        "class": "p",
+                        "count": 3760
+                    }
+                }
+            }
+        }
+    }
+}

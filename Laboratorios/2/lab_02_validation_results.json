@@ -1,0 +1,3449 @@
+{
+	"mushrooms": {
+		"type": "split",
+		"gini": 0.4993540544989396,
+		"count": 8124,
+		"split-type": "categorical",
+		"split-column": "odor",
+		"split-value": "n",
+		"child-left": {
+			"type": "split",
+			"gini": 0.06571336017400164,
+			"count": 3528,
+			"split-type": "categorical",
+			"split-column": "spore-print-color",
+			"split-value": "r",
+			"child-left": {
+				"type": "leaf",
+				"class": "p",
+				"count": 72
+			},
+			"child-right": {
+				"type": "split",
+				"gini": 0.027391975308641833,
+				"count": 3456,
+				"split-type": "categorical",
+				"split-column": "stalk-surface-below-ring",
+				"split-value": "y",
+				"child-left": {
+					"type": "split",
+					"gini": 0.40816326530612246,
+					"count": 56,
+					"split-type": "categorical",
+					"split-column": "gill-size",
+					"split-value": "n",
+					"child-left": {
+						"type": "leaf",
+						"class": "p",
+						"count": 40
+					},
+					"child-right": {
+						"type": "leaf",
+						"class": "e",
+						"count": 16
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.004694809688581262,
+					"count": 3400,
+					"split-type": "categorical",
+					"split-column": "cap-surface",
+					"split-value": "g",
+					"child-left": {
+						"type": "leaf",
+						"class": "p",
+						"count": 4
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.002352937912128323,
+						"count": 3396,
+						"split-type": "categorical",
+						"split-column": "cap-shape",
+						"split-value": "c",
+						"child-left": {
+							"type": "leaf",
+							"class": "p",
+							"count": 1
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.0017657431768540932,
+							"count": 3395,
+							"split-type": "categorical",
+							"split-column": "gill-size",
+							"split-value": "b",
+							"child-left": {
+								"type": "leaf",
+								"class": "e",
+								"count": 3200
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.03029585798816558,
+								"count": 195,
+								"split-type": "categorical",
+								"split-column": "bruises",
+								"split-value": "f",
+								"child-left": {
+									"type": "leaf",
+									"class": "e",
+									"count": 192
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": "p",
+									"count": 3
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"child-right": {
+			"type": "split",
+			"gini": 0.2875319742978532,
+			"count": 4596,
+			"split-type": "categorical",
+			"split-column": "stalk-root",
+			"split-value": "c",
+			"child-left": {
+				"type": "split",
+				"gini": 0.12275560765091378,
+				"count": 548,
+				"split-type": "categorical",
+				"split-column": "bruises",
+				"split-value": "t",
+				"child-left": {
+					"type": "leaf",
+					"class": "e",
+					"count": 512
+				},
+				"child-right": {
+					"type": "leaf",
+					"class": "p",
+					"count": 36
+				}
+			},
+			"child-right": {
+				"type": "split",
+				"gini": 0.1321689137465045,
+				"count": 4048,
+				"split-type": "categorical",
+				"split-column": "stalk-root",
+				"split-value": "r",
+				"child-left": {
+					"type": "leaf",
+					"class": "e",
+					"count": 192
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.04855288304264738,
+					"count": 3856,
+					"split-type": "categorical",
+					"split-column": "odor",
+					"split-value": "a",
+					"child-left": {
+						"type": "leaf",
+						"class": "e",
+						"count": 48
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.0248923098651224,
+						"count": 3808,
+						"split-type": "categorical",
+						"split-column": "odor",
+						"split-value": "l",
+						"child-left": {
+							"type": "leaf",
+							"class": "e",
+							"count": 48
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": "p",
+							"count": 3760
+						}
+					}
+				}
+			}
+		}
+	},
+	"iris": {
+		"type": "split",
+		"gini": 0.6666666666666665,
+		"count": 150,
+		"split-type": "numerical",
+		"split-column": "petal-length",
+		"split-value": 2.0727272727272728,
+		"child-left": {
+			"type": "leaf",
+			"class": "Iris-setosa",
+			"count": 50
+		},
+		"child-right": {
+			"type": "split",
+			"gini": 0.5,
+			"count": 100,
+			"split-type": "numerical",
+			"split-column": "petal-width",
+			"split-value": 1.6818181818181817,
+			"child-left": {
+				"type": "split",
+				"gini": 0.1420118343195265,
+				"count": 52,
+				"split-type": "numerical",
+				"split-column": "petal-length",
+				"split-value": 5.036363636363636,
+				"child-left": {
+					"type": "split",
+					"gini": 0.040798611111111174,
+					"count": 48,
+					"split-type": "numerical",
+					"split-column": "petal-length",
+					"split-value": 4.818181818181818,
+					"child-left": {
+						"type": "leaf",
+						"class": "Iris-versicolor",
+						"count": 45
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.4444444444444445,
+						"count": 3,
+						"split-type": "numerical",
+						"split-column": "sepal-length",
+						"split-value": 6.081818181818182,
+						"child-left": {
+							"type": "leaf",
+							"class": "Iris-virginica",
+							"count": 1
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": "Iris-versicolor",
+							"count": 2
+						}
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.375,
+					"count": 4,
+					"split-type": "numerical",
+					"split-column": "sepal-length",
+					"split-value": 6.109090909090909,
+					"child-left": {
+						"type": "split",
+						"gini": 0.5,
+						"count": 2,
+						"split-type": "numerical",
+						"split-column": "sepal-length",
+						"split-value": 6.009090909090909,
+						"child-left": {
+							"type": "leaf",
+							"class": "Iris-versicolor",
+							"count": 1
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": "Iris-virginica",
+							"count": 1
+						}
+					},
+					"child-right": {
+						"type": "leaf",
+						"class": "Iris-virginica",
+						"count": 2
+					}
+				}
+			},
+			"child-right": {
+				"type": "split",
+				"gini": 0.07986111111111094,
+				"count": 48,
+				"split-type": "numerical",
+				"split-column": "petal-width",
+				"split-value": 1.7727272727272727,
+				"child-left": {
+					"type": "split",
+					"gini": 0.5,
+					"count": 2,
+					"split-type": "numerical",
+					"split-column": "sepal-length",
+					"split-value": 5.063636363636364,
+					"child-left": {
+						"type": "leaf",
+						"class": "Iris-virginica",
+						"count": 1
+					},
+					"child-right": {
+						"type": "leaf",
+						"class": "Iris-versicolor",
+						"count": 1
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.04253308128544431,
+					"count": 46,
+					"split-type": "numerical",
+					"split-column": "petal-length",
+					"split-value": 4.990909090909091,
+					"child-left": {
+						"type": "split",
+						"gini": 0.2777777777777777,
+						"count": 6,
+						"split-type": "numerical",
+						"split-column": "sepal-width",
+						"split-value": 3.0181818181818185,
+						"child-left": {
+							"type": "leaf",
+							"class": "Iris-virginica",
+							"count": 5
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": "Iris-versicolor",
+							"count": 1
+						}
+					},
+					"child-right": {
+						"type": "leaf",
+						"class": "Iris-virginica",
+						"count": 40
+					}
+				}
+			}
+		}
+	},
+	"titanic": {
+		"type": "split",
+		"gini": 0.4791473816678602,
+		"count": 1043,
+		"split-type": "categorical",
+		"split-column": "Sex",
+		"split-value": "male",
+		"child-left": {
+			"type": "split",
+			"gini": 0.24303079585496556,
+			"count": 657,
+			"split-type": "numerical",
+			"split-column": "Age",
+			"split-value": 7.572727272727273,
+			"child-left": {
+				"type": "split",
+				"gini": 0.49632653061224496,
+				"count": 35,
+				"split-type": "numerical",
+				"split-column": "SibSp",
+				"split-value": 2.2727272727272725,
+				"child-left": {
+					"type": "split",
+					"gini": 0.4338842975206612,
+					"count": 22,
+					"split-type": "numerical",
+					"split-column": "Age",
+					"split-value": 4.574545454545454,
+					"child-left": {
+						"type": "split",
+						"gini": 0.345679012345679,
+						"count": 18,
+						"split-type": "categorical",
+						"split-column": "Pclass",
+						"split-value": 3,
+						"child-left": {
+							"type": "split",
+							"gini": 0.48979591836734704,
+							"count": 7,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 0.9972727272727273,
+							"child-left": {
+								"type": "split",
+								"gini": 0.375,
+								"count": 4,
+								"split-type": "numerical",
+								"split-column": "Fare",
+								"split-value": 9.051545454545455,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 1
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 3
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 3
+							}
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.1652892561983472,
+							"count": 11,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 1.2754545454545454,
+							"child-left": {
+								"type": "leaf",
+								"class": 1,
+								"count": 6
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.31999999999999984,
+								"count": 5,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 2.1818181818181817,
+								"child-left": {
+									"type": "split",
+									"gini": 0.5,
+									"count": 2,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 23.272727272727273,
+									"child-left": {
+										"type": "leaf",
+										"class": 0,
+										"count": 1
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 1,
+										"count": 1
+									}
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 1,
+									"count": 3
+								}
+							}
+						}
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.375,
+						"count": 4,
+						"split-type": "categorical",
+						"split-column": "Embarked",
+						"split-value": "S",
+						"child-left": {
+							"type": "leaf",
+							"class": 1,
+							"count": 1
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": 0,
+							"count": 3
+						}
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.1420118343195265,
+					"count": 13,
+					"split-type": "numerical",
+					"split-column": "Parch",
+					"split-value": 1.0909090909090908,
+					"child-left": {
+						"type": "leaf",
+						"class": 0,
+						"count": 8
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.31999999999999984,
+						"count": 5,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 3.1818181818181817,
+						"child-left": {
+							"type": "split",
+							"gini": 0.5,
+							"count": 2,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 1.1818181818181819,
+							"child-left": {
+								"type": "leaf",
+								"class": 0,
+								"count": 1
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 1
+							}
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": 0,
+							"count": 3
+						}
+					}
+				}
+			},
+			"child-right": {
+				"type": "split",
+				"gini": 0.21693841047962698,
+				"count": 622,
+				"split-type": "categorical",
+				"split-column": "Pclass",
+				"split-value": 1,
+				"child-left": {
+					"type": "split",
+					"gini": 0.38166544923301693,
+					"count": 148,
+					"split-type": "numerical",
+					"split-column": "Age",
+					"split-value": 36.09090909090909,
+					"child-left": {
+						"type": "split",
+						"gini": 0.46875,
+						"count": 56,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 33.727272727272734,
+						"child-left": {
+							"type": "split",
+							"gini": 0.41086419753086423,
+							"count": 45,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 122.27272727272727,
+							"child-left": {
+								"type": "split",
+								"gini": 0.45580715850986114,
+								"count": 37,
+								"split-type": "numerical",
+								"split-column": "Parch",
+								"split-value": 1.0909090909090908,
+								"child-left": {
+									"type": "split",
+									"gini": 0.4310204081632653,
+									"count": 35,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 24.272727272727273,
+									"child-left": {
+										"type": "split",
+										"gini": 0.17999999999999994,
+										"count": 10,
+										"split-type": "numerical",
+										"split-column": "Parch",
+										"split-value": 0.09090909090909091,
+										"child-left": {
+											"type": "leaf",
+											"class": 0,
+											"count": 7
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.4444444444444444,
+											"count": 3,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 21.181818181818183,
+											"child-left": {
+												"type": "leaf",
+												"class": 0,
+												"count": 2
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 1,
+												"count": 1
+											}
+										}
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.48,
+										"count": 25,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 27.18181818181818,
+										"child-left": {
+											"type": "split",
+											"gini": 0.24489795918367355,
+											"count": 7,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 25.181818181818183,
+											"child-left": {
+												"type": "split",
+												"gini": 0.4444444444444445,
+												"count": 3,
+												"split-type": "numerical",
+												"split-column": "SibSp",
+												"split-value": 0.09090909090909091,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 1
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 2
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 1,
+												"count": 4
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.345679012345679,
+											"count": 18,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 28.454545454545453,
+											"child-left": {
+												"type": "split",
+												"gini": 0.5,
+												"count": 4,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 36.66287272727273,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 2
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 2
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.24489795918367355,
+												"count": 14,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 30.136363636363637,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 7
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.40816326530612246,
+													"count": 7,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 52.27272727272727,
+													"child-left": {
+														"type": "split",
+														"gini": 0.2777777777777777,
+														"count": 6,
+														"split-type": "categorical",
+														"split-column": "Embarked",
+														"split-value": "C",
+														"child-left": {
+															"type": "split",
+															"gini": 0.5,
+															"count": 2,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 31.09090909090909,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 1
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 1,
+																"count": 1
+															}
+														},
+														"child-right": {
+															"type": "leaf",
+															"class": 0,
+															"count": 4
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													}
+												}
+											}
+										}
+									}
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 1,
+									"count": 2
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 0,
+								"count": 8
+							}
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.39669421487603307,
+							"count": 11,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 35.09090909090909,
+							"child-left": {
+								"type": "leaf",
+								"class": 1,
+								"count": 4
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.48979591836734704,
+								"count": 7,
+								"split-type": "numerical",
+								"split-column": "Parch",
+								"split-value": 0.18181818181818182,
+								"child-left": {
+									"type": "split",
+									"gini": 0.48,
+									"count": 5,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 31.06590909090909,
+									"child-left": {
+										"type": "leaf",
+										"class": 1,
+										"count": 2
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 3
+									}
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 1,
+									"count": 2
+								}
+							}
+						}
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.30127599243856334,
+						"count": 92,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 72.18181818181819,
+						"child-left": {
+							"type": "split",
+							"gini": 0.28982007003985033,
+							"count": 91,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 52.45454545454545,
+							"child-left": {
+								"type": "split",
+								"gini": 0.36196495259982764,
+								"count": 59,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 47.90909090909091,
+								"child-left": {
+									"type": "split",
+									"gini": 0.24985127900059492,
+									"count": 41,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 45.18181818181818,
+									"child-left": {
+										"type": "split",
+										"gini": 0.328180737217598,
+										"count": 29,
+										"split-type": "categorical",
+										"split-column": "Embarked",
+										"split-value": "S",
+										"child-left": {
+											"type": "split",
+											"gini": 0.38781163434903054,
+											"count": 19,
+											"split-type": "numerical",
+											"split-column": "SibSp",
+											"split-value": 0.09090909090909091,
+											"child-left": {
+												"type": "split",
+												"gini": 0.2777777777777777,
+												"count": 12,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 41.18181818181818,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 5
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.40816326530612246,
+													"count": 7,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 27.761363636363637,
+													"child-left": {
+														"type": "split",
+														"gini": 0.48,
+														"count": 5,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 26.311363636363637,
+														"child-left": {
+															"type": "leaf",
+															"class": 1,
+															"count": 1
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.375,
+															"count": 4,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 42.27272727272727,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 2
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 0,
+																"count": 2
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 2
+													}
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.48979591836734704,
+												"count": 7,
+												"split-type": "numerical",
+												"split-column": "Parch",
+												"split-value": 0.09090909090909091,
+												"child-left": {
+													"type": "split",
+													"gini": 0.4444444444444445,
+													"count": 6,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 86.53295454545454,
+													"child-left": {
+														"type": "split",
+														"gini": 0.31999999999999984,
+														"count": 5,
+														"split-type": "numerical",
+														"split-column": "Age",
+														"split-value": 41.36363636363636,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 2
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.4444444444444445,
+															"count": 3,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 42.27272727272727,
+															"child-left": {
+																"type": "split",
+																"gini": 0.5,
+																"count": 2,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 52.05038181818182,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 0,
+																"count": 1
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												}
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.17999999999999994,
+											"count": 10,
+											"split-type": "numerical",
+											"split-column": "SibSp",
+											"split-value": 0.18181818181818182,
+											"child-left": {
+												"type": "split",
+												"gini": 0.31999999999999984,
+												"count": 5,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 29.807563636363636,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 4
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 5
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 12
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.49382716049382713,
+									"count": 18,
+									"split-type": "numerical",
+									"split-column": "Parch",
+									"split-value": 0.09090909090909091,
+									"child-left": {
+										"type": "split",
+										"gini": 0.489795918367347,
+										"count": 14,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 50.18181818181818,
+										"child-left": {
+											"type": "split",
+											"gini": 0.5,
+											"count": 12,
+											"split-type": "numerical",
+											"split-column": "SibSp",
+											"split-value": 0.18181818181818182,
+											"child-left": {
+												"type": "split",
+												"gini": 0.31999999999999984,
+												"count": 5,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 48.18181818181818,
+												"child-left": {
+													"type": "split",
+													"gini": 0.5,
+													"count": 2,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 28.726890909090912,
+													"child-left": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 1
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 3
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.40816326530612246,
+												"count": 7,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 49.09090909090909,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 4
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.4444444444444445,
+													"count": 3,
+													"split-type": "numerical",
+													"split-column": "SibSp",
+													"split-value": 1.0909090909090908,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 2
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													}
+												}
+											}
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 1,
+											"count": 2
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 4
+									}
+								}
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.1171875,
+								"count": 32,
+								"split-type": "categorical",
+								"split-column": "Embarked",
+								"split-value": "S",
+								"child-left": {
+									"type": "leaf",
+									"class": 0,
+									"count": 18
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.24489795918367355,
+									"count": 14,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 61.18181818181818,
+									"child-left": {
+										"type": "split",
+										"gini": 0.31999999999999984,
+										"count": 10,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 58.09090909090909,
+										"child-left": {
+											"type": "split",
+											"gini": 0.21875,
+											"count": 8,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 39.22916363636364,
+											"child-left": {
+												"type": "split",
+												"gini": 0.375,
+												"count": 4,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 31.045454545454547,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 3
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 4
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.5,
+											"count": 2,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 60.09090909090909,
+											"child-left": {
+												"type": "leaf",
+												"class": 1,
+												"count": 1
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 1
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 4
+									}
+								}
+							}
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": 1,
+							"count": 1
+						}
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.15101746514981573,
+					"count": 474,
+					"split-type": "numerical",
+					"split-column": "Age",
+					"split-value": 32.0,
+					"child-left": {
+						"type": "split",
+						"gini": 0.17903541878356807,
+						"count": 332,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 12.363636363636363,
+						"child-left": {
+							"type": "split",
+							"gini": 0.40816326530612246,
+							"count": 14,
+							"split-type": "numerical",
+							"split-column": "SibSp",
+							"split-value": 1.3636363636363635,
+							"child-left": {
+								"type": "split",
+								"gini": 0.5,
+								"count": 8,
+								"split-type": "numerical",
+								"split-column": "SibSp",
+								"split-value": 0.09090909090909091,
+								"child-left": {
+									"type": "split",
+									"gini": 0.375,
+									"count": 4,
+									"split-type": "numerical",
+									"split-column": "Parch",
+									"split-value": 1.0909090909090908,
+									"child-left": {
+										"type": "leaf",
+										"class": 0,
+										"count": 2
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.5,
+										"count": 2,
+										"split-type": "categorical",
+										"split-column": "Pclass",
+										"split-value": 3,
+										"child-left": {
+											"type": "leaf",
+											"class": 1,
+											"count": 1
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 0,
+											"count": 1
+										}
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.375,
+									"count": 4,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 9.09090909090909,
+									"child-left": {
+										"type": "leaf",
+										"class": 1,
+										"count": 2
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.5,
+										"count": 2,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 11.545454545454545,
+										"child-left": {
+											"type": "leaf",
+											"class": 0,
+											"count": 1
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 1,
+											"count": 1
+										}
+									}
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 0,
+								"count": 6
+							}
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.16575689252798537,
+							"count": 318,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 30.272727272727273,
+							"child-left": {
+								"type": "split",
+								"gini": 0.13519965277777768,
+								"count": 288,
+								"split-type": "categorical",
+								"split-column": "Pclass",
+								"split-value": 3,
+								"child-left": {
+									"type": "split",
+									"gini": 0.17233560090702943,
+									"count": 210,
+									"split-type": "categorical",
+									"split-column": "Embarked",
+									"split-value": "C",
+									"child-left": {
+										"type": "split",
+										"gini": 0.31999999999999984,
+										"count": 25,
+										"split-type": "numerical",
+										"split-column": "Fare",
+										"split-value": 14.757954545454549,
+										"child-left": {
+											"type": "split",
+											"gini": 0.22684310018903592,
+											"count": 23,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 28.636363636363633,
+											"child-left": {
+												"type": "split",
+												"gini": 0.17999999999999994,
+												"count": 20,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 22.363636363636363,
+												"child-left": {
+													"type": "split",
+													"gini": 0.2975206611570247,
+													"count": 11,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 18.81818181818182,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 4
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.40816326530612246,
+														"count": 7,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 4.304927272727273,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 1
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.4444444444444445,
+															"count": 6,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 20.181818181818183,
+															"child-left": {
+																"type": "split",
+																"gini": 0.5,
+																"count": 2,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.225381818181818,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.375,
+																"count": 4,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.225381818181818,
+																"child-left": {
+																	"type": "split",
+																	"gini": 0.4444444444444444,
+																	"count": 3,
+																	"split-type": "numerical",
+																	"split-column": "Age",
+																	"split-value": 21.09090909090909,
+																	"child-left": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 1
+																	},
+																	"child-right": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 2
+																	}
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																}
+															}
+														}
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 9
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.4444444444444445,
+												"count": 3,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 29.09090909090909,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 2
+												}
+											}
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 1,
+											"count": 2
+										}
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.14901387874360839,
+										"count": 185,
+										"split-type": "numerical",
+										"split-column": "Fare",
+										"split-value": 6.322727272727272,
+										"child-left": {
+											"type": "split",
+											"gini": 0.5,
+											"count": 2,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 19.545454545454547,
+											"child-left": {
+												"type": "leaf",
+												"class": 0,
+												"count": 1
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 1,
+												"count": 1
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.14130012840037026,
+											"count": 183,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 26.909090909090907,
+											"child-left": {
+												"type": "split",
+												"gini": 0.10425683709869205,
+												"count": 145,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 52.3534,
+												"child-left": {
+													"type": "split",
+													"gini": 0.09310968751528192,
+													"count": 143,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 10.168909090909091,
+													"child-left": {
+														"type": "split",
+														"gini": 0.10652965660770027,
+														"count": 124,
+														"split-type": "numerical",
+														"split-column": "SibSp",
+														"split-value": 0.18181818181818182,
+														"child-left": {
+															"type": "split",
+															"gini": 0.0845798418043699,
+															"count": 113,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 19.454545454545453,
+															"child-left": {
+																"type": "split",
+																"gini": 0.19132653061224486,
+																"count": 28,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 8.0,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 13
+																},
+																"child-right": {
+																	"type": "split",
+																	"gini": 0.31999999999999984,
+																	"count": 15,
+																	"split-type": "numerical",
+																	"split-column": "Fare",
+																	"split-value": 8.181818181818182,
+																	"child-left": {
+																		"type": "split",
+																		"gini": 0.5,
+																		"count": 6,
+																		"split-type": "numerical",
+																		"split-column": "Fare",
+																		"split-value": 8.059845454545455,
+																		"child-left": {
+																			"type": "split",
+																			"gini": 0.48,
+																			"count": 5,
+																			"split-type": "numerical",
+																			"split-column": "Age",
+																			"split-value": 16.272727272727273,
+																			"child-left": {
+																				"type": "leaf",
+																				"class": 0,
+																				"count": 2
+																			},
+																			"child-right": {
+																				"type": "split",
+																				"gini": 0.4444444444444445,
+																				"count": 3,
+																				"split-type": "numerical",
+																				"split-column": "Age",
+																				"split-value": 18.09090909090909,
+																				"child-left": {
+																					"type": "leaf",
+																					"class": 1,
+																					"count": 1
+																				},
+																				"child-right": {
+																					"type": "leaf",
+																					"class": 0,
+																					"count": 2
+																				}
+																			}
+																		},
+																		"child-right": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 1
+																		}
+																	},
+																	"child-right": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 9
+																	}
+																}
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.045951557093425674,
+																"count": 85,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.81249090909091,
+																"child-left": {
+																	"type": "split",
+																	"gini": 0.10493827160493831,
+																	"count": 36,
+																	"split-type": "numerical",
+																	"split-column": "Fare",
+																	"split-value": 7.1863636363636365,
+																	"child-left": {
+																		"type": "split",
+																		"gini": 0.24489795918367352,
+																		"count": 7,
+																		"split-type": "numerical",
+																		"split-column": "Fare",
+																		"split-value": 7.125027272727273,
+																		"child-left": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 6
+																		},
+																		"child-right": {
+																			"type": "leaf",
+																			"class": 1,
+																			"count": 1
+																		}
+																	},
+																	"child-right": {
+																		"type": "split",
+																		"gini": 0.06658739595719369,
+																		"count": 29,
+																		"split-type": "numerical",
+																		"split-column": "Age",
+																		"split-value": 21.0,
+																		"child-left": {
+																			"type": "split",
+																			"gini": 0.1975308641975309,
+																			"count": 9,
+																			"split-type": "numerical",
+																			"split-column": "Fare",
+																			"split-value": 7.75,
+																			"child-left": {
+																				"type": "leaf",
+																				"class": 0,
+																				"count": 4
+																			},
+																			"child-right": {
+																				"type": "split",
+																				"gini": 0.31999999999999984,
+																				"count": 5,
+																				"split-type": "numerical",
+																				"split-column": "Fare",
+																				"split-value": 7.777272727272727,
+																				"child-left": {
+																					"type": "leaf",
+																					"class": 0,
+																					"count": 2
+																				},
+																				"child-right": {
+																					"type": "split",
+																					"gini": 0.4444444444444445,
+																					"count": 3,
+																					"split-type": "numerical",
+																					"split-column": "Fare",
+																					"split-value": 7.796181818181818,
+																					"child-left": {
+																						"type": "leaf",
+																						"class": 0,
+																						"count": 2
+																					},
+																					"child-right": {
+																						"type": "leaf",
+																						"class": 0,
+																						"count": 1
+																					}
+																				}
+																			}
+																		},
+																		"child-right": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 20
+																		}
+																	}
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 49
+																}
+															}
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.2975206611570247,
+															"count": 11,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 18.636363636363637,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 4
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.40816326530612246,
+																"count": 7,
+																"split-type": "numerical",
+																"split-column": "Age",
+																"split-value": 20.545454545454547,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "split",
+																	"gini": 0.2777777777777777,
+																	"count": 6,
+																	"split-type": "numerical",
+																	"split-column": "Age",
+																	"split-value": 22.363636363636363,
+																	"child-left": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 2
+																	},
+																	"child-right": {
+																		"type": "split",
+																		"gini": 0.375,
+																		"count": 4,
+																		"split-type": "numerical",
+																		"split-column": "Age",
+																		"split-value": 25.09090909090909,
+																		"child-left": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 2
+																		},
+																		"child-right": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 2
+																		}
+																	}
+																}
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 19
+													}
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.5,
+													"count": 2,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 15.545454545454545,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 1
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													}
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.2659279778393353,
+												"count": 38,
+												"split-type": "categorical",
+												"split-column": "Embarked",
+												"split-value": "S",
+												"child-left": {
+													"type": "split",
+													"gini": 0.23374726077428765,
+													"count": 37,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 27.272727272727273,
+													"child-left": {
+														"type": "split",
+														"gini": 0.46875,
+														"count": 8,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 7.1284090909090905,
+														"child-left": {
+															"type": "leaf",
+															"class": 1,
+															"count": 1
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.40816326530612246,
+															"count": 7,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 7.874590909090909,
+															"child-left": {
+																"type": "split",
+																"gini": 0.5,
+																"count": 2,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.80110909090909,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.31999999999999984,
+																"count": 5,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.9655000000000005,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 2
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 3
+																}
+															}
+														}
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.1284185493460166,
+														"count": 29,
+														"split-type": "numerical",
+														"split-column": "Age",
+														"split-value": 28.545454545454547,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 14
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.23111111111111104,
+															"count": 15,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 8.407545454545454,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 10
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.48,
+																"count": 5,
+																"split-type": "numerical",
+																"split-column": "SibSp",
+																"split-value": 0.2727272727272727,
+																"child-left": {
+																	"type": "split",
+																	"gini": 0.4444444444444445,
+																	"count": 3,
+																	"split-type": "numerical",
+																	"split-column": "Fare",
+																	"split-value": 9.484818181818182,
+																	"child-left": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 1
+																	},
+																	"child-right": {
+																		"type": "leaf",
+																		"class": 1,
+																		"count": 2
+																	}
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 2
+																}
+															}
+														}
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												}
+											}
+										}
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.0253122945430637,
+									"count": 78,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 19.81818181818182,
+									"child-left": {
+										"type": "split",
+										"gini": 0.1171875,
+										"count": 16,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 18.545454545454547,
+										"child-left": {
+											"type": "leaf",
+											"class": 0,
+											"count": 11
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.31999999999999984,
+											"count": 5,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 12.886363636363637,
+											"child-left": {
+												"type": "leaf",
+												"class": 0,
+												"count": 3
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 2
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 62
+									}
+								}
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.3911111111111112,
+								"count": 30,
+								"split-type": "numerical",
+								"split-column": "Fare",
+								"split-value": 37.5432,
+								"child-left": {
+									"type": "split",
+									"gini": 0.345679012345679,
+									"count": 27,
+									"split-type": "categorical",
+									"split-column": "Embarked",
+									"split-value": "S",
+									"child-left": {
+										"type": "split",
+										"gini": 0.3856332703213612,
+										"count": 23,
+										"split-type": "numerical",
+										"split-column": "Fare",
+										"split-value": 22.85530909090909,
+										"child-left": {
+											"type": "split",
+											"gini": 0.36281179138322006,
+											"count": 21,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 13.014036363636365,
+											"child-left": {
+												"type": "split",
+												"gini": 0.4152249134948096,
+												"count": 17,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 10.536,
+												"child-left": {
+													"type": "split",
+													"gini": 0.3911111111111112,
+													"count": 15,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 7.8447272727272725,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 3
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.4444444444444445,
+														"count": 12,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 8.094727272727273,
+														"child-left": {
+															"type": "split",
+															"gini": 0.49382716049382713,
+															"count": 9,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 7.872,
+															"child-left": {
+																"type": "leaf",
+																"class": 1,
+																"count": 1
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.46875,
+																"count": 8,
+																"split-type": "numerical",
+																"split-column": "Age",
+																"split-value": 30.636363636363637,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "split",
+																	"gini": 0.48979591836734704,
+																	"count": 7,
+																	"split-type": "numerical",
+																	"split-column": "Age",
+																	"split-value": 31.09090909090909,
+																	"child-left": {
+																		"type": "leaf",
+																		"class": 1,
+																		"count": 1
+																	},
+																	"child-right": {
+																		"type": "split",
+																		"gini": 0.4444444444444445,
+																		"count": 6,
+																		"split-type": "numerical",
+																		"split-column": "Fare",
+																		"split-value": 7.909818181818182,
+																		"child-left": {
+																			"type": "leaf",
+																			"class": 0,
+																			"count": 1
+																		},
+																		"child-right": {
+																			"type": "split",
+																			"gini": 0.48,
+																			"count": 5,
+																			"split-type": "numerical",
+																			"split-column": "Fare",
+																			"split-value": 7.9363636363636365,
+																			"child-left": {
+																				"type": "leaf",
+																				"class": 0,
+																				"count": 3
+																			},
+																			"child-right": {
+																				"type": "leaf",
+																				"class": 0,
+																				"count": 2
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"child-right": {
+															"type": "leaf",
+															"class": 0,
+															"count": 3
+														}
+													}
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.5,
+													"count": 2,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 31.09090909090909,
+													"child-left": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 1
+													}
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 4
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.5,
+											"count": 2,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 31.09090909090909,
+											"child-left": {
+												"type": "leaf",
+												"class": 0,
+												"count": 1
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 1,
+												"count": 1
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 4
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.4444444444444445,
+									"count": 3,
+									"split-type": "categorical",
+									"split-column": "Pclass",
+									"split-value": 3,
+									"child-left": {
+										"type": "leaf",
+										"class": 1,
+										"count": 2
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 1
+									}
+								}
+							}
+						}
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.08093632215830199,
+						"count": 142,
+						"split-type": "numerical",
+						"split-column": "SibSp",
+						"split-value": 0.18181818181818182,
+						"child-left": {
+							"type": "split",
+							"gini": 0.10226442658875091,
+							"count": 111,
+							"split-type": "categorical",
+							"split-column": "Embarked",
+							"split-value": "S",
+							"child-left": {
+								"type": "split",
+								"gini": 0.12070759625390233,
+								"count": 93,
+								"split-type": "numerical",
+								"split-column": "Fare",
+								"split-value": 14.181818181818183,
+								"child-left": {
+									"type": "split",
+									"gini": 0.13717421124828527,
+									"count": 81,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 7.636363636363637,
+									"child-left": {
+										"type": "leaf",
+										"class": 0,
+										"count": 17
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.169921875,
+										"count": 64,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 36.27272727272727,
+										"child-left": {
+											"type": "split",
+											"gini": 0.08677685950413211,
+											"count": 22,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 12.525,
+											"child-left": {
+												"type": "leaf",
+												"class": 0,
+												"count": 17
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.31999999999999984,
+												"count": 5,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 34.18181818181818,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 3
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 2
+												}
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.20975056689342408,
+											"count": 42,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 47.81818181818182,
+											"child-left": {
+												"type": "split",
+												"gini": 0.2688000000000001,
+												"count": 25,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 8.136363636363637,
+												"child-left": {
+													"type": "split",
+													"gini": 0.375,
+													"count": 12,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 44.36363636363636,
+													"child-left": {
+														"type": "split",
+														"gini": 0.2975206611570247,
+														"count": 11,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 7.904545454545455,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 5
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.4444444444444444,
+															"count": 6,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 7.9363636363636365,
+															"child-left": {
+																"type": "split",
+																"gini": 0.4444444444444445,
+																"count": 3,
+																"split-type": "numerical",
+																"split-column": "Age",
+																"split-value": 39.45454545454545,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 2
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 0,
+																"count": 3
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													}
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.1420118343195265,
+													"count": 13,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 41.27272727272727,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 5
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.21875,
+														"count": 8,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 10.911,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 4
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.375,
+															"count": 4,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 42.18181818181818,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 3
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 0,
+																"count": 1
+															}
+														}
+													}
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.11072664359861589,
+												"count": 17,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 59.81818181818182,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 13
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.375,
+													"count": 4,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 63.09090909090909,
+													"child-left": {
+														"type": "leaf",
+														"class": 1,
+														"count": 1
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 3
+													}
+												}
+											}
+										}
+									}
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 12
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 0,
+								"count": 18
+							}
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": 0,
+							"count": 31
+						}
+					}
+				}
+			}
+		},
+		"child-right": {
+			"type": "split",
+			"gini": 0.2766248758355929,
+			"count": 386,
+			"split-type": "categorical",
+			"split-column": "Pclass",
+			"split-value": 3,
+			"child-left": {
+				"type": "split",
+				"gini": 0.46182479224376727,
+				"count": 152,
+				"split-type": "numerical",
+				"split-column": "Fare",
+				"split-value": 25.0,
+				"child-left": {
+					"type": "split",
+					"gini": 0.42060037311323417,
+					"count": 133,
+					"split-type": "numerical",
+					"split-column": "Fare",
+					"split-value": 20.986363636363635,
+					"child-left": {
+						"type": "split",
+						"gini": 0.4012345679012346,
+						"count": 126,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 5.881818181818182,
+						"child-left": {
+							"type": "split",
+							"gini": 0.12444444444444439,
+							"count": 15,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 11.381818181818183,
+							"child-left": {
+								"type": "split",
+								"gini": 0.5,
+								"count": 2,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 1.0909090909090908,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 1
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 1
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 13
+							}
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.4249655060465871,
+							"count": 111,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 9.263636363636364,
+							"child-left": {
+								"type": "split",
+								"gini": 0.345679012345679,
+								"count": 63,
+								"split-type": "categorical",
+								"split-column": "Embarked",
+								"split-value": "S",
+								"child-left": {
+									"type": "split",
+									"gini": 0.41135734072022156,
+									"count": 38,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 23.0,
+									"child-left": {
+										"type": "split",
+										"gini": 0.2975206611570247,
+										"count": 22,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 14.818181818181818,
+										"child-left": {
+											"type": "leaf",
+											"class": 0,
+											"count": 1
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.24489795918367355,
+											"count": 21,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 7.717045454545454,
+											"child-left": {
+												"type": "leaf",
+												"class": 1,
+												"count": 5
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.3046875,
+												"count": 16,
+												"split-type": "numerical",
+												"split-column": "SibSp",
+												"split-value": 0.36363636363636365,
+												"child-left": {
+													"type": "split",
+													"gini": 0.35502958579881655,
+													"count": 13,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 20.272727272727273,
+													"child-left": {
+														"type": "split",
+														"gini": 0.48,
+														"count": 5,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 8.097727272727273,
+														"child-left": {
+															"type": "split",
+															"gini": 0.375,
+															"count": 4,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 7.800000000000001,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 2
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 1,
+																"count": 2
+															}
+														},
+														"child-right": {
+															"type": "leaf",
+															"class": 0,
+															"count": 1
+														}
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.21875,
+														"count": 8,
+														"split-type": "numerical",
+														"split-column": "Age",
+														"split-value": 22.09090909090909,
+														"child-left": {
+															"type": "leaf",
+															"class": 1,
+															"count": 4
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.375,
+															"count": 4,
+															"split-type": "numerical",
+															"split-column": "Fare",
+															"split-value": 7.927681818181818,
+															"child-left": {
+																"type": "split",
+																"gini": 0.5,
+																"count": 2,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.860636363636363,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 1,
+																"count": 2
+															}
+														}
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 3
+												}
+											}
+										}
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.4921875,
+										"count": 16,
+										"split-type": "numerical",
+										"split-column": "SibSp",
+										"split-value": 1.0909090909090908,
+										"child-left": {
+											"type": "split",
+											"gini": 0.4977777777777777,
+											"count": 15,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 7.168181818181818,
+											"child-left": {
+												"type": "leaf",
+												"class": 1,
+												"count": 1
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.5,
+												"count": 14,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 25.90909090909091,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 3
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.4628099173553719,
+													"count": 11,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 29.454545454545453,
+													"child-left": {
+														"type": "split",
+														"gini": 0.24489795918367355,
+														"count": 7,
+														"split-type": "numerical",
+														"split-column": "Age",
+														"split-value": 27.09090909090909,
+														"child-left": {
+															"type": "leaf",
+															"class": 1,
+															"count": 4
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.4444444444444444,
+															"count": 3,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 28.09090909090909,
+															"child-left": {
+																"type": "split",
+																"gini": 0.5,
+																"count": 2,
+																"split-type": "numerical",
+																"split-column": "Fare",
+																"split-value": 7.785981818181819,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 1
+																},
+																"child-right": {
+																	"type": "leaf",
+																	"class": 0,
+																	"count": 1
+																}
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 1,
+																"count": 1
+															}
+														}
+													},
+													"child-right": {
+														"type": "split",
+														"gini": 0.375,
+														"count": 4,
+														"split-type": "numerical",
+														"split-column": "Fare",
+														"split-value": 7.919690909090909,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 2
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.5,
+															"count": 2,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 30.09090909090909,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 1
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 1,
+																"count": 1
+															}
+														}
+													}
+												}
+											}
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 1,
+											"count": 1
+										}
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.21120000000000003,
+									"count": 25,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 6.910609090909091,
+									"child-left": {
+										"type": "leaf",
+										"class": 0,
+										"count": 1
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.15277777777777787,
+										"count": 24,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 18.81818181818182,
+										"child-left": {
+											"type": "leaf",
+											"class": 1,
+											"count": 10
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.24489795918367355,
+											"count": 14,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 21.363636363636363,
+											"child-left": {
+												"type": "split",
+												"gini": 0.5,
+												"count": 2,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 19.181818181818183,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 1
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.15277777777777787,
+												"count": 12,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 30.363636363636363,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 7
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.31999999999999984,
+													"count": 5,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 31.818181818181817,
+													"child-left": {
+														"type": "leaf",
+														"class": 0,
+														"count": 1
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 1,
+														"count": 4
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.48611111111111094,
+								"count": 48,
+								"split-type": "numerical",
+								"split-column": "Parch",
+								"split-value": 1.0909090909090908,
+								"child-left": {
+									"type": "split",
+									"gini": 0.49967126890203817,
+									"count": 39,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 18.493181818181817,
+									"child-left": {
+										"type": "split",
+										"gini": 0.49963476990504024,
+										"count": 37,
+										"split-type": "numerical",
+										"split-column": "Fare",
+										"split-value": 10.922727272727272,
+										"child-left": {
+											"type": "split",
+											"gini": 0.42000000000000004,
+											"count": 10,
+											"split-type": "numerical",
+											"split-column": "SibSp",
+											"split-value": 0.09090909090909091,
+											"child-left": {
+												"type": "split",
+												"gini": 0.5,
+												"count": 6,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 38.45454545454545,
+												"child-left": {
+													"type": "split",
+													"gini": 0.48,
+													"count": 5,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 19.727272727272727,
+													"child-left": {
+														"type": "leaf",
+														"class": 1,
+														"count": 2
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 3
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 0,
+												"count": 4
+											}
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.49382716049382713,
+											"count": 27,
+											"split-type": "numerical",
+											"split-column": "Fare",
+											"split-value": 14.313654545454545,
+											"child-left": {
+												"type": "leaf",
+												"class": 1,
+												"count": 6
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.48979591836734704,
+												"count": 21,
+												"split-type": "numerical",
+												"split-column": "Fare",
+												"split-value": 14.727272727272728,
+												"child-left": {
+													"type": "split",
+													"gini": 0.24489795918367355,
+													"count": 7,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 17.454545454545453,
+													"child-left": {
+														"type": "split",
+														"gini": 0.4444444444444445,
+														"count": 3,
+														"split-type": "numerical",
+														"split-column": "Age",
+														"split-value": 14.727272727272727,
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 1
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.5,
+															"count": 2,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 15.181818181818182,
+															"child-left": {
+																"type": "leaf",
+																"class": 1,
+																"count": 1
+															},
+															"child-right": {
+																"type": "leaf",
+																"class": 0,
+																"count": 1
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 4
+													}
+												},
+												"child-right": {
+													"type": "split",
+													"gini": 0.489795918367347,
+													"count": 14,
+													"split-type": "numerical",
+													"split-column": "Fare",
+													"split-value": 17.499236363636363,
+													"child-left": {
+														"type": "split",
+														"gini": 0.39669421487603307,
+														"count": 11,
+														"split-type": "categorical",
+														"split-column": "Embarked",
+														"split-value": "Q",
+														"child-left": {
+															"type": "leaf",
+															"class": 0,
+															"count": 1
+														},
+														"child-right": {
+															"type": "split",
+															"gini": 0.31999999999999984,
+															"count": 10,
+															"split-type": "numerical",
+															"split-column": "Age",
+															"split-value": 11.454545454545455,
+															"child-left": {
+																"type": "leaf",
+																"class": 0,
+																"count": 2
+															},
+															"child-right": {
+																"type": "split",
+																"gini": 0.21875,
+																"count": 8,
+																"split-type": "numerical",
+																"split-column": "Age",
+																"split-value": 25.636363636363637,
+																"child-left": {
+																	"type": "leaf",
+																	"class": 1,
+																	"count": 4
+																},
+																"child-right": {
+																	"type": "split",
+																	"gini": 0.375,
+																	"count": 4,
+																	"split-type": "numerical",
+																	"split-column": "Age",
+																	"split-value": 26.90909090909091,
+																	"child-left": {
+																		"type": "leaf",
+																		"class": 0,
+																		"count": 1
+																	},
+																	"child-right": {
+																		"type": "leaf",
+																		"class": 1,
+																		"count": 3
+																	}
+																}
+															}
+														}
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 3
+													}
+												}
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 1,
+										"count": 2
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.1975308641975309,
+									"count": 9,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 36.36363636363636,
+									"child-left": {
+										"type": "leaf",
+										"class": 1,
+										"count": 8
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 0,
+										"count": 1
+									}
+								}
+							}
+						}
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.40816326530612246,
+						"count": 7,
+						"split-type": "numerical",
+						"split-column": "Fare",
+						"split-value": 21.354545454545455,
+						"child-left": {
+							"type": "leaf",
+							"class": 0,
+							"count": 3
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.5,
+							"count": 4,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 22.218181818181815,
+							"child-left": {
+								"type": "leaf",
+								"class": 1,
+								"count": 2
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 0,
+								"count": 2
+							}
+						}
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.3324099722991689,
+					"count": 19,
+					"split-type": "numerical",
+					"split-column": "Fare",
+					"split-value": 31.354545454545452,
+					"child-left": {
+						"type": "leaf",
+						"class": 0,
+						"count": 9
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.48,
+						"count": 10,
+						"split-type": "numerical",
+						"split-column": "Fare",
+						"split-value": 32.79772727272727,
+						"child-left": {
+							"type": "leaf",
+							"class": 1,
+							"count": 2
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.375,
+							"count": 8,
+							"split-type": "numerical",
+							"split-column": "Parch",
+							"split-value": 0.5454545454545454,
+							"child-left": {
+								"type": "leaf",
+								"class": 1,
+								"count": 1
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.24489795918367355,
+								"count": 7,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 12.545454545454545,
+								"child-left": {
+									"type": "split",
+									"gini": 0.5,
+									"count": 2,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 9.090909090909092,
+									"child-left": {
+										"type": "leaf",
+										"class": 0,
+										"count": 1
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 1,
+										"count": 1
+									}
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 5
+								}
+							}
+						}
+					}
+				}
+			},
+			"child-right": {
+				"type": "split",
+				"gini": 0.07396449704142012,
+				"count": 234,
+				"split-type": "categorical",
+				"split-column": "Embarked",
+				"split-value": "S",
+				"child-left": {
+					"type": "split",
+					"gini": 0.09789802289282007,
+					"count": 155,
+					"split-type": "numerical",
+					"split-column": "Fare",
+					"split-value": 148.22727272727272,
+					"child-left": {
+						"type": "split",
+						"gini": 0.08434256055363316,
+						"count": 136,
+						"split-type": "numerical",
+						"split-column": "Fare",
+						"split-value": 21.875754545454544,
+						"child-left": {
+							"type": "split",
+							"gini": 0.1687398593834506,
+							"count": 43,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 52.90909090909091,
+							"child-left": {
+								"type": "split",
+								"gini": 0.1356335514574658,
+								"count": 41,
+								"split-type": "numerical",
+								"split-column": "SibSp",
+								"split-value": 0.2727272727272727,
+								"child-left": {
+									"type": "split",
+									"gini": 0.10226442658875091,
+									"count": 37,
+									"split-type": "numerical",
+									"split-column": "Fare",
+									"split-value": 13.363636363636363,
+									"child-left": {
+										"type": "split",
+										"gini": 0.14719999999999997,
+										"count": 25,
+										"split-type": "numerical",
+										"split-column": "Fare",
+										"split-value": 12.772727272727273,
+										"child-left": {
+											"type": "leaf",
+											"class": 1,
+											"count": 9
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.21875,
+											"count": 16,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 37.63636363636363,
+											"child-left": {
+												"type": "split",
+												"gini": 0.1420118343195265,
+												"count": 13,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 24.545454545454547,
+												"child-left": {
+													"type": "split",
+													"gini": 0.375,
+													"count": 4,
+													"split-type": "numerical",
+													"split-column": "Age",
+													"split-value": 19.09090909090909,
+													"child-left": {
+														"type": "leaf",
+														"class": 1,
+														"count": 2
+													},
+													"child-right": {
+														"type": "leaf",
+														"class": 0,
+														"count": 2
+													}
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 9
+												}
+											},
+											"child-right": {
+												"type": "split",
+												"gini": 0.4444444444444445,
+												"count": 3,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 38.36363636363637,
+												"child-left": {
+													"type": "leaf",
+													"class": 0,
+													"count": 1
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 1,
+													"count": 2
+												}
+											}
+										}
+									},
+									"child-right": {
+										"type": "leaf",
+										"class": 1,
+										"count": 12
+									}
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.375,
+									"count": 4,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 24.545454545454547,
+									"child-left": {
+										"type": "leaf",
+										"class": 1,
+										"count": 2
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.5,
+										"count": 2,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 27.272727272727273,
+										"child-left": {
+											"type": "leaf",
+											"class": 0,
+											"count": 1
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 1,
+											"count": 1
+										}
+									}
+								}
+							},
+							"child-right": {
+								"type": "split",
+								"gini": 0.5,
+								"count": 2,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 55.18181818181818,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 1
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 1
+								}
+							}
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.04208579026477045,
+							"count": 93,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 33.23939090909091,
+							"child-left": {
+								"type": "split",
+								"gini": 0.08317580340264642,
+								"count": 46,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 23.85818181818182,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 17
+								},
+								"child-right": {
+									"type": "split",
+									"gini": 0.12841854934601665,
+									"count": 29,
+									"split-type": "numerical",
+									"split-column": "Age",
+									"split-value": 27.636363636363637,
+									"child-left": {
+										"type": "split",
+										"gini": 0.31999999999999984,
+										"count": 5,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 25.09090909090909,
+										"child-left": {
+											"type": "leaf",
+											"class": 1,
+											"count": 4
+										},
+										"child-right": {
+											"type": "leaf",
+											"class": 0,
+											"count": 1
+										}
+									},
+									"child-right": {
+										"type": "split",
+										"gini": 0.079861111111111,
+										"count": 24,
+										"split-type": "numerical",
+										"split-column": "Age",
+										"split-value": 37.81818181818182,
+										"child-left": {
+											"type": "leaf",
+											"class": 1,
+											"count": 12
+										},
+										"child-right": {
+											"type": "split",
+											"gini": 0.15277777777777787,
+											"count": 12,
+											"split-type": "numerical",
+											"split-column": "Age",
+											"split-value": 44.0,
+											"child-left": {
+												"type": "split",
+												"gini": 0.5,
+												"count": 2,
+												"split-type": "numerical",
+												"split-column": "Age",
+												"split-value": 42.18181818181818,
+												"child-left": {
+													"type": "leaf",
+													"class": 1,
+													"count": 1
+												},
+												"child-right": {
+													"type": "leaf",
+													"class": 0,
+													"count": 1
+												}
+											},
+											"child-right": {
+												"type": "leaf",
+												"class": 1,
+												"count": 10
+											}
+										}
+									}
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 47
+							}
+						}
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.18836565096952906,
+						"count": 19,
+						"split-type": "numerical",
+						"split-column": "Age",
+						"split-value": 7.545454545454546,
+						"child-left": {
+							"type": "leaf",
+							"class": 0,
+							"count": 1
+						},
+						"child-right": {
+							"type": "split",
+							"gini": 0.10493827160493831,
+							"count": 18,
+							"split-type": "numerical",
+							"split-column": "Fare",
+							"split-value": 161.6818181818182,
+							"child-left": {
+								"type": "split",
+								"gini": 0.31999999999999984,
+								"count": 5,
+								"split-type": "numerical",
+								"split-column": "SibSp",
+								"split-value": 0.09090909090909091,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 4
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 1
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 13
+							}
+						}
+					}
+				},
+				"child-right": {
+					"type": "split",
+					"gini": 0.024995994231693536,
+					"count": 79,
+					"split-type": "numerical",
+					"split-column": "Age",
+					"split-value": 46.81818181818182,
+					"child-left": {
+						"type": "leaf",
+						"class": 1,
+						"count": 59
+					},
+					"child-right": {
+						"type": "split",
+						"gini": 0.09500000000000003,
+						"count": 20,
+						"split-type": "numerical",
+						"split-column": "Fare",
+						"split-value": 71.52610909090909,
+						"child-left": {
+							"type": "split",
+							"gini": 0.31999999999999984,
+							"count": 5,
+							"split-type": "numerical",
+							"split-column": "Age",
+							"split-value": 50.54545454545455,
+							"child-left": {
+								"type": "split",
+								"gini": 0.5,
+								"count": 2,
+								"split-type": "numerical",
+								"split-column": "Age",
+								"split-value": 48.18181818181818,
+								"child-left": {
+									"type": "leaf",
+									"class": 1,
+									"count": 1
+								},
+								"child-right": {
+									"type": "leaf",
+									"class": 0,
+									"count": 1
+								}
+							},
+							"child-right": {
+								"type": "leaf",
+								"class": 1,
+								"count": 3
+							}
+						},
+						"child-right": {
+							"type": "leaf",
+							"class": 1,
+							"count": 15
+						}
+					}
+				}
+			}
+		}
+	}
+}
