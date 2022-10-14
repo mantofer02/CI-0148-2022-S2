@@ -13393,6 +13393,7 @@ div#notebook {
 
       <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">prev_delta_weight_matrix</span> <span class="o">=</span> <span class="p">[]</span>
       
       <span class="bp">self</span><span class="o">.</span><span class="n">net_values</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">activation_values</span> <span class="o">=</span> <span class="p">[]</span>
@@ -13427,6 +13428,9 @@ div#notebook {
       <span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span> <span class="o">=</span> <span class="p">[]</span>
       <span class="k">for</span> <span class="n">weight_matrix</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prev_delta_weight_matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">))</span>
+
+
 
     <span class="k">def</span> <span class="nf">_fowardPropagation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
       <span class="c1"># limpieza de los valores netos, activación y error</span>
@@ -13460,6 +13464,10 @@ div#notebook {
       <span class="bp">self</span><span class="o">.</span><span class="n">activation_values_reduced</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">)</span>
 
       <span class="n">row_counter</span> <span class="o">=</span> <span class="mi">1</span>
+
+      <span class="k">for</span> <span class="n">weight_matrix</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prev_delta_weight_matrix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">weight_matrix</span><span class="p">))</span>
+
       <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">y_predict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fowardPropagation</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
         <span class="n">y_true</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -13510,10 +13518,11 @@ div#notebook {
 
       <span class="bp">self</span><span class="o">.</span><span class="n">error_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers_errors_reduced</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>      
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="k">for</span> <span class="n">layer_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">)):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span>  <span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span><span class="p">[</span><span class="n">layer_index</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight_matrixs</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span>  <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">delta_weight_matrix</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">momentum</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev_delta_weight_matrix</span><span class="p">[</span><span class="n">layer_index</span><span class="p">]))</span>
 
+      <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">decay</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">_getActivationValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer_number</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
@@ -13585,8 +13594,10 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:3: RuntimeWarning: overflow encountered in exp
-  This is separate from the ipykernel package so we can avoid doing imports until
+<pre>C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
 </pre>
 </div>
 </div>
@@ -13695,8 +13706,14 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py:3: RuntimeWarning: overflow encountered in exp
-  This is separate from the ipykernel package so we can avoid doing imports until
+<pre>C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+C:\Users\Marco\AppData\Local\Temp\ipykernel_4132\1336143881.py:3: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
 </pre>
 </div>
 </div>
@@ -13759,13 +13776,35 @@ experimentar)</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">html</span> <span class="o">/</span><span class="n">PATH</span><span class="o">/</span><span class="n">TO</span><span class="o">/</span><span class="n">YOUR</span><span class="o">/</span><span class="n">NOTEBOOKFILE</span><span class="o">.</span><span class="n">ipynb</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">jupyter</span> nbconvert --to html C:\Users\Marco\Desktop\CI-0148-2022-S2\Laboratorios\4\Laboratorio_4.ipynb
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-cyan-intense-fg ansi-bold">  Cell </span><span class="ansi-green-intense-fg ansi-bold">In [15], line 1</span>
+<span class="ansi-yellow-intense-fg ansi-bold">    jupyter nbconvert --to html /PATH/TO/YOUR/NOTEBOOKFILE.ipynb</span>
+<span class="ansi-white-intense-fg ansi-bold">            ^</span>
+<span class="ansi-red-intense-fg ansi-bold">SyntaxError</span><span class="ansi-red-intense-fg ansi-bold">:</span> invalid syntax
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
