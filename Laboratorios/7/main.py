@@ -81,35 +81,6 @@ colors = {
 ### MODIFY THE FOLLOWING CLASS ###
 
 
-class Agent():
-    # Initializes the agent
-    def __init__(self, seed, state_dims, actions, learning_rate, discount_factor, eps_greedy, decay):
-        # Use self.prng any time you require to call a random funcion
-        print("Hello")
-        print(learning_rate)
-        self.prng = random.Random()
-        self.prng.seed(seed)
-        pass
-
-    # Performs a complete simulation by the agent
-    def simulation(self, env):
-        pass
-
-    # Performs a single step of the simulation by the agent, if learn=False no updates are performed
-    def step(self, env, learn=True):
-        if learn:
-            self.prng.random()
-        else:
-            pass
-        pass
-
-    # Returns current qtable
-    def get_qtable(self):
-        pass
-
-### DO NOT MODIFY ANYTHING ELSE ###
-
-
 class Maze():
     def __init__(self, map_seed, addKey=False, addTreasures=False):
         self.rnd = random.Random()
@@ -244,6 +215,45 @@ class Maze():
         while self.board[x] != Objects.PATH:
             x = self.rnd.choice(valid)
         return x
+
+
+class Agent():
+    # Initializes the agent
+    def __init__(self, seed, state_dims, actions, learning_rate, discount_factor, eps_greedy, decay):
+        # Use self.prng any time you require to call a random funcion
+        self.prng = random.Random()
+        self.prng.seed(seed)
+
+        self.state_dims = state_dims
+        self.action = actions
+        self.learning_rate = learning_rate
+        self.dicount_factor = discount_factor
+        self.eps_greedy = eps_greedy
+        self.decay = decay
+
+    # Performs a complete simulation by the agent
+    def simulation(self, env: Maze):
+        print(env)
+        pass
+
+    # Performs a single step of the simulation by the agent, if learn=False no updates are performed
+    def step(self, env, learn=True):
+        action = None
+        if learn:
+            if self.prng.random() < self.eps_greedy:
+                action = self.prng.choice(self.action)
+            else:
+                # accion mejor conocida
+                pass
+        else:
+            pass
+        pass
+
+    # Returns current qtable
+    def get_qtable(self):
+        pass
+
+### DO NOT MODIFY ANYTHING ELSE ###
 
 
 class mainWindow():
