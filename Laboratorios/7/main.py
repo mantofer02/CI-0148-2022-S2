@@ -237,7 +237,7 @@ class Agent():
         pass
 
     # Performs a single step of the simulation by the agent, if learn=False no updates are performed
-    def step(self, env, learn=True):
+    def step(self, env: Maze, learn=True):
         action = None
         if learn:
             if self.prng.random() < self.eps_greedy:
