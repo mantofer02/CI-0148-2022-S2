@@ -225,11 +225,15 @@ class Agent():
         self.prng.seed(seed)
 
         self.state_dims = state_dims
-        self.action = actions
+        self.actions = actions
         self.learning_rate = learning_rate
         self.dicount_factor = discount_factor
         self.eps_greedy = eps_greedy
         self.decay = decay
+
+        print(state_dims)
+        self.qtable = np.zeros(
+            (self.state_dims[0] * self.state_dims[1], len(self.actions)), dtype=np.float64)
 
     # Performs a complete simulation by the agent
     def simulation(self, env: Maze):
