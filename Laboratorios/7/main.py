@@ -231,31 +231,65 @@ class Agent():
         self.eps_greedy = eps_greedy
         self.decay = decay
 
-        print(state_dims)
-        self.qtable = np.zeros(
-            (self.state_dims[0] * self.state_dims[1], len(self.actions)), dtype=np.float64)
+        self.qtable = np.random.randint(100, size=(
+            self.state_dims[0] * self.state_dims[1], len(self.actions)))
+        # self.qtable = np.zeros(
+        #     (self.state_dims[0] * self.state_dims[1], len(self.actions)), dtype=np.float64)
 
     # Performs a complete simulation by the agent
     def simulation(self, env: Maze):
-        print(env)
-        pass
+        env.reset()
+        iterations = 0
+        print(env.is_terminal_state())
+        while not env.is_terminal_state():
+            print(iterations)
+            iterations += 1
+            self.step(env, True)
+        # Al final de cada simulación es necesario reajustar el valor epsilon-greedy acorde a la tasa de decaimiento
 
     # Performs a single step of the simulation by the agent, if learn=False no updates are performed
     def step(self, env: Maze, learn=True):
+        print(learn)
         action = None
         if learn:
             if self.prng.random() < self.eps_greedy:
-                action = self.prng.choice(self.action)
+                self.update_qtable(env, self.prng.choice(self.actions))
+
             else:
                 # accion mejor conocida
-                pass
-        else:
-            pass
-        pass
+                action = self.get_best_action(env)
+                env.perform_action(action)
+        elif not learn:
+            action = self.get_best_action(env)
+            env.perform_action(action)
 
-    # Returns current qtable
-    def get_qtable(self):
+    def get_best_action(self, env: Maze):
+        row_index = 0
+        current_state = env.get_state()
+        for i in range(len(self.state_dims)):
+            if i == 2:
+                row_index += current_state[i]
+            else:
+                row_index *= current_state[i]
+
+        return np.argmax(self.qtable[row_index])
+
+    def update_qtable(self, env: Maze, action):
+        row_index = 0
+        current_state = env.get_state()
+        for i in range(len(self.state_dims)):
+            if i == 2:
+                row_index += current_state[i]
+            else:
+                row_index *= current_state[i]
+
+        reward, new_state = env.perform_action(action)
+        self.qtable[row_index][action] = reward
         pass
+    # Returns current qtable
+
+    def get_qtable(self):
+        return self.qtable
 
 ### DO NOT MODIFY ANYTHING ELSE ###
 
