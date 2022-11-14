@@ -231,10 +231,8 @@ class Agent():
         self.eps_greedy = eps_greedy
         self.decay = decay
 
-        self.qtable = np.random.randint(100, size=(
-            self.state_dims[0] * self.state_dims[1], len(self.actions)))
-        # self.qtable = np.zeros(
-        #     (self.state_dims[0] * self.state_dims[1], len(self.actions)), dtype=np.float64)
+        self.qtable = np.zeros(
+            (self.state_dims[0] * self.state_dims[1], len(self.actions)), dtype=np.float64)
 
     # Performs a complete simulation by the agent
     def simulation(self, env: Maze):
@@ -253,11 +251,13 @@ class Agent():
         action = None
         if learn:
             if self.prng.random() < self.eps_greedy:
-                self.update_qtable(env, self.prng.choice(self.actions))
-
+                action = self.prng.choice(self.actions)
+                print("Line 258: " + str(action))
+                env.perform_action(action)
+                self.update_qtable(env, action)
             else:
-                # accion mejor conocida
                 action = self.get_best_action(env)
+                self.update_qtable(env, action)
                 env.perform_action(action)
         elif not learn:
             action = self.get_best_action(env)
@@ -272,6 +272,10 @@ class Agent():
             else:
                 row_index *= current_state[i]
 
+        print(self.qtable[row_index])
+        print("--------------------")
+        print(np.argmax(self.qtable[row_index]))
+        print(self.actions)
         return np.argmax(self.qtable[row_index])
 
     def update_qtable(self, env: Maze, action):
@@ -284,8 +288,18 @@ class Agent():
                 row_index *= current_state[i]
 
         reward, new_state = env.perform_action(action)
-        self.qtable[row_index][action] = reward
-        pass
+
+        new_state_row_index = 0
+        for i in range(len(self.state_dims)):
+            if i == 2:
+                new_state_row_index += new_state[i]
+            else:
+                new_state_row_index *= new_state[i]
+
+        self.qtable[row_index, action] = self.qtable[row_index, action] * \
+            (1 - self.learning_rate) + self.learning_rate * \
+            (reward + self.dicount_factor *
+             np.max(self.qtable[new_state_row_index, :]))
     # Returns current qtable
 
     def get_qtable(self):
