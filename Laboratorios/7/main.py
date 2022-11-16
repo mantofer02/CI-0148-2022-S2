@@ -29,9 +29,9 @@ DEFAULT_ETA_DECAY = 0
 
 # Maze related
 OUT_OF_BOUNDS_REWARD = -10
-EMPTY_REWARD = 0
+EMPTY_REWARD = 5
 KEY_REWARD = 0
-GOAL_REWARD = 0
+GOAL_REWARD = 150
 TREASURE_REWARD = 0
 
 # DO NOT MODIFY
@@ -251,7 +251,6 @@ class Agent():
         if learn:
             if self.prng.random() < self.eps_greedy:
                 action = self.prng.choice(self.actions)
-                print("here")
                 self.update_qtable(env, action)
             else:
                 action = self.get_best_action(env)
@@ -259,15 +258,16 @@ class Agent():
                 self.update_qtable(env, action)
         elif not learn:
             action = self.get_best_action(env)
+        print("Action value: " + str(action))
         env.perform_action(action)
 
     def get_best_action(self, env: Maze):
         current_state = env.get_state()
         index = list(current_state)
-        print("-------------------------")
-        print(self.actions)
-        print(np.argmax(self.qtable[tuple(index)]))
-        print("-------------------------")
+        # print("-------------------------")
+        # print(self.actions)
+        # print(np.argmax(self.qtable[tuple(index)]))
+        # print("-------------------------")
 
         return np.argmax(self.qtable[tuple(index)])
 
