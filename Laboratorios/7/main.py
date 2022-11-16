@@ -29,7 +29,7 @@ DEFAULT_ETA_DECAY = 0
 
 # Maze related
 OUT_OF_BOUNDS_REWARD = -10
-EMPTY_REWARD = 5
+EMPTY_REWARD = 0
 KEY_REWARD = 0
 GOAL_REWARD = 150
 TREASURE_REWARD = 0
@@ -193,6 +193,8 @@ class Maze():
             self.position = (self.position[0], self.position[1]+1)
         elif action == Action.LEFT:
             self.position = (self.position[0], self.position[1]-1)
+        print(self.position)
+        print(len(self.board))
         space = self.board[self.position]
         if space == Objects.CLIFF:
             reward = OUT_OF_BOUNDS_REWARD
@@ -240,9 +242,9 @@ class Agent():
 
     # Performs a complete simulation by the agent
     def simulation(self, env: Maze):
-        env.reset()
         while not env.is_terminal_state():
             self.step(env, True)
+        env.reset()
         # Al final de cada simulación es necesario reajustar el valor epsilon-greedy acorde a la tasa de decaimiento
 
     # Performs a single step of the simulation by the agent, if learn=False no updates are performed
@@ -251,15 +253,12 @@ class Agent():
         if learn:
             if self.prng.random() < self.eps_greedy:
                 action = self.prng.choice(self.actions)
-                self.update_qtable(env, action)
             else:
                 action = self.get_best_action(env)
-                print("here 1")
-                self.update_qtable(env, action)
+            self.update_qtable(env, action)
         elif not learn:
             action = self.get_best_action(env)
-        print("Action value: " + str(action))
-        env.perform_action(action)
+            env.perform_action(action)
 
     def get_best_action(self, env: Maze):
         current_state = env.get_state()
