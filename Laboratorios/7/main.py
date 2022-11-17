@@ -23,7 +23,6 @@ try:
     import tkinter.simpledialog
 except ImportError:
     try:
-
         import Tkinter as tk
         import tkinter.simpledialog
     except ImportError:
