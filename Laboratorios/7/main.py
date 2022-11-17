@@ -3,17 +3,27 @@
 @author: Blopa
 """
 
-import enum
-import math
-import numpy as np
-from PIL import Image, ImageTk
-import random
-import time
+"""
+También debe probar algunos casos aplicando tesoros. ¿Qué cambia en el
+comportamiento?
+
+Al agregar un valor alto, va a tender a hacer jugadas "seguras" y no 
+se va a mover ni avanzar en el juego, si no a que avanza y retrocede.
+
+"""
+
 try:
+    import enum
+    import math
+    import numpy as np
+    from PIL import Image, ImageTk
+    import random
+    import time
     import tkinter as tk
     import tkinter.simpledialog
 except ImportError:
     try:
+
         import Tkinter as tk
         import tkinter.simpledialog
     except ImportError:
@@ -28,11 +38,11 @@ DEFAULT_EPS_GREEDY = 0
 DEFAULT_ETA_DECAY = 0
 
 # Maze related
-OUT_OF_BOUNDS_REWARD = -10
-EMPTY_REWARD = 0
-KEY_REWARD = 0
-GOAL_REWARD = 150
-TREASURE_REWARD = 0
+OUT_OF_BOUNDS_REWARD = -500
+EMPTY_REWARD = 50
+KEY_REWARD = 200
+GOAL_REWARD = 1000
+TREASURE_REWARD = 300
 
 # DO NOT MODIFY
 MINSIZE = 8
@@ -229,8 +239,9 @@ class Agent():
         self.state_dims = state_dims
         self.actions = actions
         self.learning_rate = learning_rate
-        self.dicount_factor = discount_factor
+        self.discount_factor = discount_factor
         self.eps_greedy = eps_greedy
+        self.original_eps_greedy = eps_greedy
         self.decay = decay
 
         dimensions = []
@@ -242,41 +253,41 @@ class Agent():
 
     # Performs a complete simulation by the agent
     def simulation(self, env: Maze):
+        self.eps_greedy = self.original_eps_greedy
         while not env.is_terminal_state():
             self.step(env, True)
+            self.eps_greedy = self.eps_greedy / (1 + self.decay)
+
         env.reset()
         # Al final de cada simulación es necesario reajustar el valor epsilon-greedy acorde a la tasa de decaimiento
 
     # Performs a single step of the simulation by the agent, if learn=False no updates are performed
     def step(self, env: Maze, learn=True):
         action = None
+        current_state = env.get_state()
         if learn:
             if self.prng.random() < self.eps_greedy:
                 action = self.prng.choice(self.actions)
             else:
-                action = self.get_best_action(env)
-            self.update_qtable(env, action)
+                action = self.get_best_action(current_state)
+            self.update_qtable(current_state, env, action)
         elif not learn:
-            action = self.get_best_action(env)
+            action = self.get_best_action(current_state)
             env.perform_action(action)
 
-    def get_best_action(self, env: Maze):
-        current_state = env.get_state()
-        index = list(current_state)
-        # print("-------------------------")
-        # print(self.actions)
-        # print(np.argmax(self.qtable[tuple(index)]))
-        # print("-------------------------")
+    def get_best_action(self, state):
+        index = list(state)
 
         return np.argmax(self.qtable[tuple(index)])
 
-    def update_qtable(self, env: Maze, action):
-        current_state = env.get_state()
-        index = list(current_state)
+    def update_qtable(self, state, env: Maze, action):
+        index = list(state)
         index.append(action)
         reward, new_state = env.perform_action(action)
-
-        self.qtable[tuple(index)] = reward
+        best_next_action = self.get_best_action(new_state)
+        td_target = reward + self.discount_factor * best_next_action
+        td_delta = td_target - self.qtable[tuple(index)]
+        self.qtable[tuple(index)] += self.learning_rate * td_delta
     # Returns current qtable
 
     def get_qtable(self):
