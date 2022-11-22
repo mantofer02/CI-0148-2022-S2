@@ -3,7 +3,6 @@
 @author: Blopa
 """
 
-
 import collections
 import enum
 import numpy as np
@@ -11,12 +10,6 @@ from PIL import Image, ImageTk
 import random
 import time
 import torch
-from torch import nn, tensor
-import tkinter.simpledialog
-from torch.utils.data import Dataset, DataLoader
-import copy
-import matplotlib.pyplot as plt
-
 try:
     import tkinter as tk
 except ImportError:
@@ -35,8 +28,8 @@ INIT_DIRECTION = 0
 EXTRA_MOVES = 128
 
 # TODO: CUSTOMIZE THE REWARDS
-EMPTY_REWARD = 20
-APPLE_REWARD = 100
+EMPTY_REWARD = 0
+APPLE_REWARD = 0
 WALL_REWARD = 0
 SELF_REWARD = 0
 
@@ -44,88 +37,12 @@ SELF_REWARD = 0
 FPS = 24
 APS = 8
 
-DEVICE = torch.device("cuda:0")
-
 colors = {
     0: (0, 0, 0),
     1: (255, 255, 128),
     2: (0, 255, 0),
     3: (255, 0, 0)
 }
-
-
-class Dset(torch.utils.data.Dataset):
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.n_samples = x.shape[0]
-
-    def __getitem__(self, index):
-        return self.x[index], self.y[index]
-
-    def __len__(self):
-        return self.n_samples
-
-
-class MemoryElement():
-    def __init__(self, state, action, new_state, reward):
-        self.state = state
-        self.action = action
-        self.new_state = new_state
-        self.reward = reward
-
-# TODO: Setear los parámetros
-
-
-class DQL_NN(torch.nn.Module):
-    def __init__(self, actions_number):
-        super().__init__()
-        # Primera convolución
-        # Entra una imagen 3x24x16
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=10, kernel_size=(
-            5, 5), stride=1, padding='same')
-        # Sale una imagen de 10x24x16
-        self.relu1 = nn.ReLU()
-        self.maxpool1 = nn.MaxPool2d(2)
-        # Imagen de 10x12x8
-
-        # Segunda convolución
-        # Entra una imagen de 10x12x8
-        self.conv2 = nn.Conv2d(in_channels=10, out_channels=30, kernel_size=(
-            5, 5), stride=1, padding='same')
-        # Sale una imagen de 30x12x8
-        self.relu2 = nn.ReLU()
-        self.maxpool2 = nn.MaxPool2d(2)
-        # Sale una imagen de 30x6x4 => vector de 720
-
-        # Red neuronal
-        self.fc1 = nn.Linear(720, 500)
-        self.act1 = nn.ReLU()
-        self.fc2 = nn.Linear(500, actions_number)
-        # Se utiliza sigmoide porque CrossEntropy realiza una acción similar a la softmax, además, da mejores resultados
-        self.act2 = nn.Tanh()
-
-    def forward(self, x):
-        ''' Sobre escritura del método de forward propagation, aplicando las capas convolucionales
-            y luego las capas densas de la red neuronal'''
-        # aplicación de la primera convolución
-        x = self.conv1(x)
-        x = self.relu1(x)
-        x = self.maxpool1(x)
-
-        # aplicación de la segunda convolución
-        x = self.conv2(x)
-        x = self.relu2(x)
-        x = self.maxpool2(x)
-
-        # aplanamiento de los datos
-        x = torch.flatten(x, 1)
-
-        # Ejecución en la red neuroral
-        h = self.act1(self.fc1(x))
-        out = self.act2(self.fc2(h))
-
-        return out
 
 # TODO: CUSTOMIZE AGENT
 
@@ -136,125 +53,17 @@ class Agent():
     def __init__(self, memory_capacity, batch_size, c_iters, learning_rate, discount_factor, eps_greedy, decay):
         self.prng = random.Random()
         self.prng.seed(RANDOM_SEED)
-        self.memory_capacity = memory_capacity
-        self.batch_size = batch_size
-        self.c_iters = c_iters
-        self.learning_rate = learning_rate
-        self.discount_factor = discount_factor
-        self.eps_greedy = eps_greedy
-        self.decay = decay
-        self.samples = np.array([])
-        self.actions = [_.value for _ in Action]
-
-        # Redes neuronales
-        self.target_nn = DQL_NN(len(self.actions)).to(DEVICE)
-        self.policy_nn = DQL_NN(len(self.actions)).to(DEVICE)
-        self.opt = torch.optim.Adam(
-            self.policy_nn.parameters(), lr=learning_rate)
-        self.loss_func = torch.nn.MSELoss()
-        self.losses = []
+        pass
 
     # Performs a complete simulation by the agent, then samples "batch" memories from memory and learns, afterwards updates the decay
     def simulation(self, env):
-        env.reset()  # se resetea el ambiente
-        steps = 0
-
-        while(not env.is_terminal_state()):  # Mientras no se esté en un estado terminal
-            steps += 1
-            self.step(env, True)
-            if steps % self.c_iters:
-                # actualizar pesos en la red target
-                self.target_nn = copy.deepcopy(self.policy_nn)
-        self.eps_greedy = self.eps_greedy/(1 + self.decay)
+        pass
+        # TODO: Implement simulation loop + learning loop
 
     # Performs a single step of the simulation by the agent, if learn=False memories are not stored
-    def step(self, env='Snake', learn=True):
-        action = 0
-        # Elegir inicialmente la mejor acción conocida
-        random = self.prng.random()
-        state = env.get_state()
-        reward = 0
-        target = 0
-        if learn and random < self.eps_greedy:
-            # elegir una acción al azar
-            action = self.prng.choice(self.actions)
-            state = env.get_state()
-            reward, new_state = env.perform_action(action)
-            if env.is_terminal_state():
-                target = reward
-                new_state = None
-            else:
-                new_state = new_state.to(DEVICE)
-                target = reward + self.discount_factor * \
-                    torch.max(self.target_nn(
-                        new_state[None, :]))  # target = R(s’) + γ · maxa’ Q(s’,a’)
-                new_state = new_state.cpu()
-            # Para la red se transforman los valores a valores entre [-1, 1]
-            reward = reward/100
-            target = target/100
-
-            if len(self.samples) > self.memory_capacity:
-                self.samples = self.samples[: (len(self.samples) - 1)]
-
-            self.samples = np.append(self.samples, MemoryElement(
-                state, action, new_state, reward))
-            # Aquí se ejecuta el aprendizaje al aproximar los valores de la salida
-            x_train, y_train = self.get_train_dset()  # .to(DEVICE)
-            # train_loader = DataLoader(dataset= train_dset, batch_size= self.batch_size if len(self.samples) > self.batch_size else len(self.samples), shuffle= True)
-
-            self.policy_nn.train()
-
-            y_pred = self.policy_nn(x_train.to(DEVICE))
-            loss = self.loss_func(y_pred, y_train.detach().to(DEVICE))
-
-            self.opt.zero_grad()
-            loss.backward()
-            self.opt.step()
-            self.losses.append(loss.item())
-
-        else:  # seleccionar la mejor acción conocida
-            actions = self.target_nn(env.get_state()[None, :].to(DEVICE))
-            action = torch.argmax(actions)
-            reward, new_state = env.perform_action(action.item())
-
-        if reward < 0:  # Entra a celda color negro
-            return True
-
-        return False
+    def step(self, env, learn=True):
+        pass
         # TODO: Implement single step, if learn=False no updates are performed and the best action is always taken
-
-    def get_train_dset(self):
-
-        memory_set = []
-        size = self.batch_size - \
-            1 if len(self.samples) > self.batch_size else len(self.samples)
-        if len(self.samples) > 0:
-            index = np.random.randint(0, len(self.samples), size)
-            memory_set = self.samples[index]
-
-        x_memory = tensor([])
-        y_memory = tensor([])
-        for _tuple in memory_set:
-
-            y_true = tensor(_tuple.reward) if _tuple.new_state == None else _tuple.reward + self.discount_factor * torch.max(
-                self.target_nn(_tuple.new_state[None, :].to(DEVICE)))  # target = reward else target = R(s’) + γ · maxa’ Q(s’,a’)
-            y_true_tuple = self.target_nn(_tuple.state[None, :].to(DEVICE))
-            y_true_tuple[0][_tuple.action] = (y_true.item()/100)
-
-            x_memory = torch.cat((x_memory, _tuple.state))
-            y_memory = torch.cat((y_memory, y_true_tuple.cpu()))
-
-        return x_memory.reshape(len(self.samples), 3, 24, 16), y_memory
-
-    def print_losses(self):
-        # Impresión de gráficos y resultados del modelo
-        len_ = len(self.losses)
-        xpoints = np.linspace(0, len_, num=len_)
-        plt.plot(xpoints, self.losses)
-        plt.xlabel("Epochs")
-        plt.ylabel("Loss")
-        plt.title(("Pérdida DQL"))
-        plt.show()
 
 
 class Action(enum.IntEnum):
@@ -572,7 +381,6 @@ class mainWindow():
         if x:
             for i in range(x):
                 self.buttonStep_press()
-            self.agent.print_losses()
 
     # Play Agent button
     def buttonPlayagent_press(self):
