@@ -8,7 +8,7 @@ import matplotlib as plt
 
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda:0")
-
+CHOOSE_UMBRAL = 0.5
 class Action(enum.IntEnum):
   UP = 0
   DOWN = 1
@@ -53,7 +53,7 @@ class Agent():
     self.eps_greedy = self.eps_greedy / (1 + self.decay)
 
   # Performs a single step of the simulation by the agent, if learn=False memories are not stored
-  def step(self, env='Snake', learn=True):
+  def step(self, env='Pong', learn=True):
     action = 0
     # Elegir inicialmente la mejor acción conocida
     random = self.prng.random()
@@ -96,7 +96,7 @@ class Agent():
 
     else:  # seleccionar la mejor acción conocida
       actions = self.target_nn(env.get_state()[None, :].to(DEVICE))
-      action = torch.argmax(actions)
+      action = self.agent_argmax(actions)
       reward, new_state = env.perform_action(action.item())
 
 
@@ -140,6 +140,11 @@ class Agent():
     plt.title(("Pérdida DQL"))
     plt.show()
 
+  def agent_argmax(self, value):
+    action = self.actions[0]
+    if value > CHOOSE_UMBRAL:
+        action = self.actions[1]
+    return action
 class Dset(torch.utils.data.Dataset):
   def __init__(self, x, y):
     self.x = x
