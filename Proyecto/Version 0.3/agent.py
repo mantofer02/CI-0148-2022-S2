@@ -140,11 +140,14 @@ class Agent():
     plt.title(("Pérdida DQL"))
     plt.show()
 
+  '''Método de selección binaria a partir del umbral definido'''
   def agent_argmax(self, value):
     action = self.actions[0]
     if value > CHOOSE_UMBRAL:
         action = self.actions[1]
     return action
+
+'''Clase de almacenamiento de los datos de entrenamiento'''
 class Dset(torch.utils.data.Dataset):
   def __init__(self, x, y):
     self.x = x
@@ -157,7 +160,8 @@ class Dset(torch.utils.data.Dataset):
   def __len__(self):
     return self.n_samples
 
-
+'''Elemento de la memoria del agente el cual contiene la información
+de un elemento de dicha memoria (estado, acción ejecutada, nuevo estado, recompensa)'''
 class MemoryElement():
   def __init__(self, state, action, new_state, reward):
     self.state = state
