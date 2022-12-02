@@ -96,7 +96,7 @@ class Agent():
 
     else:  # seleccionar la mejor acción conocida
       actions = self.target_nn(env.get_state()[None, :].to(DEVICE))
-      action = self.agent_argmax(actions)
+      action = torch.argmax(actions)
       reward, new_state = env.perform_action(action.item())
 
 
@@ -140,14 +140,7 @@ class Agent():
     plt.title(("Pérdida DQL"))
     plt.show()
 
-  '''Método de selección binaria a partir del umbral definido'''
-  def agent_argmax(self, value):
-    action = self.actions[0]
-    if value > CHOOSE_UMBRAL:
-        action = self.actions[1]
-    return action
-
-'''Clase de almacenamiento de los datos de entrenamiento'''
+  '''Clase de almacenamiento de los datos de entrenamiento'''
 class Dset(torch.utils.data.Dataset):
   def __init__(self, x, y):
     self.x = x
