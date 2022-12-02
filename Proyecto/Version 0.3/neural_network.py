@@ -6,11 +6,9 @@ class DQL_NN(nn.Module):
     # Red neuronal
     self.DQL_stack = nn.Sequential(
             nn.Linear(flatten_in_values, 64),
-            nn.LeakyReLU(),
-            nn.Linear(64, 128),
             nn.Tanh(),
             nn.Linear(128, actions_number),
-            nn.Softmax()
+            nn.LeakyReLU()
         )
 
   def forward(self, x):
