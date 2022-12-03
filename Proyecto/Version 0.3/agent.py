@@ -16,9 +16,10 @@ class Action(enum.IntEnum):
 class Agent():
   # Initializes the training model
   # Input states for the model depend on the get_state method, which can be modified
-  def __init__(self, memory_capacity, batch_size, c_iters, learning_rate, discount_factor, eps_greedy, decay):
+  def __init__(self, id, memory_capacity, batch_size, c_iters, learning_rate, discount_factor, eps_greedy, decay):
     self.prng = random.Random()
     self.prng.seed(RANDOM_SEED)
+    self.id = id
     self.memory_capacity = memory_capacity
     self.batch_size = batch_size
     self.c_iters = c_iters
@@ -30,8 +31,8 @@ class Agent():
     self.actions = [_.value for _ in Action]
 
     # Redes neuronales
-    self.target_nn = neural_network.DQL_NN(len(self.actions)).to(DEVICE)
-    self.policy_nn = neural_network.DQL_NN(len(self.actions)).to(DEVICE)
+    self.target_nn = neural_network.DQL_NN(6,len(self.actions)).to(DEVICE)
+    self.policy_nn = neural_network.DQL_NN(6,len(self.actions)).to(DEVICE)
     self.opt = torch.optim.Adam(
         self.policy_nn.parameters(), lr=learning_rate)
     self.loss_func = torch.nn.MSELoss()
@@ -57,14 +58,14 @@ class Agent():
     action = 0
     # Elegir inicialmente la mejor acción conocida
     random = self.prng.random()
-    state = env.get_state()
+    state = env.get_state(self.id)
     reward = 0
     target = 0
     if learn and random < self.eps_greedy:
       # elegir una acción al azar
       action = self.prng.choice(self.actions)
-      state = env.get_state()
-      reward, new_state = env.perform_action(action)
+      state = env.get_state(self.id)
+      reward, new_state = env.perform_action(action, self.id)
 
       # Actualización del nuevo estado respecto a si es terminal o no
       if env.is_terminal_state():
@@ -95,9 +96,9 @@ class Agent():
       self.losses.append(loss.item())
 
     else:  # seleccionar la mejor acción conocida
-      actions = self.target_nn(env.get_state()[None, :].to(DEVICE))
+      actions = self.target_nn(env.get_state(self.id)[None, :].to(DEVICE))
       action = torch.argmax(actions)
-      reward, new_state = env.perform_action(action.item())
+      reward, new_state = env.perform_action(action.item(), self.id)
 
 
   '''Método para obtener el set de entrenamiento del modelo a partir de la memoria
