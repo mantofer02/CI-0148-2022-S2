@@ -12,7 +12,6 @@ BALL_HEIGHT = 30
 PADEL_WIDTH = 10
 PADEL_HEIGHT = 140
 
-
 MAX_REWARD = 500
 POINT_LOST = -500
 
@@ -330,3 +329,10 @@ class Pong:
             return self.get_player_1_reward()
         else:
             return self.get_player_2_reward()
+
+    def reset(self):
+        self.player_1_score = 0
+        self.player_2_score = 0
+        self.player_1.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
+        self.player_2.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
+        self.ball_restart()
