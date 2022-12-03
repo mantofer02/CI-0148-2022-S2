@@ -336,10 +336,12 @@ class Pong:
             return self.get_reward(id=id), self.get_player_2_state()
 
     def get_player_1_state(self):
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))))
+        # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position)
+        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2)))), (0, (self.player_1.y + (PADEL_HEIGHT / 2))), (0, (self.player_2.y + (PADEL_HEIGHT / 2)))
 
     def get_player_2_state(self):
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))))
+        # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position)
+        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2)))), (0, (self.player_2.y + (PADEL_HEIGHT / 2))), (0, (self.player_1.y + (PADEL_HEIGHT / 2)))
 
     def get_state(self, id=None):
         if id == PLAYER_1:
