@@ -9,6 +9,7 @@ import matplotlib as plt
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda:0")
 CHOOSE_UMBRAL = 0.5
+
 class Action(enum.IntEnum):
   UP = 0
   DOWN = 1
@@ -49,6 +50,7 @@ class Agent():
       if (steps % self.c_iters) == 0:
         # actualizar pesos en la red target
         self.target_nn = copy.deepcopy(self.policy_nn)
+    print('Agent ', self.id, 'finaliza')
     
     # Actualización del greedy
     self.eps_greedy = self.eps_greedy / (1 + self.decay)
@@ -65,7 +67,8 @@ class Agent():
       # elegir una acción al azar
       action = self.prng.choice(self.actions)
       state = env.get_state(self.id)
-      reward, new_state = env.perform_action(action, self.id)
+      # print('Player', self.id, Action(action).name)
+      reward, new_state = env.perform_action(Action(action).name, self.id)
 
       # Actualización del nuevo estado respecto a si es terminal o no
       if env.is_terminal_state():
@@ -99,7 +102,7 @@ class Agent():
       state = torch.tensor(env.get_state(self.id))
       actions = self.target_nn(state[None, :].to(DEVICE))
       action = torch.argmax(actions)
-      reward, new_state = env.perform_action(action.item(), self.id)
+      reward, new_state = env.perform_action(Action(action.item()).name, self.id)
 
 
   '''Método para obtener el set de entrenamiento del modelo a partir de la memoria

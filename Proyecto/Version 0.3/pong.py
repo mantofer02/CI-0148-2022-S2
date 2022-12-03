@@ -4,6 +4,7 @@ import random
 from button import Button
 import agent
 from threading import Thread
+import enum
 
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
@@ -30,11 +31,14 @@ PLAYER_2 = 2
 MEMORY_CAPACITY = 1000
 BATCH_SIZE = 100
 C_ITERS = 10
-LEARNING_RATE = 1e-6
-DISCOUNT_FACTOR = 1e-3
-EPS_GREEDY = 0.7
+LEARNING_RATE = 1e-5
+DISCOUNT_FACTOR = 1e-5
+EPS_GREEDY = 0.6
 DECAY = 1e-7
 
+class Action(enum.IntEnum):
+  UP = 0
+  DOWN = 1
 
 class Pong:
     def __init__(self) -> None:
@@ -263,8 +267,6 @@ class Pong:
         else:
             return False
         
-        self.threaning_thread.join()
-
     def ball_animation(self):
 
         self.ball.x += self.ball_speed_x
@@ -317,10 +319,13 @@ class Pong:
             self.player_2.bottom = SCREEN_HEIGHT
 
     def perform_action(self, action, id=None):
+        # print('Perform', Action.DOWN, action, action == Action.DOWN.name)
         if id == PLAYER_1:
-            if action == DOWN:
+            
+            if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
-            elif action == UP:
+                # print('1 Entra en down')
+            elif action == Action.UP.name:
                 self.player_1.bottom -= self.player_1_speed
 
             if self.player_1.top <= 0:
@@ -331,9 +336,11 @@ class Pong:
 
             return self.get_reward(id=id), self.get_player_1_state()
         else:
-            if action == DOWN:
+            
+            if action == Action.DOWN.name:
                 self.player_2.top += self.player_2_speed
-            elif action == UP:
+                # print('2 Entra en down')
+            elif action == Action.UP.name:
                 self.player_2.bottom -= self.player_2_speed
 
             if self.player_2.top <= 0:
@@ -359,10 +366,17 @@ class Pong:
             return self.get_player_2_state()
 
     def get_player_1_reward(self):
-        return MAX_REWARD
+        actual_state = list(self.get_player_1_state())
+        distance_to_ball = actual_state[1]
+        
+        # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
+        return (MAX_REWARD - distance_to_ball)
 
     def get_player_2_reward(self):
-        return MAX_REWARD
+        actual_state = list(self.get_player_2_state())
+        distance_to_ball = actual_state[1]
+        # print('Player 2: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
+        return (MAX_REWARD - distance_to_ball)
 
     def get_reward(self, id=None):
         if id == PLAYER_1:
@@ -385,8 +399,11 @@ class Pong:
         print('antes del join')
         agent_1_thread.join()
         print('despues del join')
+        # Reiniciar ambiente hasta aquí
 
     def make_skip(self, simulations = 1):
         for sim in range(simulations):
             print('MAKE SKIP')
             self.make_step()
+        # TODO: este cambio en la variable lo hace el boton skip
+        self.run_train = True
