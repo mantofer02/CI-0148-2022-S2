@@ -183,9 +183,6 @@ class Pong:
                 self.display_menu()
             else:
                 self.display_pong()
-                # TODO: FIX BALL INITIAL POSITION
-                # print(self.get_player_2_state())
-                # input()
                 self.is_terminal_state()
                 if self.score_time:
                     self.ball_restart()
