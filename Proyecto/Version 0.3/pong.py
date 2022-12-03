@@ -43,7 +43,8 @@ class Pong:
         self.epoch = 0
         self.player_1_user = None
         self.player_2_user = None
-
+        self.run_train = True
+        self.threaning_thread = None
         self.light_grey = (200, 200, 200)
         self.bg_color = pygame.Color(0, 0, 0)
 
@@ -162,8 +163,10 @@ class Pong:
         self.screen.blit(player_2_text, (660, 20))
 
         pygame.display.flip()
-        t = Thread(target=self.make_skip, args=(10,))
-        t.start()
+        if self.run_train:
+            self.threaning_thread = Thread(target=self.make_skip, args=(10,))
+            self.threaning_thread.start()
+            self.run_train = False
         self.clock.tick(ticks)
 
     def player_1_human(self, event):
@@ -222,6 +225,10 @@ class Pong:
 
         self.ball.center = (SCREEN_WITDH / 2, SCREEN_HEIGHT / 2)
 
+        # TODO: quitar esto y preguntar
+        if self.score_time == None:
+            self.score_time = 0
+
         if current_time - self.score_time < 500:
             number_render = self.game_font.render("3", False, self.light_grey)
             self.screen.blit(number_render, (SCREEN_WITDH /
@@ -255,6 +262,8 @@ class Pong:
             return True
         else:
             return False
+        
+        self.threaning_thread.join()
 
     def ball_animation(self):
 
@@ -337,11 +346,11 @@ class Pong:
 
     def get_player_1_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position)
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2)))), (0, (self.player_1.y + (PADEL_HEIGHT / 2))), (0, (self.player_2.y + (PADEL_HEIGHT / 2)))
+        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), 0, (self.player_1.y + (PADEL_HEIGHT / 2)), 0, (self.player_2.y + (PADEL_HEIGHT / 2)))
 
     def get_player_2_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position)
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2)))), (0, (self.player_2.y + (PADEL_HEIGHT / 2))), (0, (self.player_1.y + (PADEL_HEIGHT / 2)))
+        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), 0, (self.player_2.y + (PADEL_HEIGHT / 2)), 0, (self.player_1.y + (PADEL_HEIGHT / 2)))
 
     def get_state(self, id=None):
         if id == PLAYER_1:

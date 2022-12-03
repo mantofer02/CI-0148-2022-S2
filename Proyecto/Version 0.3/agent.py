@@ -72,7 +72,7 @@ class Agent():
         target = reward
         new_state = None
       else:
-        new_state = new_state.to(DEVICE)
+        new_state = torch.tensor(new_state).to(DEVICE)
         target = reward + self.discount_factor * \
             torch.max(self.target_nn(
                 new_state[None, :]))  # target = R(s’) + γ · maxa’ Q(s’,a’)
@@ -83,7 +83,7 @@ class Agent():
         self.samples = self.samples[: (len(self.samples) - 1)]
 
       self.samples = np.append(self.samples, MemoryElement(
-          state, action, new_state, reward))
+          torch.tensor(state), action, new_state, reward))
       
       # Aquí se ejecuta el aprendizaje para aproximar los valores de la salida
       x_train, y_train = self.get_train_dset()
@@ -96,7 +96,8 @@ class Agent():
       self.losses.append(loss.item())
 
     else:  # seleccionar la mejor acción conocida
-      actions = self.target_nn(env.get_state(self.id)[None, :].to(DEVICE))
+      state = torch.tensor(env.get_state(self.id))
+      actions = self.target_nn(state[None, :].to(DEVICE))
       action = torch.argmax(actions)
       reward, new_state = env.perform_action(action.item(), self.id)
 
@@ -129,7 +130,7 @@ class Agent():
       # Guardado en memoria del valor (columna de salida) verdadero
       y_memory = torch.cat((y_memory, y_true_tuple.cpu()))
 
-    return x_memory.reshape(len(self.samples), 3, 24, 16), y_memory
+    return x_memory.reshape(y_memory.shape[0], 6), y_memory
 
   def print_losses(self):
     # Impresión de gráficos y resultados del modelo
