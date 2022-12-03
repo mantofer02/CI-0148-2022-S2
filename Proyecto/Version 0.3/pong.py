@@ -12,6 +12,10 @@ BALL_HEIGHT = 30
 PADEL_WIDTH = 10
 PADEL_HEIGHT = 140
 
+
+MAX_REWARD = 500
+POINT_LOST = -500
+
 HUMAN = 1
 AI = -1
 
@@ -112,7 +116,8 @@ class Pong:
             self.player_2_animation()
         elif self.player_2_user == AI:
             # self.player_2_ai()
-            self.perform_action(UP)
+            # self.perform_action(UP)
+            pass
 
         self.screen.fill(self.bg_color)
         pygame.draw.rect(self.screen, self.light_grey, self.player_1)
@@ -159,12 +164,6 @@ class Pong:
             elif event.key == pygame.K_w:
                 self.player_2_speed += 7
 
-    def get_state(self, id=None):
-        if id == PLAYER_1:
-            return self.get_player_1_state()
-        else:
-            return self.get_player_2_state()
-
     def render_game(self):
         while True:
             for event in pygame.event.get():
@@ -184,9 +183,6 @@ class Pong:
             if self.game_paused:
                 self.display_menu()
             else:
-                # print(self.get_player_1_state())
-                # print(self.get_player_2_state())
-                # input()
                 self.display_pong()
                 self.is_terminal_state()
                 if self.score_time:
@@ -270,12 +266,6 @@ class Pong:
         if self.player_2.bottom >= SCREEN_HEIGHT:
             self.player_2.bottom = SCREEN_HEIGHT
 
-    def get_player_1_state(self):
-        return abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2)))
-
-    def get_player_2_state(self):
-        return abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2)))
-
     def player_2_ai(self):
         if self.player_2.top < self.ball.y:
             self.player_2.top += self.player_2_speed
@@ -289,16 +279,54 @@ class Pong:
         if self.player_2.bottom >= SCREEN_HEIGHT:
             self.player_2.bottom = SCREEN_HEIGHT
 
-    def perform_action(self, action):
-        if action == DOWN:
-            self.player_2.top += self.player_2_speed
-        elif action == UP:
-            self.player_2.bottom -= self.player_2_speed
+    def perform_action(self, action, id=None):
+        if id == PLAYER_1:
+            if action == DOWN:
+                self.player_1.top += self.player_1_speed
+            elif action == UP:
+                self.player_1.bottom -= self.player_1_speed
 
-        if self.player_2.top <= 0:
-            self.player_2.top = 0
+            if self.player_1.top <= 0:
+                self.player_1.top = 0
 
-        if self.player_2.bottom >= SCREEN_HEIGHT:
-            self.player_2.bottom = SCREEN_HEIGHT
+            if self.player_1.bottom >= SCREEN_HEIGHT:
+                self.player_1.bottom = SCREEN_HEIGHT
 
-        return self.get_player_2_state()
+            return self.get_reward(id=id), self.get_player_1_state()
+        else:
+            if action == DOWN:
+                self.player_2.top += self.player_2_speed
+            elif action == UP:
+                self.player_2.bottom -= self.player_2_speed
+
+            if self.player_2.top <= 0:
+                self.player_2.top = 0
+
+            if self.player_2.bottom >= SCREEN_HEIGHT:
+                self.player_2.bottom = SCREEN_HEIGHT
+
+            return self.get_reward(id=id), self.get_player_2_state()
+
+    def get_player_1_state(self):
+        return abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2)))
+
+    def get_player_2_state(self):
+        return abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2)))
+
+    def get_state(self, id=None):
+        if id == PLAYER_1:
+            return self.get_player_1_state()
+        else:
+            return self.get_player_2_state()
+
+    def get_player_1_reward(self):
+        return MAX_REWARD
+
+    def get_player_2_reward(self):
+        return MAX_REWARD
+
+    def get_reward(self, id=None):
+        if id == PLAYER_1:
+            return self.get_player_1_reward()
+        else:
+            return self.get_player_2_reward()
