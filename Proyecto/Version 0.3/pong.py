@@ -18,6 +18,9 @@ AI = -1
 UP = 1
 DOWN = -1
 
+PLAYER_1 = 1
+PLAYER_2 = 2
+
 
 class Pong:
     def __init__(self) -> None:
@@ -118,9 +121,6 @@ class Pong:
         pygame.draw.aaline(self.screen, self.light_grey, (SCREEN_WITDH / 2,
                                                           0), (SCREEN_WITDH / 2, SCREEN_HEIGHT))
 
-        if self.score_time:
-            self.ball_restart()
-
         player_1_text = self.game_font.render(
             f"{self.player_1_score}", False, self.light_grey)
 
@@ -159,6 +159,12 @@ class Pong:
             elif event.key == pygame.K_w:
                 self.player_2_speed += 7
 
+    def get_state(self, id=None):
+        if id == PLAYER_1:
+            return self.get_player_1_state()
+        else:
+            return self.get_player_2_state()
+
     def render_game(self):
         while True:
             for event in pygame.event.get():
@@ -182,6 +188,9 @@ class Pong:
                 # print(self.get_player_2_state())
                 # input()
                 self.display_pong()
+                self.is_terminal_state()
+                if self.score_time:
+                    self.ball_restart()
 
     def ball_restart(self):
         number_render = None
@@ -216,6 +225,12 @@ class Pong:
     def player_2_scores(self):
         self.score_time = pygame.time.get_ticks()
         self.player_2_score += 1
+
+    def is_terminal_state(self):
+        if self.ball.left <= 0 or self.ball.right >= SCREEN_WITDH:
+            return True
+        else:
+            return False
 
     def ball_animation(self):
 
@@ -285,3 +300,5 @@ class Pong:
 
         if self.player_2.bottom >= SCREEN_HEIGHT:
             self.player_2.bottom = SCREEN_HEIGHT
+
+        return self.get_player_2_state()
