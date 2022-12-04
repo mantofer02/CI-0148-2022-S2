@@ -10,7 +10,7 @@ SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
 
 SKIP_BUTTON_WIDTH = 140
-SKIP_BUTTON_HEIGHT = 60
+SKIP_BUTTON_HEIGHT = 40
 
 BALL_WIDTH = 30
 BALL_HEIGHT = 30
@@ -153,7 +153,7 @@ class Pong:
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
 
-            elif event.key == pygame.K_4:  # trainig button
+            elif event.key == pygame.K_4:  # training button
                 self.game_paused = False
                 self.is_learning_center = True
                 self.player_1_user = AI
@@ -164,12 +164,15 @@ class Pong:
 
     def display_skip_button(self):
         color_active = pygame.Color('lightskyblue3')
-        color_passive = pygame.Color('chartreuse4')
+        color_passive = pygame.Color('darkorange3')
         color = color_passive
 
         pygame.draw.rect(self.screen, color, self.input_button)
         text_surface = self.game_font.render(
             self.input_button_text, False, self.light_grey)
+
+        self.input_button.w = max(
+            SKIP_BUTTON_WIDTH, text_surface.get_width() + 10)
 
         self.screen.blit(
             text_surface, (self.input_button.x + 5, self.input_button.y + 5))
