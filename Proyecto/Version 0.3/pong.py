@@ -217,6 +217,12 @@ class Pong:
                     pygame.quit()
                     sys.exit()
 
+                # Menu Trigger
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        self.game_paused = True
+                        self.display_menu()
+
                 if self.game_paused:
                     self.menu_input(event)
 
