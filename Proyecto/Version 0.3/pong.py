@@ -3,7 +3,7 @@ import sys
 import random
 from button import Button
 import agent
-from threading import Thread
+from threading import Thread, Lock
 import enum
 
 SCREEN_WITDH = 1280
@@ -51,6 +51,9 @@ class Pong:
         self.player_2_user = None
         self.run_train = True
         self.threaning_thread = None
+
+        self.mutex = Lock()
+
         self.light_grey = (200, 200, 200)
         self.bg_color = pygame.Color(0, 0, 0)
 
@@ -373,14 +376,24 @@ class Pong:
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[1]
 
+        touch_reward = 0
+
+        if self.ball.left == self.player_1.right:
+            touch_reward = MAX_REWARD / 2
+
         # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
-        return (MAX_REWARD - distance_to_ball)
+        return ((MAX_REWARD - distance_to_ball) + touch_reward)
 
     def get_player_2_reward(self):
         actual_state = list(self.get_player_2_state())
         distance_to_ball = actual_state[1]
         # print('Player 2: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
-        return (MAX_REWARD - distance_to_ball)
+        touch_reward = 0
+
+        if self.ball.right == self.player_2.left:
+            touch_reward = MAX_REWARD / 2
+
+        return ((MAX_REWARD - distance_to_ball) + touch_reward)
 
     def get_reward(self, id=None):
         if id == PLAYER_1:
