@@ -383,23 +383,31 @@ class Pong:
         distance_to_ball = actual_state[1]
 
         touch_reward = 0
+        penalty = 0
 
         if self.ball.left == self.player_1.right:
             touch_reward = MAX_REWARD / 2
 
+        if self.ball.left >= 0:
+            penalty = POINT_LOST
+
         # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
-        return ((MAX_REWARD - distance_to_ball) + touch_reward)
+        return ((MAX_REWARD - distance_to_ball) + touch_reward + penalty)
 
     def get_player_2_reward(self):
         actual_state = list(self.get_player_2_state())
         distance_to_ball = actual_state[1]
         # print('Player 2: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
         touch_reward = 0
+        penalty = 0
+
+        if self.ball.right >= SCREEN_WITDH:
+            penalty = POINT_LOST
 
         if self.ball.right == self.player_2.left:
             touch_reward = MAX_REWARD / 2
 
-        return ((MAX_REWARD - distance_to_ball) + touch_reward)
+        return ((MAX_REWARD - distance_to_ball) + touch_reward + penalty)
 
     def get_reward(self, id=None):
         if id == PLAYER_1:
