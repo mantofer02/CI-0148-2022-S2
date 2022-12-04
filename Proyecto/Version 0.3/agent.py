@@ -5,6 +5,10 @@ import neural_network
 import torch
 import copy
 import matplotlib as plt
+import time
+import random
+
+MAX_TIME = 120
 
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda:0")
@@ -46,12 +50,20 @@ class Agent():
         env.reset()  # se resetea el ambiente
         steps = 0
 
-        while(not env.is_terminal_state()):  # Mientras no se esté en un estado terminal
+        start_time = time.time()
+        go = True
+
+        while(not env.is_terminal_state() and go):  # Mientras no se esté en un estado terminal
             steps += 1
             self.step(env, True)
             if (steps % self.c_iters) == 0:
                 # actualizar pesos en la red target
                 self.target_nn = copy.deepcopy(self.policy_nn)
+
+            end_time = time.time()
+            if ((end_time - start_time) > MAX_TIME):
+                go = False
+
         print('Agent ', self.id, 'finaliza')
 
         # Actualización del greedy

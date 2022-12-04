@@ -18,6 +18,8 @@ PADEL_HEIGHT = 140
 MAX_REWARD = 500
 POINT_LOST = -500
 
+BEST_POINT = 3
+
 HUMAN = 1
 AI = -1
 
@@ -51,6 +53,8 @@ class Pong:
         self.player_2_user = None
         self.run_train = True
         self.threaning_thread = None
+
+        self.game_started = False
 
         self.mutex = Lock()
 
@@ -263,13 +267,15 @@ class Pong:
     def player_1_scores(self):
         self.score_time = pygame.time.get_ticks()
         self.player_1_score += 1
+        self.game_started = True
 
     def player_2_scores(self):
         self.score_time = pygame.time.get_ticks()
         self.player_2_score += 1
+        self.game_started = True
 
     def is_terminal_state(self):
-        if self.ball.left <= 0 or self.ball.right >= SCREEN_WITDH:
+        if self.player_1_score == BEST_POINT or self.player_2_score == BEST_POINT:
             return True
         else:
             return False
@@ -406,7 +412,7 @@ class Pong:
         self.player_2_score = 0
         self.player_1.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
         self.player_2.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
-        self.ball_restart()
+        # self.ball_restart()
 
     def make_step(self, lr=True):
         self.epoch += 1
