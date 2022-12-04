@@ -8,7 +8,9 @@ class DQL_NN(nn.Module):
         self.DQL_stack = nn.Sequential(
             nn.Linear(flatten_in_values, 64),
             nn.Tanh(),
-            nn.Linear(64, actions_number),
+            nn.Linear(64, 128),
+            nn.ReLU(),
+            nn.Linear(128, actions_number),
             nn.LeakyReLU()
         )
 

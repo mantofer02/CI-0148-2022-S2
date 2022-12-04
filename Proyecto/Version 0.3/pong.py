@@ -33,10 +33,10 @@ PLAYER_2 = 2
 MEMORY_CAPACITY = 1000
 BATCH_SIZE = 100
 C_ITERS = 10
-LEARNING_RATE = 1e-5
+LEARNING_RATE = 1e-6
 DISCOUNT_FACTOR = 1e-5
-EPS_GREEDY = 0.6
-DECAY = 1e-7
+EPS_GREEDY = 0.5
+DECAY = 1e-9
 
 
 class Action(enum.IntEnum):
@@ -157,7 +157,7 @@ class Pong:
         if self.player_2_user == HUMAN:
             self.player_2_animation()
         elif self.player_2_user == AI:
-            ticks = 120
+            ticks = 60
             # self.player_2_ai()
             # self.perform_action(UP)
 
@@ -433,14 +433,11 @@ class Pong:
         agent_1_thread = Thread(target=self.agent_1.simulation, args=(self, ))
         agent_1_thread.start()
         self.agent_2.simulation(self)
-        print('antes del join')
         agent_1_thread.join()
-        print('despues del join')
-        # Reiniciar ambiente hasta aquí
 
     def make_skip(self, simulations=1):
         for sim in range(simulations):
-            print('MAKE SKIP')
+            print('skip:', sim, "/", simulations)
             self.make_step()
         # TODO: este cambio en la variable lo hace el boton skip
         self.run_train = True
