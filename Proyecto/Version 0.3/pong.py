@@ -43,6 +43,7 @@ DECAY = 1e-9
 IA_TRAINING_TICKS = 60
 PALETTE_PENALIZATION_FACTOR = 1
 
+
 class Action(enum.IntEnum):
     UP = 0
     DOWN = 1
@@ -92,7 +93,9 @@ class Pong:
         self.input_button = pygame.Rect(
             (SCREEN_WITDH / 2) - (SKIP_BUTTON_WIDTH / 2), 200, SKIP_BUTTON_WIDTH, SKIP_BUTTON_HEIGHT)
 
+        # Learning Center
         self.input_button_text = ''
+        self.n_simultations = 0
 
         # text variables
         self.player_1_score = 0
@@ -174,7 +177,8 @@ class Pong:
     def skip_button_input(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.input_button.collidepoint(event.pos):
-                print(self.input_button_text)
+                self.n_simultations = int(self.input_button_text)
+                self.input_button_text = ''
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
@@ -331,7 +335,6 @@ class Pong:
             return False
 
     def ball_animation(self):
-
         self.ball.x += self.ball_speed_x
         self.ball.y += self.ball_speed_y
 
@@ -384,7 +387,6 @@ class Pong:
     def perform_action(self, action, id=None):
         # print('Perform', Action.DOWN, action, action == Action.DOWN.name)
         if id == PLAYER_1:
-
             if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
                 # print('1 Entra en down')
@@ -399,7 +401,6 @@ class Pong:
 
             return self.get_reward(id=id), self.get_player_1_state()
         else:
-
             if action == Action.DOWN.name:
                 self.player_2.top += self.player_2_speed
                 # print('2 Entra en down')
@@ -431,7 +432,6 @@ class Pong:
     def get_player_1_reward(self):
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[0]
-
         touch_reward = 0
         penalty = 0
 
@@ -481,9 +481,11 @@ class Pong:
 
     def make_skip(self, simulations=1):
         start_time = time.time()
+
         for sim in range(simulations):
             start_time = time.time()
             self.make_step()
-            print('skip:', sim, "/", simulations, ' elapsed time: ',time.time() - start_time)
+            print('skip:', sim, "/", simulations,
+                  ' elapsed time: ', time.time() - start_time)
         # TODO: este cambio en la variable lo hace el boton skip
         self.run_train = True
