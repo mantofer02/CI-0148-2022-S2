@@ -12,7 +12,6 @@ MAX_TIME = 120
 
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda:0")
-CHOOSE_UMBRAL = 0.5
 
 
 class Action(enum.IntEnum):
@@ -23,7 +22,7 @@ class Action(enum.IntEnum):
 class Agent():
     # Initializes the training model
     # Input states for the model depend on the get_state method, which can be modified
-    def __init__(self, id, memory_capacity, batch_size, c_iters, learning_rate, discount_factor, eps_greedy, decay):
+    def __init__(self, id, memory_capacity, batch_size, c_iters, learning_rate, discount_factor, eps_greedy, decay, in_values_len):
         self.prng = random.Random()
         self.prng.seed(RANDOM_SEED)
         self.id = id
@@ -36,10 +35,10 @@ class Agent():
         self.decay = decay
         self.samples = np.array([])
         self.actions = [_.value for _ in Action]
-
+        self.in_values_len = in_values_len
         # Redes neuronales
-        self.target_nn = neural_network.DQL_NN(6, len(self.actions)).to(DEVICE)
-        self.policy_nn = neural_network.DQL_NN(6, len(self.actions)).to(DEVICE)
+        self.target_nn = neural_network.DQL_NN(self.in_values_len, len(self.actions)).to(DEVICE)
+        self.policy_nn = neural_network.DQL_NN(self.in_values_len, len(self.actions)).to(DEVICE)
         self.opt = torch.optim.Adam(
             self.policy_nn.parameters(), lr=learning_rate)
         self.loss_func = torch.nn.MSELoss()
@@ -52,12 +51,15 @@ class Agent():
 
         start_time = time.time()
         go = True
-
+             
         while(not env.is_terminal_state() and go):  # Mientras no se esté en un estado terminal
             steps += 1
+            before_time = time.time()
             self.step(env, True)
             if (steps % self.c_iters) == 0:
                 # actualizar pesos en la red target
+                end_time = time.time()
+                # print('act: ', end_time - before_time)
                 self.target_nn = copy.deepcopy(self.policy_nn)
 
             end_time = time.time()
@@ -117,11 +119,12 @@ class Agent():
             action = torch.argmax(actions)
             reward, new_state = env.perform_action(
                 Action(action.item()).name, self.id)
+        if reward > 0:
+            print(reward)
 
     '''Método para obtener el set de entrenamiento del modelo a partir de la memoria
      y el tamaño del conjunto de datos.
   '''
-
     def get_train_dset(self):
 
         memory_set = []
@@ -146,8 +149,9 @@ class Agent():
             x_memory = torch.cat((x_memory, _tuple.state))
             # Guardado en memoria del valor (columna de salida) verdadero
             y_memory = torch.cat((y_memory, y_true_tuple.cpu()))
+            # print(y_true_tuple)
 
-        return x_memory.reshape(y_memory.shape[0], 6), y_memory
+        return x_memory.reshape(y_memory.shape[0], self.in_values_len), y_memory
 
     def print_losses(self):
         # Impresión de gráficos y resultados del modelo

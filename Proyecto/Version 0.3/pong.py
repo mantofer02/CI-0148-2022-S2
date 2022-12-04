@@ -5,7 +5,7 @@ from button import Button
 import agent
 from threading import Thread, Lock
 import enum
-
+import time
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
 
@@ -15,7 +15,7 @@ BALL_HEIGHT = 30
 PADEL_WIDTH = 10
 PADEL_HEIGHT = 140
 
-MAX_REWARD = 500
+MAX_REWARD = 100
 POINT_LOST = -500
 
 BEST_POINT = 3
@@ -30,14 +30,15 @@ PLAYER_1 = 1
 PLAYER_2 = 2
 
 # IA variables
-MEMORY_CAPACITY = 100000
-BATCH_SIZE = 10000
-C_ITERS = 100
-LEARNING_RATE = 1e-6
-DISCOUNT_FACTOR = 1e-5
-EPS_GREEDY = 0.6
+MEMORY_CAPACITY = 10000
+BATCH_SIZE = 100
+C_ITERS = 10
+LEARNING_RATE = 1e-7
+DISCOUNT_FACTOR = 1e-4
+EPS_GREEDY = 0.65
 DECAY = 1e-9
-
+IA_TRAINING_TICKS = 60
+PALETTE_PENALIZATION_FACTOR = 1
 
 class Action(enum.IntEnum):
     UP = 0
@@ -101,9 +102,9 @@ class Pong:
 
         # IA
         self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE,
-                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 3)
         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
-                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 3)
 
         self.render_game()
 
@@ -137,15 +138,15 @@ class Pong:
                 self.game_paused = False
                 self.player_1_user = HUMAN
                 self.player_2_user = AI
-                self.player_2_speed = 7
+                self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
 
             elif event.key == pygame.K_4:  # trainig button
                 self.game_paused = False
                 self.player_1_user = AI
-                self.player_1_speed = 7
+                self.player_1_speed = 9
                 self.player_2_user = AI
-                self.player_2_speed = 7
+                self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
 
     def display_pong(self):
@@ -156,8 +157,8 @@ class Pong:
 
         if self.player_2_user == HUMAN:
             self.player_2_animation()
-        elif self.player_2_user == AI:
-            ticks = 120
+        elif self.player_2_user == AI and self.player_1_user == AI:
+            ticks = IA_TRAINING_TICKS
             # self.player_2_ai()
             # self.perform_action(UP)
 
@@ -179,7 +180,7 @@ class Pong:
 
         pygame.display.flip()
         if self.run_train:
-            self.threaning_thread = Thread(target=self.make_skip, args=(10,))
+            self.threaning_thread = Thread(target=self.make_skip, args=(1000,))
             self.threaning_thread.start()
             self.run_train = False
         self.clock.tick(ticks)
@@ -371,12 +372,12 @@ class Pong:
             return self.get_reward(id=id), self.get_player_2_state()
 
     def get_player_1_state(self):
-        # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position)
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), 0, (self.player_1.y + (PADEL_HEIGHT / 2)), 0, (self.player_2.y + (PADEL_HEIGHT / 2)))
+        # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2)))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2)), (self.player_2.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
-        # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position)
-        return (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))), abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), 0, (self.player_2.y + (PADEL_HEIGHT / 2)), 0, (self.player_1.y + (PADEL_HEIGHT / 2)))
+        # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))),
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2)), (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_state(self, id=None):
         if id == PLAYER_1:
@@ -386,7 +387,7 @@ class Pong:
 
     def get_player_1_reward(self):
         actual_state = list(self.get_player_1_state())
-        distance_to_ball = actual_state[1]
+        distance_to_ball = actual_state[0]
 
         touch_reward = 0
         penalty = 0
@@ -398,11 +399,11 @@ class Pong:
             penalty = POINT_LOST
 
         # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
-        return ((MAX_REWARD - distance_to_ball) + touch_reward + penalty)
+        return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
 
     def get_player_2_reward(self):
         actual_state = list(self.get_player_2_state())
-        distance_to_ball = actual_state[1]
+        distance_to_ball = actual_state[0]
         # print('Player 2: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
         touch_reward = 0
         penalty = 0
@@ -413,7 +414,7 @@ class Pong:
         if self.ball.right == self.player_2.left:
             touch_reward = MAX_REWARD / 2
 
-        return ((MAX_REWARD - distance_to_ball) + touch_reward + penalty)
+        return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
 
     def get_reward(self, id=None):
         if id == PLAYER_1:
@@ -436,8 +437,10 @@ class Pong:
         agent_1_thread.join()
 
     def make_skip(self, simulations=1):
+        start_time = time.time()
         for sim in range(simulations):
-            print('skip:', sim, "/", simulations)
+            start_time = time.time()
             self.make_step()
+            print('skip:', sim, "/", simulations, ' elapsed time: ',time.time() - start_time)
         # TODO: este cambio en la variable lo hace el boton skip
         self.run_train = True
