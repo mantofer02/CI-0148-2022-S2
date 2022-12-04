@@ -36,9 +36,11 @@ DISCOUNT_FACTOR = 1e-5
 EPS_GREEDY = 0.6
 DECAY = 1e-7
 
+
 class Action(enum.IntEnum):
-  UP = 0
-  DOWN = 1
+    UP = 0
+    DOWN = 1
+
 
 class Pong:
     def __init__(self) -> None:
@@ -91,9 +93,11 @@ class Pong:
         self.training_img = pygame.image.load("images/button_training.png")
 
         # IA
-        self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE, C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
-        self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE, C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
-        
+        self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE,
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
+        self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY)
+
         self.render_game()
 
     def display_menu(self):
@@ -108,7 +112,7 @@ class Pong:
         CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
                                 SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
         training_button = Button(SCREEN_WITDH / 2 - 118,
-                                SCREEN_HEIGHT / 2 + 50, self.training_img, 0.2)
+                                 SCREEN_HEIGHT / 2 + 50, self.training_img, 0.2)
         pvp_button.draw(self.screen)
         pvCPU_button.draw(self.screen)
         CPUvCPU_button.draw(self.screen)
@@ -128,8 +132,8 @@ class Pong:
                 self.player_2_user = AI
                 self.player_2_speed = 7
                 self.score_time = pygame.time.get_ticks()
-            
-            elif event.key == pygame.K_4: # trainig button
+
+            elif event.key == pygame.K_4:  # trainig button
                 self.game_paused = False
                 self.player_1_user = AI
                 self.player_1_speed = 7
@@ -266,7 +270,7 @@ class Pong:
             return True
         else:
             return False
-        
+
     def ball_animation(self):
 
         self.ball.x += self.ball_speed_x
@@ -321,7 +325,7 @@ class Pong:
     def perform_action(self, action, id=None):
         # print('Perform', Action.DOWN, action, action == Action.DOWN.name)
         if id == PLAYER_1:
-            
+
             if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
                 # print('1 Entra en down')
@@ -336,7 +340,7 @@ class Pong:
 
             return self.get_reward(id=id), self.get_player_1_state()
         else:
-            
+
             if action == Action.DOWN.name:
                 self.player_2.top += self.player_2_speed
                 # print('2 Entra en down')
@@ -368,7 +372,7 @@ class Pong:
     def get_player_1_reward(self):
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[1]
-        
+
         # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
         return (MAX_REWARD - distance_to_ball)
 
@@ -391,9 +395,9 @@ class Pong:
         self.player_2.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
         self.ball_restart()
 
-    def make_step(self, lr = True):
+    def make_step(self, lr=True):
         self.epoch += 1
-        agent_1_thread = Thread(target=self.agent_1.simulation,args=(self, ))
+        agent_1_thread = Thread(target=self.agent_1.simulation, args=(self, ))
         agent_1_thread.start()
         self.agent_2.simulation(self)
         print('antes del join')
@@ -401,7 +405,7 @@ class Pong:
         print('despues del join')
         # Reiniciar ambiente hasta aquí
 
-    def make_skip(self, simulations = 1):
+    def make_skip(self, simulations=1):
         for sim in range(simulations):
             print('MAKE SKIP')
             self.make_step()
