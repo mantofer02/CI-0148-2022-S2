@@ -114,10 +114,10 @@ class Pong:
 
         # IA
         self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE,
-                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 3)
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
-                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 3)
-
+                                   C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
+        
         self.render_game()
 
     def display_menu(self):
@@ -149,6 +149,14 @@ class Pong:
             elif event.key == pygame.K_2:
                 self.game_paused = False
                 self.player_1_user = HUMAN
+                self.player_2_user = AI
+                self.player_2_speed = 9
+                self.score_time = pygame.time.get_ticks()
+            elif event.key == pygame.K_3:
+                self.game_paused = False
+                self.is_learning_center = False
+                self.player_1_user = AI
+                self.player_1_speed = 9
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
@@ -206,7 +214,12 @@ class Pong:
 
         if self.player_2_user == HUMAN:
             self.player_2_animation()
-        elif self.player_2_user == AI and self.player_1_user == AI:
+        elif self.player_2_user == AI and self.player_1_user == AI and not self.is_learning_center:
+            self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
+            self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
+            self.agent_1_thread.start()
+            self.agent_2_thread.start()
+        elif self.player_2_user == AI and self.player_1_user == AI and self.is_learning_center:
             ticks = IA_TRAINING_TICKS
             # self.player_2_ai()
             # self.perform_action(UP)
@@ -422,11 +435,11 @@ class Pong:
 
     def get_player_1_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2)))
-        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2)), (self.player_2.y + (PADEL_HEIGHT / 2))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))# , (self.player_2.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))),
-        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2)), (self.player_1.y + (PADEL_HEIGHT / 2))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2))# , (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_state(self, id=None):
         if id == PLAYER_1:
@@ -494,3 +507,14 @@ class Pong:
                   ' elapsed time: ', time.time() - start_time)
 
         self.reset()
+
+    def run_ia(self, id_agent):
+        agent = self.agent_1 if id_agent == 1 else self.agent_2
+        self.reset()
+        while not self.is_terminal_state():
+            agent.step(self, learn = False)
+            time.sleep(1)
+        
+        if id_agent == 1:
+            self.agent_2_thread.join()
+        print('finalizo', id)    
