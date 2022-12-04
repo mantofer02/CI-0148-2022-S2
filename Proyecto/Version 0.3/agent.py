@@ -64,8 +64,6 @@ class Agent():
             if ((end_time - start_time) > MAX_TIME):
                 go = False
 
-        print('Agent ', self.id, 'finaliza')
-
         # Actualización del greedy
         self.eps_greedy = self.eps_greedy / (1 + self.decay)
 

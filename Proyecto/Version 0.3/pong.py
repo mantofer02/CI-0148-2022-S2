@@ -30,12 +30,12 @@ PLAYER_1 = 1
 PLAYER_2 = 2
 
 # IA variables
-MEMORY_CAPACITY = 1000
-BATCH_SIZE = 100
-C_ITERS = 10
+MEMORY_CAPACITY = 100000
+BATCH_SIZE = 10000
+C_ITERS = 100
 LEARNING_RATE = 1e-6
 DISCOUNT_FACTOR = 1e-5
-EPS_GREEDY = 0.5
+EPS_GREEDY = 0.6
 DECAY = 1e-9
 
 
@@ -157,7 +157,7 @@ class Pong:
         if self.player_2_user == HUMAN:
             self.player_2_animation()
         elif self.player_2_user == AI:
-            ticks = 60
+            ticks = 120
             # self.player_2_ai()
             # self.perform_action(UP)
 
