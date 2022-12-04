@@ -119,8 +119,8 @@ class Agent():
             action = torch.argmax(actions)
             reward, new_state = env.perform_action(
                 Action(action.item()).name, self.id)
-        if reward > 0:
-            print(reward)
+        # if reward > 0:
+        #     print(reward)
 
     '''Método para obtener el set de entrenamiento del modelo a partir de la memoria
      y el tamaño del conjunto de datos.

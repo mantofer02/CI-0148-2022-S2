@@ -177,8 +177,16 @@ class Pong:
     def skip_button_input(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.input_button.collidepoint(event.pos):
+<<<<<<< HEAD
                 self.n_simultations = int(self.input_button_text)
                 self.input_button_text = ''
+=======
+                if len(self.input_button_text ) > 0:
+                    self.threaning_thread = Thread(target=self.make_skip, args=(int(self.input_button_text),))
+                    self.threaning_thread.start()
+                
+                print(self.input_button_text)
+>>>>>>> e211b7346b2b9a0ec66ef5513ec34e64222d2a3d
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
@@ -223,10 +231,7 @@ class Pong:
         self.screen.blit(player_2_text, (660, 20))
 
         pygame.display.flip()
-        if self.run_train:
-            self.threaning_thread = Thread(target=self.make_skip, args=(1000,))
-            self.threaning_thread.start()
-            self.run_train = False
+        
         self.clock.tick(ticks)
 
     def player_1_human(self, event):
@@ -485,7 +490,14 @@ class Pong:
         for sim in range(simulations):
             start_time = time.time()
             self.make_step()
+<<<<<<< HEAD
             print('skip:', sim, "/", simulations,
                   ' elapsed time: ', time.time() - start_time)
         # TODO: este cambio en la variable lo hace el boton skip
         self.run_train = True
+=======
+            print('skip:', sim, "/", simulations, ' elapsed time: ',time.time() - start_time)
+
+        self.reset()
+        
+>>>>>>> e211b7346b2b9a0ec66ef5513ec34e64222d2a3d
