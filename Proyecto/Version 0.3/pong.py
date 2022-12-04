@@ -9,6 +9,9 @@ import time
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
 
+SKIP_BUTTON_WIDTH = 140
+SKIP_BUTTON_HEIGHT = 60
+
 BALL_WIDTH = 30
 BALL_HEIGHT = 30
 
@@ -56,6 +59,7 @@ class Pong:
         self.threaning_thread = None
 
         self.game_started = False
+        self.is_learning_center = False
 
         self.mutex = Lock()
 
@@ -84,6 +88,11 @@ class Pong:
 
         self.player_2 = pygame.Rect(SCREEN_WITDH - 20, (SCREEN_HEIGHT / 2) -
                                     (PADEL_HEIGHT / 2), PADEL_WIDTH, PADEL_HEIGHT)
+
+        self.input_button = pygame.Rect(
+            (SCREEN_WITDH / 2) - (SKIP_BUTTON_WIDTH / 2), 200, SKIP_BUTTON_WIDTH, SKIP_BUTTON_HEIGHT)
+
+        self.input_button_text = ''
 
         # text variables
         self.player_1_score = 0
@@ -143,11 +152,39 @@ class Pong:
 
             elif event.key == pygame.K_4:  # trainig button
                 self.game_paused = False
+                self.is_learning_center = True
                 self.player_1_user = AI
                 self.player_1_speed = 9
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
+
+    def display_skip_button(self):
+        color_active = pygame.Color('lightskyblue3')
+        color_passive = pygame.Color('chartreuse4')
+        color = color_passive
+
+        pygame.draw.rect(self.screen, color, self.input_button)
+        text_surface = self.game_font.render(
+            self.input_button_text, False, self.light_grey)
+
+        self.screen.blit(
+            text_surface, (self.input_button.x + 5, self.input_button.y + 5))
+
+    def skip_button_input(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.input_button.collidepoint(event.pos):
+                print(self.input_button_text)
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_BACKSPACE:
+                self.input_button_text = self.input_button_text[:-1]
+            else:
+                try:
+                    int(event.unicode)
+                    self.input_button_text += event.unicode
+                except:
+                    print("Must add int")
 
     def display_pong(self):
         self.ball_animation()
@@ -174,6 +211,9 @@ class Pong:
 
         player_2_text = self.game_font.render(
             f"{self.player_2_score}", False, self.light_grey)
+
+        if self.is_learning_center:
+            self.display_skip_button()
 
         self.screen.blit(player_1_text, (600, 20))
         self.screen.blit(player_2_text, (660, 20))
@@ -223,6 +263,9 @@ class Pong:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
                         self.display_menu()
+
+                if self.is_learning_center and not self.game_paused:
+                    self.skip_button_input(event)
 
                 if self.game_paused:
                     self.menu_input(event)
