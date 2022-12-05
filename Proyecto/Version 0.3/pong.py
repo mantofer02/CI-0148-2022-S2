@@ -294,6 +294,7 @@ class Pong:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
+                        self.is_terminal_state = True
                         self.display_menu()
 
                 if self.is_learning_center and not self.game_paused:
