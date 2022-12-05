@@ -35,8 +35,8 @@ PLAYER_2 = 2
 
 # IA variables
 MEMORY_CAPACITY = 10000
-BATCH_SIZE = 100
-C_ITERS = 10
+BATCH_SIZE = 50
+C_ITERS = 30
 LEARNING_RATE = 1e-7
 DISCOUNT_FACTOR = 1e-4
 EPS_GREEDY = 0.7
@@ -474,14 +474,19 @@ class Pong:
         else:
             return self.get_player_2_state()
 
+    def get_y_distance_to_ball (self, id):
+        player_y_pos = self.player_1.y if id == 1 else self.player_2.y
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (player_y_pos+ (PADEL_HEIGHT / 2)))
+
     def get_player_1_reward(self):
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[0]
         touch_reward = 0
         penalty = 0
 
-        if self.ball.left == self.player_1.right:
+        if self.get_y_distance_to_ball(1) < PADEL_HEIGHT / 2 and self.ball.left <= self.player_1.right + PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
+            # print('1-Entra al tocar')
 
         if self.ball.left >= 0:
             penalty = POINT_LOST
@@ -497,10 +502,11 @@ class Pong:
         penalty = 0
 
         if self.ball.right >= SCREEN_WITDH:
-            penalty = POINT_LOST
+            penalty = 0#POINT_LOST
 
-        if self.ball.right == self.player_2.left:
+        if self.get_y_distance_to_ball(2) < PADEL_HEIGHT / 2and self.ball.right >= self.player_2.left - PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
+            # print('2 Entra al tocar')
 
         return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
 
@@ -540,7 +546,7 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            time.sleep(0.1)
+            #time.sleep(0.1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
