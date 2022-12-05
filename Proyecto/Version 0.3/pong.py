@@ -119,7 +119,6 @@ class Pong:
         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
         self.run_ia_threads = False
-        self.render_game()
 
         self.screen.fill(self.bg_color)
 
@@ -139,6 +138,7 @@ class Pong:
         CPUvCPU_button.draw(self.screen)
         training_button.draw(self.screen)
         pygame.display.flip()
+        self.render_game()
 
     def menu_input(self, event):
         if event.type == pygame.KEYDOWN:
