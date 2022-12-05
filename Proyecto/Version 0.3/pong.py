@@ -525,7 +525,7 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            # time.sleep(1)
+            time.sleep(0.1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
