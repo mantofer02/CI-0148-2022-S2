@@ -47,6 +47,7 @@ PALETTE_PENALIZATION_FACTOR = 1
 global_player_1_score = 0
 global_player_2_score = 0
 
+
 class Action(enum.IntEnum):
     UP = 0
     DOWN = 1
@@ -115,7 +116,8 @@ class Pong:
         self.CPUvCPU_img = pygame.image.load("images/button_cpu-vs-cpu.png")
         self.training_img = pygame.image.load("images/button_training.png")
         self.load_model_img = pygame.image.load("images/button_load-model.png")
-        self.download_model_img = pygame.image.load("images/button_download-model.png")
+        self.download_model_img = pygame.image.load(
+            "images/button_download-model.png")
 
         # IA
         self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE,
@@ -142,7 +144,7 @@ class Pong:
                                  SCREEN_HEIGHT / 2 + 0, self.training_img, 1)
 
         load_button = Button(SCREEN_WITDH / 2 - 118,
-                                 SCREEN_HEIGHT / 2 + 100, self.load_model_img, 1)
+                             SCREEN_HEIGHT / 2 + 100, self.load_model_img, 1)
 
         download_button = Button(SCREEN_WITDH / 2 - 160,
                                  SCREEN_HEIGHT / 2 + 200, self.download_model_img, 1)
@@ -185,11 +187,11 @@ class Pong:
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
-            elif event.key == pygame.K_5: # load button
+            elif event.key == pygame.K_5:  # load button
                 self.agent_1.load_model()
                 self.agent_2.load_model()
 
-            elif event.key == pygame.K_6: # download button
+            elif event.key == pygame.K_6:  # download button
                 if global_player_1_score > global_player_2_score:
                     self.agent_1.download_model()
                 else:
@@ -217,6 +219,13 @@ class Pong:
 
         self.screen.blit(instruction_text,
                          (self.input_button.x - 230, self.input_button.y - 50))
+
+        if self.n_simultations > 0:
+            simulation_text = self.game_font.render(
+                "Simulations remaining: " + str(self.n_simultations), False, self.light_grey)
+
+            self.screen.blit(simulation_text,
+                             (self.input_button.x - 180, self.input_button.y + 50))
 
     def skip_button_input(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -483,7 +492,6 @@ class Pong:
 
     def get_player_1_state(self):
         # (y distance to ball, y my position, y p2 position)
-        
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
@@ -496,9 +504,9 @@ class Pong:
         else:
             return self.get_player_2_state()
 
-    def get_y_distance_to_ball (self, id):
+    def get_y_distance_to_ball(self, id):
         player_y_pos = self.player_1.y if id == 1 else self.player_2.y
-        return abs((self.ball.y + (BALL_WIDTH / 2)) - (player_y_pos+ (PADEL_HEIGHT / 2)))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (player_y_pos + (PADEL_HEIGHT / 2)))
 
     def get_player_1_reward(self):
         global global_player_1_score
@@ -514,7 +522,8 @@ class Pong:
         elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT / 2:
             penalty = POINT_LOST
 
-        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
+                 distance_to_ball) + touch_reward + penalty)
         if self.is_learning_center:
             global_player_1_score += score
 
@@ -524,7 +533,7 @@ class Pong:
         global global_player_2_score
         actual_state = list(self.get_player_2_state())
         distance_to_ball = actual_state[0]
-        
+
         touch_reward = 0
         penalty = 0
 
@@ -533,8 +542,9 @@ class Pong:
             # print('2 Entra al tocar')
         elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT / 2:
             penalty = POINT_LOST
-        
-        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+
+        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
+                 distance_to_ball) + touch_reward + penalty)
         if self.is_learning_center:
             global_player_2_score += score
 
@@ -568,6 +578,7 @@ class Pong:
             self.make_step()
             print('skip:', sim, "/", simulations,
                   ' elapsed time: ', time.time() - start_time)
+            self.n_simultations -= 1
 
         self.reset()
 
@@ -576,7 +587,7 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            #time.sleep(0.1)
+            # time.sleep(0.1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
