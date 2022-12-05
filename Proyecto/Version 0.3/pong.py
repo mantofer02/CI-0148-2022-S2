@@ -19,8 +19,8 @@ BALL_HEIGHT = 30
 PADEL_WIDTH = 10
 PADEL_HEIGHT = 140
 
-MAX_REWARD = 100
-POINT_LOST = -500
+MAX_REWARD = 200
+POINT_LOST = -100
 
 BEST_POINT = 3
 
@@ -40,7 +40,7 @@ C_ITERS = 30
 LEARNING_RATE = 1e-7
 DISCOUNT_FACTOR = 1e-4
 EPS_GREEDY = 0.7
-DECAY = 1e-7
+DECAY = 1e-8
 IA_TRAINING_TICKS = 60
 PALETTE_PENALIZATION_FACTOR = 1
 
@@ -112,6 +112,8 @@ class Pong:
         self.pvCPU_img = pygame.image.load("images/button_player-vs-cpu.png")
         self.CPUvCPU_img = pygame.image.load("images/button_cpu-vs-cpu.png")
         self.training_img = pygame.image.load("images/button_training.png")
+        self.load_model_img = pygame.image.load("images/button_load-model.png")
+        self.download_model_img = pygame.image.load("images/button_download-model.png")
 
         # IA
         self.agent_1 = agent.Agent(PLAYER_1, MEMORY_CAPACITY, BATCH_SIZE,
@@ -133,13 +135,22 @@ class Pong:
 
         CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
                                 SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
+
         training_button = Button(SCREEN_WITDH / 2 - 180,
                                  SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
+
+        load_button = Button(SCREEN_WITDH / 2 - 118,
+                                 SCREEN_HEIGHT / 2 + 200, self.load_model_img, 1)
+
+        download_button = Button(SCREEN_WITDH / 2 - 160,
+                                 SCREEN_HEIGHT / 2 + 300, self.download_model_img, 1)
 
         pvp_button.draw(self.screen)
         pvCPU_button.draw(self.screen)
         CPUvCPU_button.draw(self.screen)
         training_button.draw(self.screen)
+        load_button.draw(self.screen)
+        download_button.draw(self.screen)
         pygame.display.flip()
 
     def menu_input(self, event):
@@ -172,6 +183,11 @@ class Pong:
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
+            elif event.key == pygame.K_5: # load button
+                pass
+
+            elif event.key == pygame.K_6: # download button
+                pass
 
     def display_skip_button(self):
         color_active = pygame.Color('lightskyblue3')
@@ -459,13 +475,12 @@ class Pong:
             return self.get_reward(id=id), self.get_player_2_state()
 
     def get_player_1_state(self):
-        # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2)))
-        # , (self.player_2.y + (PADEL_HEIGHT / 2))
+        # (y distance to ball, y my position, y p2 position)
+        
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
-        # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))),
-        # , (self.player_1.y + (PADEL_HEIGHT / 2))
+        # (y distance to ball, y my position, y p1 position)
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2))
 
     def get_state(self, id=None):
@@ -487,8 +502,7 @@ class Pong:
         if self.get_y_distance_to_ball(1) < PADEL_HEIGHT / 2 and self.ball.left <= self.player_1.right + PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
             # print('1-Entra al tocar')
-
-        if self.ball.left >= 0:
+        elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT / 2:
             penalty = POINT_LOST
 
         # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
@@ -501,12 +515,11 @@ class Pong:
         touch_reward = 0
         penalty = 0
 
-        if self.ball.right >= SCREEN_WITDH:
-            penalty = 0#POINT_LOST
-
-        if self.get_y_distance_to_ball(2) < PADEL_HEIGHT / 2and self.ball.right >= self.player_2.left - PADEL_WIDTH:
+        if self.get_y_distance_to_ball(2) < PADEL_HEIGHT / 2 and self.ball.right >= self.player_2.left - PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
             # print('2 Entra al tocar')
+        elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT / 2:
+            penalty = POINT_LOST
 
         return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
 
