@@ -119,8 +119,9 @@ class Agent():
             action = torch.argmax(actions)
             reward, new_state = env.perform_action(
                 Action(action.item()).name, self.id)
-        # if reward > 0:
-        #     print(reward)
+        
+        # if reward > 0 and self.id > 1:
+        #     print('id:', self.id, reward)
 
     '''Método para obtener el set de entrenamiento del modelo a partir de la memoria
      y el tamaño del conjunto de datos.
@@ -181,7 +182,6 @@ class Dset(torch.utils.data.Dataset):
 
 '''Elemento de la memoria del agente el cual contiene la información
 de un elemento de dicha memoria (estado, acción ejecutada, nuevo estado, recompensa)'''
-
 
 class MemoryElement():
     def __init__(self, state, action, new_state, reward):

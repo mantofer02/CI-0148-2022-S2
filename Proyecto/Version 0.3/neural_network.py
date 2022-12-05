@@ -7,7 +7,7 @@ class DQL_NN(nn.Module):
         # Red neuronal
         self.DQL_stack = nn.Sequential(
             nn.Linear(flatten_in_values, 64),
-            nn.Tanh(),
+            nn.Sigmoid(),
             nn.Linear(64, 128),
             nn.ReLU(),
             nn.Linear(128, actions_number),
