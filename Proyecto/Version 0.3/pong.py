@@ -117,7 +117,7 @@ class Pong:
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
-        
+
         self.render_game()
 
     def display_menu(self):
@@ -131,8 +131,8 @@ class Pong:
 
         CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
                                 SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
-        training_button = Button(SCREEN_WITDH / 2 - 118,
-                                 SCREEN_HEIGHT / 2 + 50, self.training_img, 0.2)
+        training_button = Button(SCREEN_WITDH / 2 - 180,
+                                 SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
         pvp_button.draw(self.screen)
         pvCPU_button.draw(self.screen)
         CPUvCPU_button.draw(self.screen)
@@ -438,11 +438,13 @@ class Pong:
 
     def get_player_1_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p2 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_1.x + (PADEL_WIDTH / 2)))
-        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))# , (self.player_2.y + (PADEL_HEIGHT / 2))
+        # , (self.player_2.y + (PADEL_HEIGHT / 2))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
         # (x distance to ball, y distance to ball), (0, y my position), (0, y p1 position) (abs((self.ball.x + (BALL_WIDTH / 2)) - (self.player_2.x + (PADEL_WIDTH / 2))),
-        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2))# , (self.player_1.y + (PADEL_HEIGHT / 2))
+        # , (self.player_1.y + (PADEL_HEIGHT / 2))
+        return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2))
 
     def get_state(self, id=None):
         if id == PLAYER_1:
@@ -515,9 +517,9 @@ class Pong:
         agent = self.agent_1 if id_agent == 1 else self.agent_2
         self.reset()
         while not self.is_terminal_state():
-            agent.step(self, learn = False)
+            agent.step(self, learn=False)
             time.sleep(1)
-        
+
         if id_agent == 1:
             self.agent_2_thread.join()
-        print('finalizo', id)    
+        print('finalizo', id)
