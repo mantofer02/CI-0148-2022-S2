@@ -55,6 +55,8 @@ Se utilizó la siguiente representación de un estado para cada jugador para el 
 
 ### Carácteristicas del Agente
 
+El agente inteligente tendrá tres opciones disponibles; moverse para arriba, para abajo o no moverse. El agente decidirá y ejecutará una de estas acción. Cada agente generará una salida del estado, asi como su valor respectivo de recompensa. La entrada de cada agente será la acción determinada por el modelo de aprendizaje mecánico.
+
 ## Problemas y Desafios
 
 ## Resultados
