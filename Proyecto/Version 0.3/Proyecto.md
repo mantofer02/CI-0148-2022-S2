@@ -50,7 +50,9 @@ En este modo, el agente inteligente jugará de forma automatica, sin embargo, pa
 Para la implementación del aprendizaje se utilizó la técnica de _Deep-Q Learning_. Dentro de esta metodología se utilizó una red neuronal con una capa de entrada, una intermedia y una de salida. Mediante la siguiente configuración:
 
 -Capa de entrada de 3 neuronas las cuales representan un estado.
+
 -Capa intermedia de 128 neuronas con activación Tangente hiperbólico para tener valores tando positivos como negativos (de -1 a 1).
+
 -Capa de salida de 2 neuronas las cuales representan los dos movimientos disponibles de la paleta (arriba y abajo).
 
 Se utilizó la siguiente representación de un estado para cada jugador para el algoritmo de _Deep-Q Learning_:
@@ -64,6 +66,7 @@ El agente inteligente tendrá tres opciones disponibles; moverse para arriba o p
 ## Problemas y Desafios
 
 -En el entrenamiento dado que la bola tiene un comportamiento continuo genera un problema de tiempo al calcular la recompensa para momentos cortos como el tocar la paleta, ya que el llamado al cálculo de esta puede no darse en el momento justo que se da la acción de la bola y la paleta.
+
 -Tiempos de entrenamientos altos ya que un escenario puede tardar entre 4 segundos a 10 segundos aproximadamente.
 
 ## Resultados
