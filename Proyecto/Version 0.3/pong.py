@@ -140,6 +140,25 @@ class Pong:
         pygame.display.flip()
         self.render_game()
 
+    def display_menu(self):
+        self.screen.fill(self.bg_color)
+
+        pvp_button = Button(SCREEN_WITDH / 2 - 170,
+                            SCREEN_HEIGHT / 2 - 200, self.pvp_img, 1)
+
+        pvCPU_button = Button(SCREEN_WITDH / 2 - 143,
+                              SCREEN_HEIGHT / 2 - 100, self.pvCPU_img, 1)
+
+        CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
+                                SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
+        training_button = Button(SCREEN_WITDH / 2 - 180,
+                                 SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
+
+        pvp_button.draw(self.screen)
+        pvCPU_button.draw(self.screen)
+        CPUvCPU_button.draw(self.screen)
+        training_button.draw(self.screen)
+
     def menu_input(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
