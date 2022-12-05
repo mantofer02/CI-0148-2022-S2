@@ -326,21 +326,30 @@ class Pong:
         if self.score_time == None:
             self.score_time = 0
 
-        if current_time - self.score_time < 500:
-            number_render = self.game_font.render("3", False, self.light_grey)
-            self.screen.blit(number_render, (SCREEN_WITDH /
-                             2 - 10, SCREEN_HEIGHT / 2 - 60))
-        elif 500 <= current_time - self.score_time < 1000:
-            number_render = self.game_font.render("2", False, self.light_grey)
-            self.screen.blit(number_render, (SCREEN_WITDH /
-                             2 - 10, SCREEN_HEIGHT / 2 - 60))
-        elif 1000 <= current_time - self.score_time < 1500:
-            number_render = self.game_font.render("1", False, self.light_grey)
-            self.screen.blit(number_render, (SCREEN_WITDH /
-                             2 - 10, SCREEN_HEIGHT / 2 - 60))
+        if not self.is_learning_center:
+            if current_time - self.score_time < 500:
+                number_render = self.game_font.render(
+                    "3", False, self.light_grey)
+                self.screen.blit(number_render, (SCREEN_WITDH /
+                                                 2 - 10, SCREEN_HEIGHT / 2 - 60))
+            elif 500 <= current_time - self.score_time < 1000:
+                number_render = self.game_font.render(
+                    "2", False, self.light_grey)
+                self.screen.blit(number_render, (SCREEN_WITDH /
+                                                 2 - 10, SCREEN_HEIGHT / 2 - 60))
+            elif 1000 <= current_time - self.score_time < 1500:
+                number_render = self.game_font.render(
+                    "1", False, self.light_grey)
+                self.screen.blit(number_render, (SCREEN_WITDH /
+                                                 2 - 10, SCREEN_HEIGHT / 2 - 60))
 
-        if current_time - self.score_time < 1500:
-            self.ball_speed_x, self.ball_speed_y = 0, 0
+            if current_time - self.score_time < 1500:
+                self.ball_speed_x, self.ball_speed_y = 0, 0
+            else:
+                self.ball_speed_x = 7 * random.choice((-1, 1))
+                self.ball_speed_y = 7 * random.choice((-1, 1))
+                self.score_time = None
+
         else:
             self.ball_speed_x = 7 * random.choice((-1, 1))
             self.ball_speed_y = 7 * random.choice((-1, 1))
@@ -525,7 +534,7 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            time.sleep(0.1)
+            time.sleep(1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
