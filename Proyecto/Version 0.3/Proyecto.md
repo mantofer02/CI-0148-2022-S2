@@ -53,7 +53,7 @@ Para la implementación del aprendizaje se utilizó la técnica de _Deep-Q Learn
 
 -Capa intermedia de 128 neuronas con activación Tangente hiperbólico para tener valores tando positivos como negativos (de -1 a 1).
 
--Capa de salida de 2 neuronas las cuales representan los dos movimientos disponibles de la paleta (arriba y abajo).
+-Capa de salida con activación Leaky Relu para la aproximación de los valores Q con 2 neuronas las cuales representan los dos movimientos disponibles de la paleta (arriba y abajo).
 
 Se utilizó la siguiente representación de un estado para cada jugador para el algoritmo de _Deep-Q Learning_:
 
