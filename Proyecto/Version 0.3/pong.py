@@ -315,7 +315,7 @@ class Pong:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
-                        self.is_terminal_state = True
+                        self.set_state_as_terminal()
                         self.display_menu()
 
                 if self.is_learning_center and not self.game_paused:
@@ -562,3 +562,7 @@ class Pong:
             self.agent_2_thread.join()
             self.run_ia_threads = False
         print('finalizo', id)
+
+    def set_state_as_terminal(self):
+        self.player_1_score = BEST_POINT
+        self.player_2_score = BEST_POINT

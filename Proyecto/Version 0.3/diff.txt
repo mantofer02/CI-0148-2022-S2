@@ -1,0 +1,131 @@
+diff --git a/Proyecto/Version 0.3/agent.py b/Proyecto/Version 0.3/agent.py
+index b91c815..29568bb 100644
+--- a/Proyecto/Version 0.3/agent.py	
++++ b/Proyecto/Version 0.3/agent.py	
+@@ -119,8 +119,9 @@ class Agent():
+             action = torch.argmax(actions)
+             reward, new_state = env.perform_action(
+                 Action(action.item()).name, self.id)
+-        # if reward > 0:
+-        #     print(reward)
++        
++        # if reward > 0 and self.id > 1:
++        #     print('id:', self.id, reward)
+ 
+     '''M├⌐todo para obtener el set de entrenamiento del modelo a partir de la memoria
+      y el tama├▒o del conjunto de datos.
+@@ -182,7 +183,6 @@ class Dset(torch.utils.data.Dataset):
+ '''Elemento de la memoria del agente el cual contiene la informaci├│n
+ de un elemento de dicha memoria (estado, acci├│n ejecutada, nuevo estado, recompensa)'''
+ 
+-
+ class MemoryElement():
+     def __init__(self, state, action, new_state, reward):
+         self.state = state
+diff --git a/Proyecto/Version 0.3/neural_network.py b/Proyecto/Version 0.3/neural_network.py
+index 93af5d0..5174c63 100644
+--- a/Proyecto/Version 0.3/neural_network.py	
++++ b/Proyecto/Version 0.3/neural_network.py	
+@@ -7,7 +7,7 @@ class DQL_NN(nn.Module):
+         # Red neuronal
+         self.DQL_stack = nn.Sequential(
+             nn.Linear(flatten_in_values, 64),
+-            nn.Tanh(),
++            nn.Sigmoid(),
+             nn.Linear(64, 128),
+             nn.ReLU(),
+             nn.Linear(128, actions_number),
+diff --git a/Proyecto/Version 0.3/pong.py b/Proyecto/Version 0.3/pong.py
+index 0646dd9..438cfb6 100644
+--- a/Proyecto/Version 0.3/pong.py	
++++ b/Proyecto/Version 0.3/pong.py	
+@@ -6,6 +6,7 @@ import agent
+ from threading import Thread, Lock
+ import enum
+ import time
++
+ SCREEN_WITDH = 1280
+ SCREEN_HEIGHT = 960
+ 
+@@ -38,8 +39,8 @@ BATCH_SIZE = 100
+ C_ITERS = 10
+ LEARNING_RATE = 1e-7
+ DISCOUNT_FACTOR = 1e-4
+-EPS_GREEDY = 0.65
+-DECAY = 1e-9
++EPS_GREEDY = 0.7
++DECAY = 1e-7
+ IA_TRAINING_TICKS = 60
+ PALETTE_PENALIZATION_FACTOR = 1
+ 
+@@ -117,7 +118,26 @@ class Pong:
+                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
+         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
+                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
++        self.run_ia_threads = False
++
++        self.screen.fill(self.bg_color)
++
++        pvp_button = Button(SCREEN_WITDH / 2 - 170,
++                            SCREEN_HEIGHT / 2 - 200, self.pvp_img, 1)
++
++        pvCPU_button = Button(SCREEN_WITDH / 2 - 143,
++                              SCREEN_HEIGHT / 2 - 100, self.pvCPU_img, 1)
++
++        CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
++                                SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
++        training_button = Button(SCREEN_WITDH / 2 - 180,
++                                 SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
+ 
++        pvp_button.draw(self.screen)
++        pvCPU_button.draw(self.screen)
++        CPUvCPU_button.draw(self.screen)
++        training_button.draw(self.screen)
++        pygame.display.flip()
+         self.render_game()
+ 
+     def display_menu(self):
+@@ -138,7 +158,6 @@ class Pong:
+         pvCPU_button.draw(self.screen)
+         CPUvCPU_button.draw(self.screen)
+         training_button.draw(self.screen)
+-        pygame.display.flip()
+ 
+     def menu_input(self, event):
+         if event.type == pygame.KEYDOWN:
+@@ -225,10 +244,12 @@ class Pong:
+         if self.player_2_user == HUMAN:
+             self.player_2_animation()
+         elif self.player_2_user == AI and self.player_1_user == AI and not self.is_learning_center:
+-            self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
+-            self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
+-            self.agent_1_thread.start()
+-            self.agent_2_thread.start()
++            if not self.run_ia_threads:
++                self.run_ia_threads = True
++                self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
++                self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
++                self.agent_1_thread.start()
++                self.agent_2_thread.start()
+         elif self.player_2_user == AI and self.player_1_user == AI and self.is_learning_center:
+             ticks = IA_TRAINING_TICKS
+             # self.player_2_ai()
+@@ -294,6 +315,7 @@ class Pong:
+                 if event.type == pygame.KEYDOWN:
+                     if event.key == pygame.K_ESCAPE:
+                         self.game_paused = True
++                        self.is_terminal_state = True
+                         self.display_menu()
+ 
+                 if self.is_learning_center and not self.game_paused:
+@@ -534,8 +556,9 @@ class Pong:
+         self.reset()
+         while not self.is_terminal_state():
+             agent.step(self, learn=False)
+-            time.sleep(1)
++            time.sleep(0.1)
+ 
+         if id_agent == 1:
+             self.agent_2_thread.join()
++            self.run_ia_threads = False
+         print('finalizo', id)
