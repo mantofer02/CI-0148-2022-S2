@@ -120,24 +120,6 @@ class Pong:
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
         self.run_ia_threads = False
 
-        self.screen.fill(self.bg_color)
-
-        pvp_button = Button(SCREEN_WITDH / 2 - 170,
-                            SCREEN_HEIGHT / 2 - 200, self.pvp_img, 1)
-
-        pvCPU_button = Button(SCREEN_WITDH / 2 - 143,
-                              SCREEN_HEIGHT / 2 - 100, self.pvCPU_img, 1)
-
-        CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
-                                SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
-        training_button = Button(SCREEN_WITDH / 2 - 180,
-                                 SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
-
-        pvp_button.draw(self.screen)
-        pvCPU_button.draw(self.screen)
-        CPUvCPU_button.draw(self.screen)
-        training_button.draw(self.screen)
-        pygame.display.flip()
         self.render_game()
 
     def display_menu(self):
@@ -158,7 +140,7 @@ class Pong:
         pvCPU_button.draw(self.screen)
         CPUvCPU_button.draw(self.screen)
         training_button.draw(self.screen)
-
+        pygame.display.flip()
     def menu_input(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
@@ -315,7 +297,7 @@ class Pong:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
-                        self.is_terminal_state = True
+                        # self.is_terminal_state = True
                         self.display_menu()
 
                 if self.is_learning_center and not self.game_paused:
