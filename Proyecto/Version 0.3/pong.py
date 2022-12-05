@@ -120,7 +120,6 @@ class Pong:
 
         self.render_game()
 
-    def display_menu(self):
         self.screen.fill(self.bg_color)
 
         pvp_button = Button(SCREEN_WITDH / 2 - 170,
