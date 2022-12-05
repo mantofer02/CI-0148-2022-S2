@@ -164,9 +164,23 @@ class Agent():
         plt.title(("Pérdida DQL"))
         plt.show()
 
-    '''Clase de almacenamiento de los datos de entrenamiento'''
+    '''Método de carga del modelo'''
+    def load_model(self):
+        checkpoint = torch.load('model/target_model')
+        self.target_nn.load_state_dict(checkpoint['model_state'])
+        self.policy_nn.load_state_dict(checkpoint['model_state'])
+        self.opt.load_state_dict(checkpoint['opt_state'])
+        print('Modelo cargado')
+        
+    '''Método de descarga del modelo'''
+    def download_model(self):
+        torch.save({
+            'model_state': self.target_nn.state_dict(),
+            'opt_state': self.opt.state_dict()
+            }, 'model/target_model')
+        print('Modelo descargado')
 
-
+'''Clase de almacenamiento de los datos de entrenamiento'''  
 class Dset(torch.utils.data.Dataset):
     def __init__(self, x, y):
         self.x = x

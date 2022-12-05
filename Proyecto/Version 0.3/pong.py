@@ -44,6 +44,8 @@ DECAY = 1e-8
 IA_TRAINING_TICKS = 60
 PALETTE_PENALIZATION_FACTOR = 1
 
+global_player_1_score = 0
+global_player_2_score = 0
 
 class Action(enum.IntEnum):
     UP = 0
@@ -128,22 +130,22 @@ class Pong:
         self.screen.fill(self.bg_color)
 
         pvp_button = Button(SCREEN_WITDH / 2 - 170,
-                            SCREEN_HEIGHT / 2 - 200, self.pvp_img, 1)
+                            SCREEN_HEIGHT / 2 - 300, self.pvp_img, 1)
 
         pvCPU_button = Button(SCREEN_WITDH / 2 - 143,
-                              SCREEN_HEIGHT / 2 - 100, self.pvCPU_img, 1)
+                              SCREEN_HEIGHT / 2 - 200, self.pvCPU_img, 1)
 
         CPUvCPU_button = Button(SCREEN_WITDH / 2 - 118,
-                                SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
+                                SCREEN_HEIGHT / 2 - 100, self.CPUvCPU_img, 1)
 
         training_button = Button(SCREEN_WITDH / 2 - 180,
-                                 SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
+                                 SCREEN_HEIGHT / 2 + 0, self.training_img, 1)
 
         load_button = Button(SCREEN_WITDH / 2 - 118,
-                                 SCREEN_HEIGHT / 2 + 200, self.load_model_img, 1)
+                                 SCREEN_HEIGHT / 2 + 100, self.load_model_img, 1)
 
         download_button = Button(SCREEN_WITDH / 2 - 160,
-                                 SCREEN_HEIGHT / 2 + 300, self.download_model_img, 1)
+                                 SCREEN_HEIGHT / 2 + 200, self.download_model_img, 1)
 
         pvp_button.draw(self.screen)
         pvCPU_button.draw(self.screen)
@@ -184,10 +186,15 @@ class Pong:
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
             elif event.key == pygame.K_5: # load button
-                pass
+                self.agent_1.load_model()
+                self.agent_2.load_model()
 
             elif event.key == pygame.K_6: # download button
-                pass
+                if global_player_1_score > global_player_2_score:
+                    self.agent_1.download_model()
+                else:
+                    self.agent_2.download_model()
+                print(global_player_1_score, global_player_2_score)
 
     def display_skip_button(self):
         color_active = pygame.Color('lightskyblue3')
@@ -494,6 +501,8 @@ class Pong:
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (player_y_pos+ (PADEL_HEIGHT / 2)))
 
     def get_player_1_reward(self):
+        global global_player_1_score
+
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[0]
         touch_reward = 0
@@ -505,13 +514,17 @@ class Pong:
         elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT / 2:
             penalty = POINT_LOST
 
-        # print('Player 1: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
-        return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+        if self.is_learning_center:
+            global_player_1_score += score
+
+        return score
 
     def get_player_2_reward(self):
+        global global_player_2_score
         actual_state = list(self.get_player_2_state())
         distance_to_ball = actual_state[0]
-        # print('Player 2: ', (MAX_REWARD - distance_to_ball), ' distance to ball', distance_to_ball)
+        
         touch_reward = 0
         penalty = 0
 
@@ -520,8 +533,12 @@ class Pong:
             # print('2 Entra al tocar')
         elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT / 2:
             penalty = POINT_LOST
+        
+        score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+        if self.is_learning_center:
+            global_player_2_score += score
 
-        return ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR * distance_to_ball) + touch_reward + penalty)
+        return score
 
     def get_reward(self, id=None):
         if id == PLAYER_1:
