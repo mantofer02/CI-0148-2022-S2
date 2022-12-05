@@ -6,6 +6,7 @@ import agent
 from threading import Thread, Lock
 import enum
 import time
+
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
 
@@ -38,8 +39,8 @@ BATCH_SIZE = 100
 C_ITERS = 10
 LEARNING_RATE = 1e-7
 DISCOUNT_FACTOR = 1e-4
-EPS_GREEDY = 0.65
-DECAY = 1e-9
+EPS_GREEDY = 0.7
+DECAY = 1e-7
 IA_TRAINING_TICKS = 60
 PALETTE_PENALIZATION_FACTOR = 1
 
@@ -117,6 +118,7 @@ class Pong:
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
         self.agent_2 = agent.Agent(PLAYER_2, MEMORY_CAPACITY, BATCH_SIZE,
                                    C_ITERS, LEARNING_RATE, DISCOUNT_FACTOR, EPS_GREEDY, DECAY, 2)
+        self.run_ia_threads = False
 
         self.render_game()
 
@@ -225,10 +227,12 @@ class Pong:
         if self.player_2_user == HUMAN:
             self.player_2_animation()
         elif self.player_2_user == AI and self.player_1_user == AI and not self.is_learning_center:
-            self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
-            self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
-            self.agent_1_thread.start()
-            self.agent_2_thread.start()
+            if not self.run_ia_threads:
+                self.run_ia_threads = True
+                self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
+                self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
+                self.agent_1_thread.start()
+                self.agent_2_thread.start()
         elif self.player_2_user == AI and self.player_1_user == AI and self.is_learning_center:
             ticks = IA_TRAINING_TICKS
             # self.player_2_ai()
@@ -294,6 +298,7 @@ class Pong:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
+                        self.set_state_as_terminal()
                         self.display_menu()
 
                 if self.is_learning_center and not self.game_paused:
@@ -534,8 +539,13 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            time.sleep(1)
+            time.sleep(0.1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
+            self.run_ia_threads = False
         print('finalizo', id)
+
+    def set_state_as_terminal(self):
+        self.player_1_score = BEST_POINT
+        self.player_2_score = BEST_POINT
