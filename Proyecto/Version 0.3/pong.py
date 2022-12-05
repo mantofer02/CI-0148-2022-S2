@@ -133,6 +133,7 @@ class Pong:
                                 SCREEN_HEIGHT / 2, self.CPUvCPU_img, 1)
         training_button = Button(SCREEN_WITDH / 2 - 180,
                                  SCREEN_HEIGHT / 2 + 100, self.training_img, 1)
+
         pvp_button.draw(self.screen)
         pvCPU_button.draw(self.screen)
         CPUvCPU_button.draw(self.screen)
@@ -176,8 +177,12 @@ class Pong:
         color = color_passive
 
         pygame.draw.rect(self.screen, color, self.input_button)
+
         text_surface = self.game_font.render(
             self.input_button_text, False, self.light_grey)
+
+        instruction_text = self.game_font.render(
+            "Type amount of simulations then click on box", False, self.light_grey)
 
         self.input_button.w = max(
             SKIP_BUTTON_WIDTH, text_surface.get_width() + 10)
@@ -185,19 +190,21 @@ class Pong:
         self.screen.blit(
             text_surface, (self.input_button.x + 5, self.input_button.y + 5))
 
+        self.screen.blit(instruction_text,
+                         (self.input_button.x - 230, self.input_button.y - 50))
+
     def skip_button_input(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.input_button.collidepoint(event.pos):
                 if len(self.input_button_text) > 0:
                     self.n_simultations = int(self.input_button_text)
                     self.input_button_text = ''
+                    print(self.n_simultations)
 
                     if self.n_simultations > 0:
                         self.threaning_thread = Thread(
                             target=self.make_skip, args=(self.n_simultations,))
                         self.threaning_thread.start()
-
-                    print(self.input_button_text)
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
@@ -518,7 +525,7 @@ class Pong:
         self.reset()
         while not self.is_terminal_state():
             agent.step(self, learn=False)
-            time.sleep(1)
+            # time.sleep(1)
 
         if id_agent == 1:
             self.agent_2_thread.join()
