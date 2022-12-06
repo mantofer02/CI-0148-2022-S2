@@ -65,7 +65,7 @@ El agente inteligente tendrá tres opciones disponibles; moverse para arriba o p
 
 ## Problemas y Desafios
 
--En el entrenamiento dado que la bola tiene un comportamiento continuo genera un problema de tiempo al calcular la recompensa para momentos cortos como el tocar la paleta, ya que el llamado al cálculo de esta puede no darse en el momento justo que se da la acción de la bola y la paleta. Para resolverlo se seleccionaron tamaños de conjuntos de pruebas más pequeños (<em>batch size</em>) cuando se realizaba el entrenamiento por lo que se disminuyeron los tiempos de cada <em>step</em> logrando así que el agente respondiera más rápido.
+-En el entrenamiento dado que la bola tiene un comportamiento continuo genera un problema de tiempo al calcular la recompensa para momentos cortos como el tocar la paleta, ya que el llamado al cálculo de esta puede no darse en el momento justo que se da la acción de la bola y la paleta. Para resolverlo se seleccionaron tamaños de conjuntos de pruebas más pequeños (<em>batch size</em>) cuando se realizaba el entrenamiento por lo que se disminuyeron los tiempos de cada <em>step</em> logrando así que el agente respondiera más rápido para obtener la recompensa.
 
 -Tiempos de entrenamientos altos ya que un escenario puede tardar entre 4 segundos a 10 segundos aproximadamente. Para resolverlo se comenzaron a hacer pruebas con tiempo anticipado.
 
