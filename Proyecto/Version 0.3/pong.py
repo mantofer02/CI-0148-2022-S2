@@ -54,6 +54,11 @@ class Action(enum.IntEnum):
 
 
 class Pong:
+    '''
+        Clase que se encarga de la lógica del juego, asimismo
+        como de el pase a atributos a la red neuronal
+    '''
+
     def __init__(self) -> None:
         pygame.init()
 
@@ -129,6 +134,11 @@ class Pong:
         self.render_game()
 
     def display_menu(self):
+        '''
+            Método que se encarga de pintar el menú principal en la pantalla.
+            También carga las imagenes.
+        '''
+
         self.screen.fill(self.bg_color)
 
         pvp_button = Button(SCREEN_WITDH / 2 - 170,
@@ -158,6 +168,13 @@ class Pong:
         pygame.display.flip()
 
     def menu_input(self, event):
+        '''
+            Escucha por un evento por el usuario y decide que opción del menú ejecutar
+
+            Parameters:
+            event (Any): Un evento que es equivalente a una accion del usuario.
+        '''
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 self.game_paused = False
@@ -170,6 +187,7 @@ class Pong:
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
+
             elif event.key == pygame.K_3:
                 self.game_paused = False
                 self.is_learning_center = False
@@ -187,6 +205,7 @@ class Pong:
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
+
             elif event.key == pygame.K_5:  # load button
                 self.agent_1.load_model()
                 self.agent_2.load_model()
@@ -199,9 +218,11 @@ class Pong:
                 print(global_player_1_score, global_player_2_score)
 
     def display_skip_button(self):
-        color_active = pygame.Color('lightskyblue3')
-        color_passive = pygame.Color('darkorange3')
-        color = color_passive
+        '''
+            Método que se encarga de pintar el boton de simulaciones en la pantalla.
+        '''
+
+        color = pygame.Color('darkorange3')
 
         pygame.draw.rect(self.screen, color, self.input_button)
 
@@ -228,6 +249,14 @@ class Pong:
                              (self.input_button.x - 180, self.input_button.y + 50))
 
     def skip_button_input(self, event):
+        '''
+            Escucha por un evento por el usuario y lo toma como input para el 
+            realizar simulaciones.
+
+            Parameters:
+            event (Any): Un evento que es equivalente a una accion del usuario.
+        '''
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.input_button.collidepoint(event.pos):
                 if len(self.input_button_text) > 0:
@@ -251,6 +280,11 @@ class Pong:
                     print("Must add int")
 
     def display_pong(self):
+        '''
+            Método que se encarga de pintar las herramientas de pong 
+            en la pantalla.
+        '''
+
         self.ball_animation()
         ticks = 60
         if self.player_1_user == HUMAN:
@@ -294,6 +328,14 @@ class Pong:
         self.clock.tick(ticks)
 
     def player_1_human(self, event):
+        '''
+            Escucha por un evento del usuario y lo toma como input para mover
+            la paleta del jugador 1.
+
+            Parameters:
+            event (Any): Un evento que es equivalente a una accion del usuario.
+        '''
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
                 self.player_1_speed += 7
@@ -307,6 +349,14 @@ class Pong:
                 self.player_1_speed += 7
 
     def player_2_human(self, event):
+        '''
+            Escucha por un evento del usuario y lo toma como input para mover
+            la paleta del jugador 2.
+
+            Parameters:
+            event (Any): Un evento que es equivalente a una accion del usuario.
+        '''
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 self.player_2_speed += 7
@@ -320,6 +370,11 @@ class Pong:
                 self.player_2_speed += 7
 
     def render_game(self):
+        '''
+            Se encarga de la logica de actualizar la pantalla 
+            cada frame.
+        '''
+
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -355,6 +410,10 @@ class Pong:
                     self.ball_restart()
 
     def ball_restart(self):
+        '''
+            Resetea la posición de la bola
+            al centro de la pantalla.
+        '''
         number_render = None
         current_time = pygame.time.get_ticks()
 
@@ -394,22 +453,41 @@ class Pong:
             self.score_time = None
 
     def player_1_scores(self):
+        '''
+            Incrementa el puntaje del jugador 1.
+        '''
+
         self.score_time = pygame.time.get_ticks()
         self.player_1_score += 1
         self.game_started = True
 
     def player_2_scores(self):
+        '''
+            Incrementa el puntaje del jugador 2.
+        '''
+
         self.score_time = pygame.time.get_ticks()
         self.player_2_score += 1
         self.game_started = True
 
     def is_terminal_state(self):
+        '''
+            Pregunta si es un estado terminal.
+
+            Returns:
+            bool: True si es un estado terminal, si no devuelve False
+        '''
+
         if self.player_1_score == BEST_POINT or self.player_2_score == BEST_POINT:
             return True
         else:
             return False
 
     def ball_animation(self):
+        '''
+            Se encarga de la logica de animación para la bola.
+        '''
+
         self.ball.x += self.ball_speed_x
         self.ball.y += self.ball_speed_y
 
@@ -429,6 +507,9 @@ class Pong:
             self.ball_speed_x *= -1
 
     def player_1_animation(self):
+        '''
+            Se encarga de la logica de animación para la paleta del jugador uno.
+        '''
         self.player_1.y += self.player_1_speed
 
         if self.player_1.top <= 0:
@@ -438,6 +519,9 @@ class Pong:
             self.player_1.bottom = SCREEN_HEIGHT
 
     def player_2_animation(self):
+        '''
+            Se encarga de la logica de animación para la paleta del jugador dos.
+        '''
         self.player_2.y += self.player_2_speed
 
         if self.player_2.top <= 0:
@@ -446,21 +530,16 @@ class Pong:
         if self.player_2.bottom >= SCREEN_HEIGHT:
             self.player_2.bottom = SCREEN_HEIGHT
 
-    def player_2_ai(self):
-        if self.player_2.top < self.ball.y:
-            self.player_2.top += self.player_2_speed
-
-        if self.player_2.bottom > self.ball.y:
-            self.player_2.bottom -= self.player_2_speed
-
-        if self.player_2.top <= 0:
-            self.player_2.top = 0
-
-        if self.player_2.bottom >= SCREEN_HEIGHT:
-            self.player_2.bottom = SCREEN_HEIGHT
-
     def perform_action(self, action, id=None):
-        # print('Perform', Action.DOWN, action, action == Action.DOWN.name)
+        '''
+            Realiza una acción a un jugador especifico.
+            La acción puede ser arriba o abajo
+
+            Parameters:
+            action (int): Enum para definir el tipo de acción
+            id (int): Id para definir si es jugador 1 o 2.
+        '''
+
         if id == PLAYER_1:
             if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
@@ -491,14 +570,32 @@ class Pong:
             return self.get_reward(id=id), self.get_player_2_state()
 
     def get_player_1_state(self):
-        # (y distance to ball, y my position, y p2 position)
+        '''
+            Obtiene el estado del jugador 1
+
+            Parameters:
+            state(int): (y distance to ball, y my position, y p2 position)
+        '''
+
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_1.y + (PADEL_HEIGHT / 2))), (self.player_1.y + (PADEL_HEIGHT / 2))
 
     def get_player_2_state(self):
-        # (y distance to ball, y my position, y p1 position)
+        '''
+            Obtiene el estado del jugador 2
+
+            Parameters:
+            state(int): (y distance to ball, y my position, y p1 position)
+        '''
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (self.player_2.y + (PADEL_HEIGHT / 2))), (self.player_2.y + (PADEL_HEIGHT / 2))
 
     def get_state(self, id=None):
+        '''
+            Obtiene el estado de un jugador en especifico
+
+            Parameters:
+            id(int): 
+        '''
+
         if id == PLAYER_1:
             return self.get_player_1_state()
         else:
