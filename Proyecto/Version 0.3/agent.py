@@ -133,7 +133,8 @@ class Agent():
         size = self.batch_size - \
             1 if len(self.samples) > self.batch_size else len(self.samples)
         if len(self.samples) > 0:
-            index = np.random.randint(0, len(self.samples), size)
+            index = np.random.randint(0, (len(self.samples) -1)  if len(self.samples) > 1 else len(self.samples), size)
+            index = np.append(index, np.array([len(self.samples) - 1])) # inserción del último estado
             memory_set = self.samples[index]
 
         x_memory = torch.tensor([])

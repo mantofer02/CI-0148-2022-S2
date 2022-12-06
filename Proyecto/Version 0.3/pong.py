@@ -37,9 +37,9 @@ PLAYER_2 = 2
 MEMORY_CAPACITY = 10000
 BATCH_SIZE = 50
 C_ITERS = 30
-LEARNING_RATE = 1e-7
-DISCOUNT_FACTOR = 1e-4
-EPS_GREEDY = 0.7
+LEARNING_RATE = 1e-5
+DISCOUNT_FACTOR = 1e-3
+EPS_GREEDY = 0.65
 DECAY = 1e-8
 IA_TRAINING_TICKS = 60
 PALETTE_PENALIZATION_FACTOR = 1
@@ -634,13 +634,13 @@ class Pong:
         if self.get_y_distance_to_ball(1) < PADEL_HEIGHT / 2 and self.ball.left <= self.player_1.right + PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
             # print('1-Entra al tocar')
-        elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT / 2:
+        elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT:
             penalty = POINT_LOST
 
         score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
                  distance_to_ball) + touch_reward + penalty)
         if self.is_learning_center:
-            global_player_1_score += score
+            global_player_1_score += score/100000
 
         return score
 
@@ -661,13 +661,13 @@ class Pong:
         if self.get_y_distance_to_ball(2) < PADEL_HEIGHT / 2 and self.ball.right >= self.player_2.left - PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
             # print('2 Entra al tocar')
-        elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT / 2:
+        elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT:
             penalty = POINT_LOST
 
         score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
                  distance_to_ball) + touch_reward + penalty)
         if self.is_learning_center:
-            global_player_2_score += score
+            global_player_2_score += score/100000
 
         return score
 
@@ -737,3 +737,4 @@ class Pong:
         '''
         self.player_1_score = BEST_POINT
         self.player_2_score = BEST_POINT
+        self.is_learning_center = False
