@@ -59,7 +59,6 @@ class Agent():
             if (steps % self.c_iters) == 0:
                 # actualizar pesos en la red target
                 end_time = time.time()
-                # print('act: ', end_time - before_time)
                 self.target_nn = copy.deepcopy(self.policy_nn)
 
             end_time = time.time()
@@ -81,7 +80,7 @@ class Agent():
             # elegir una acción al azar
             action = self.prng.choice(self.actions)
             state = env.get_state(self.id)
-            # print('Player', self.id, Action(action).name)
+            
             reward, new_state = env.perform_action(
                 Action(action).name, self.id)
 
@@ -120,8 +119,6 @@ class Agent():
             reward, new_state = env.perform_action(
                 Action(action.item()).name, self.id)
         
-        # if reward > 0 and self.id > 1:
-        #     print('id:', self.id, reward)
 
     '''Método para obtener el set de entrenamiento del modelo a partir de la memoria
      y el tamaño del conjunto de datos.
@@ -151,7 +148,7 @@ class Agent():
             x_memory = torch.cat((x_memory, _tuple.state))
             # Guardado en memoria del valor (columna de salida) verdadero
             y_memory = torch.cat((y_memory, y_true_tuple.cpu()))
-            # print(y_true_tuple)
+            
 
         return x_memory.reshape(y_memory.shape[0], self.in_values_len), y_memory
 

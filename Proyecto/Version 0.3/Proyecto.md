@@ -33,7 +33,7 @@ El objetivo del juego consiste envitar que la pelota toque la pared defendida po
 
 El programa se desarrolló utilizando la libreria Pygame. Esta libreria ofrece módulos y herramientas para el desarrollo de juegos con Python. Para inicializar el programa se ejecuta el `main.py`. Al inicializar el programa se encontrá un menú con varias opciones.
 
-![menu](./images/pong_menu_screenshot.jpg)
+![menu](./images/pong_menu_screenshot.png)
 
 La primera opción consiste en un modo de Jugador 1 contra Jugador 2. El jugador 1 utilizará las flechas de arriba y abajo para mover si paleta, mientras que el jugador 2 utilizará las teclas `w` y `s`.
 
@@ -72,4 +72,4 @@ El agente inteligente tendrá tres opciones disponibles; moverse para arriba o p
 ## Resultados
 [![Pong results](https://img.youtube.com/vi/zazxN9fcpT8/0.jpg)](https://www.youtube.com/watch?v=zazxN9fcpT8 "Pong results")
 
-En el video se muestra el mejor resultado obtenido tras un entrenamiento con 100 iteraciones, batch size de 50, c_iters de 30, learning rate de 1e-5, discout factor de 1e-5, epsilon greedy de 0.6 y un decay de 1e-8. Con estos parámetros se puede notar que el modelo reacciona correctamente cuando la bola inicia hacia abajo, sin embargo cuando se desplaza hacia arriba la paleta se queda abajo y no defiende. 
+En el video se muestra el mejor resultado obtenido tras un entrenamiento con 100 iteraciones, batch size de 50, c_iters de 30, learning rate de 1e-5, discout factor de 1e-5, epsilon greedy de 0.6 y un decay de 1e-8. Con estos parámetros se puede notar que el modelo reacciona correctamente cuando la bola inicia hacia abajo, sin embargo cuando se desplaza hacia arriba la paleta se queda abajo y no defiende.

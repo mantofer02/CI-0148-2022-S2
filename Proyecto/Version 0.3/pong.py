@@ -7,7 +7,6 @@ from threading import Thread, Lock
 import enum
 import time
 
-max_re_1 = 0
 
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
@@ -557,7 +556,7 @@ class Pong:
         if id == PLAYER_1:
             if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
-                # print('1 Entra en down')
+                
             elif action == Action.UP.name:
                 self.player_1.bottom -= self.player_1_speed
 
@@ -571,7 +570,7 @@ class Pong:
         else:
             if action == Action.DOWN.name:
                 self.player_2.top += self.player_2_speed
-                # print('2 Entra en down')
+                
             elif action == Action.UP.name:
                 self.player_2.bottom -= self.player_2_speed
 
@@ -633,7 +632,7 @@ class Pong:
             reward(int): Valor de la recompensa (variables definidas con macros).
         '''
         global global_player_1_score
-        global max_re_1
+        
 
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[0]
@@ -642,16 +641,13 @@ class Pong:
 
         if self.get_y_distance_to_ball(1) < PADEL_HEIGHT / 2 and self.ball.left <= self.player_1.right + PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
-            # print('1-Entra al tocar')
+            
         elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT:
             penalty = MAX_REWARD
 
         score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
                  distance_to_ball) + touch_reward + penalty)
 
-        if score > max_re_1:
-            max_re_1 = score
-            print('max', score)
         if self.is_learning_center:
             global_player_1_score += score/100000
 
@@ -673,7 +669,7 @@ class Pong:
 
         if self.get_y_distance_to_ball(2) < PADEL_HEIGHT / 2 and self.ball.right >= self.player_2.left - PADEL_WIDTH:
             touch_reward = MAX_REWARD / 2
-            # print('2 Entra al tocar')
+            
         elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT:
             penalty = MAX_REWARD
 
