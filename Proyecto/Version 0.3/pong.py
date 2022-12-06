@@ -306,9 +306,16 @@ class Pong:
                 self.agent_1_thread = Thread(target=self.run_ia, args=(1,))
                 self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
                 self.agent_1_thread.start()
+                self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
                 self.agent_2_thread.start()
         elif self.player_2_user == AI and self.player_1_user == AI and self.is_learning_center:
             ticks = IA_TRAINING_TICKS
+        elif self.player_2_user == AI and self.player_1_user == HUMAN:
+            if not self.run_ia_threads:
+                self.run_ia_threads = True
+                self.agent_2_thread = Thread(target=self.run_ia, args=(2,))
+                self.agent_2_thread.start()
+
             # self.player_2_ai()
             # self.perform_action(UP)
 
