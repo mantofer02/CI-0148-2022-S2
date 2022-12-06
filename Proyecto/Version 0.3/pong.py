@@ -7,6 +7,8 @@ from threading import Thread, Lock
 import enum
 import time
 
+max_re_1 = 0
+
 SCREEN_WITDH = 1280
 SCREEN_HEIGHT = 960
 
@@ -19,7 +21,7 @@ BALL_HEIGHT = 30
 PADEL_WIDTH = 10
 PADEL_HEIGHT = 140
 
-MAX_REWARD = 200
+MAX_REWARD = 300
 POINT_LOST = -100
 
 BEST_POINT = 3
@@ -38,11 +40,11 @@ MEMORY_CAPACITY = 10000
 BATCH_SIZE = 50
 C_ITERS = 30
 LEARNING_RATE = 1e-5
-DISCOUNT_FACTOR = 1e-3
-EPS_GREEDY = 0.65
+DISCOUNT_FACTOR = 1e-5
+EPS_GREEDY = 0.6
 DECAY = 1e-8
 IA_TRAINING_TICKS = 60
-PALETTE_PENALIZATION_FACTOR = 1
+PALETTE_PENALIZATION_FACTOR = 0.5
 
 global_player_1_score = 0
 global_player_2_score = 0
@@ -624,6 +626,7 @@ class Pong:
             reward(int): Valor de la recompensa (variables definidas con macros).
         '''
         global global_player_1_score
+        global max_re_1
 
         actual_state = list(self.get_player_1_state())
         distance_to_ball = actual_state[0]
@@ -634,10 +637,14 @@ class Pong:
             touch_reward = MAX_REWARD / 2
             # print('1-Entra al tocar')
         elif self.get_y_distance_to_ball(1) > PADEL_HEIGHT:
-            penalty = POINT_LOST
+            penalty = MAX_REWARD
 
         score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
                  distance_to_ball) + touch_reward + penalty)
+
+        if score > max_re_1:
+            max_re_1 = score
+            print('max', score)
         if self.is_learning_center:
             global_player_1_score += score/100000
 
@@ -661,7 +668,7 @@ class Pong:
             touch_reward = MAX_REWARD / 2
             # print('2 Entra al tocar')
         elif self.get_y_distance_to_ball(2) > PADEL_HEIGHT:
-            penalty = POINT_LOST
+            penalty = MAX_REWARD
 
         score = ((MAX_REWARD - PALETTE_PENALIZATION_FACTOR *
                  distance_to_ball) + touch_reward + penalty)
