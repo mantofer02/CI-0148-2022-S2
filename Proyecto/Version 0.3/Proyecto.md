@@ -25,7 +25,7 @@ Este proyecto consiste en implementar un modelo de inteligencia artificial para 
 
 Para este proyecto se decidió implementar una versión del juego Pong. Pong es un juego inspirado en el tennis de messa, en el cual un jugador mueve su paleta de manera vertical para poder hacer contacto con una bola en movimiento.
 
-![pong](/images/pong_screenshot.jpg)
+![pong](./images/pong_screenshot.jpg)
 
 El objetivo del juego consiste envitar que la pelota toque la pared defendida por uno y realizar más puntos que el oponente.
 
