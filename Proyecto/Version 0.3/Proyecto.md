@@ -70,3 +70,4 @@ El agente inteligente tendrá tres opciones disponibles; moverse para arriba o p
 -Tiempos de entrenamientos altos ya que un escenario puede tardar entre 4 segundos a 10 segundos aproximadamente.
 
 ## Resultados
+![pong results] (https://youtu.be/zazxN9fcpT8)
