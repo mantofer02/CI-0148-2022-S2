@@ -181,12 +181,15 @@ class Pong:
                 self.is_learning_center = False
                 self.player_1_user = HUMAN
                 self.player_2_user = HUMAN
+                self.player_1_speed = 0
+                self.player_2_speed = 0
                 self.score_time = pygame.time.get_ticks()
 
             elif event.key == pygame.K_2:
                 self.game_paused = False
                 self.is_learning_center = False
                 self.player_1_user = HUMAN
+                self.player_1_speed = 0
                 self.player_2_user = AI
                 self.player_2_speed = 9
                 self.score_time = pygame.time.get_ticks()
@@ -343,15 +346,15 @@ class Pong:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                self.player_1_speed += 7
+                self.player_1_speed += 9
             elif event.key == pygame.K_UP:
-                self.player_1_speed -= 7
+                self.player_1_speed -= 9
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
-                self.player_1_speed -= 7
+                self.player_1_speed -= 9
             elif event.key == pygame.K_UP:
-                self.player_1_speed += 7
+                self.player_1_speed += 9
 
     def player_2_human(self, event):
         '''
@@ -364,15 +367,15 @@ class Pong:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
-                self.player_2_speed += 7
+                self.player_2_speed += 9
             elif event.key == pygame.K_w:
-                self.player_2_speed -= 7
+                self.player_2_speed -= 9
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_s:
-                self.player_2_speed -= 7
+                self.player_2_speed -= 9
             elif event.key == pygame.K_w:
-                self.player_2_speed += 7
+                self.player_2_speed += 9
 
     def render_game(self):
         '''
@@ -542,7 +545,6 @@ class Pong:
             action (int): Enum para definir el tipo de acción
             id (int): Id para definir si es jugador 1 o 2.
         '''
-
         if id == PLAYER_1:
             if action == Action.DOWN.name:
                 self.player_1.top += self.player_1_speed
