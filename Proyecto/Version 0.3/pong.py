@@ -178,11 +178,14 @@ class Pong:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 self.game_paused = False
-                self.player_1_user = self.player_2_user = HUMAN
+                self.is_learning_center = False
+                self.player_1_user = HUMAN
+                self.player_2_user = HUMAN
                 self.score_time = pygame.time.get_ticks()
 
             elif event.key == pygame.K_2:
                 self.game_paused = False
+                self.is_learning_center = False
                 self.player_1_user = HUMAN
                 self.player_2_user = AI
                 self.player_2_speed = 9
@@ -207,10 +210,12 @@ class Pong:
                 self.score_time = pygame.time.get_ticks()
 
             elif event.key == pygame.K_5:  # load button
+                self.is_learning_center = False
                 self.agent_1.load_model()
                 self.agent_2.load_model()
 
             elif event.key == pygame.K_6:  # download button
+                self.is_learning_center = False
                 if global_player_1_score > global_player_2_score:
                     self.agent_1.download_model()
                 else:
@@ -386,7 +391,6 @@ class Pong:
                     if event.key == pygame.K_ESCAPE:
                         self.game_paused = True
                         self.set_state_as_terminal()
-                        # self.is_terminal_state = True
                         self.display_menu()
 
                 if self.is_learning_center and not self.game_paused:
@@ -593,7 +597,7 @@ class Pong:
             Obtiene el estado de un jugador en especifico
 
             Parameters:
-            id(int): 
+            id(int): id del estado del jugador que quiere obtener
         '''
 
         if id == PLAYER_1:
@@ -602,10 +606,22 @@ class Pong:
             return self.get_player_2_state()
 
     def get_y_distance_to_ball(self, id):
+        '''
+            Obtiene la distancia y de la paleta de un jugador hacia la bola
+
+            Parameters:
+            distance(int): distancia absoluta.
+        '''
         player_y_pos = self.player_1.y if id == 1 else self.player_2.y
         return abs((self.ball.y + (BALL_WIDTH / 2)) - (player_y_pos + (PADEL_HEIGHT / 2)))
 
     def get_player_1_reward(self):
+        '''
+            Obtiene la recompensa del jugador 1 en un momento dado.
+
+            Returns:
+            reward(int): Valor de la recompensa (variables definidas con macros).
+        '''
         global global_player_1_score
 
         actual_state = list(self.get_player_1_state())
@@ -627,6 +643,12 @@ class Pong:
         return score
 
     def get_player_2_reward(self):
+        '''
+            Obtiene la recompensa del jugador 2 en un momento dado.
+
+            Returns:
+            reward(int): Valor de la recompensa (variables definidas con macros).
+        '''
         global global_player_2_score
         actual_state = list(self.get_player_2_state())
         distance_to_ball = actual_state[0]
@@ -648,12 +670,24 @@ class Pong:
         return score
 
     def get_reward(self, id=None):
+        '''
+            Obtiene la recompensa de un jugador en un momento dadro
+
+            Parameters:
+            id(int): id del jugador que desea obtener la recompensa.
+
+            Returns:
+            reward(int): Valor de la recompensa (variables definidas con macros).
+        '''
         if id == PLAYER_1:
             return self.get_player_1_reward()
         else:
             return self.get_player_2_reward()
 
     def reset(self):
+        '''
+            Resetea las posiciones y puntos de los jugadores.
+        '''
         self.player_1_score = 0
         self.player_2_score = 0
         self.player_1.y = (SCREEN_HEIGHT / 2) - (PADEL_HEIGHT / 2)
@@ -677,6 +711,10 @@ class Pong:
                   ' elapsed time: ', time.time() - start_time)
             self.n_simultations -= 1
 
+            if not self.is_learning_center:
+                self.reset()
+                return
+
         self.reset()
 
     def run_ia(self, id_agent):
@@ -692,5 +730,8 @@ class Pong:
         print('finalizo', id)
 
     def set_state_as_terminal(self):
+        '''
+            Define al estado como terminal.
+        '''
         self.player_1_score = BEST_POINT
         self.player_2_score = BEST_POINT
