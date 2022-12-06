@@ -72,6 +72,8 @@ El agente inteligente tendrá tres opciones disponibles; moverse para arriba o p
 
 - Tiempos de entrenamientos altos ya que un escenario puede tardar entre 4 segundos a 10 segundos aproximadamente. Para resolverlo se comenzaron a hacer pruebas con tiempo anticipado.
 
+- En el modo de juego 2 a veces ocurre que la paleta controllada por el IA se queda pegada en la posición inferior.
+
 ## Resultados
 
 [![Pong results](https://img.youtube.com/vi/zazxN9fcpT8/0.jpg)](https://www.youtube.com/watch?v=zazxN9fcpT8 "Pong results")
