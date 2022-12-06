@@ -423,7 +423,6 @@ class Pong:
 
         self.ball.center = (SCREEN_WITDH / 2, SCREEN_HEIGHT / 2)
 
-        # TODO: quitar esto y preguntar
         if self.score_time == None:
             self.score_time = 0
 
@@ -712,8 +711,7 @@ class Pong:
             self.n_simultations -= 1
 
             if not self.is_learning_center:
-                self.reset()
-                return
+                break
 
         self.reset()
 
@@ -727,7 +725,6 @@ class Pong:
         if id_agent == 1:
             self.agent_2_thread.join()
             self.run_ia_threads = False
-        print('finalizo', id)
 
     def set_state_as_terminal(self):
         '''
