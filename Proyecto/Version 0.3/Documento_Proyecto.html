@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Documento_Proyecto.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="proyecto-machine-learning-2022">Proyecto Machine Learning 2022</h1>
+<p>Pablo Sauma Chacón</p>
+<ul>
+<li><a href="#proyecto-machine-learning-2022">Proyecto Machine Learning 2022</a>
+<ul>
+<li><a href="#estudiantes">Estudiantes</a></li>
+<li><a href="#enunciado">Enunciado</a></li>
+<li><a href="#descripci%C3%B3n-del-juego">Descripción del Juego</a>
+<ul>
+<li><a href="#manual-de-usuario">Manual de Usuario</a></li>
+<li><a href="#implementaci%C3%B3n-de-aprendizaje-mec%C3%A1nico">Implementación de Aprendizaje Mecánico</a></li>
+<li><a href="#car%C3%A1cteristicas-del-agente">Carácteristicas del Agente</a></li>
+</ul>
+</li>
+<li><a href="#problemas-y-desafios">Problemas y Desafios</a></li>
+<li><a href="#resultados">Resultados</a>
+<ul>
+<li><a href="#conclusiones">Conclusiones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="estudiantes">Estudiantes</h2>
+<ul>
+<li>Marco Ferraro Rodriguez</li>
+<li>Roy Padilla Calderón</li>
+</ul>
+<h2 id="enunciado">Enunciado</h2>
+<p>Este proyecto consiste en implementar un modelo de inteligencia artificial para algún juego de mesa o digital previamente aprobado por el profesor.</p>
+<h2 id="descripci%C3%B3n-del-juego">Descripción del Juego</h2>
+<p>Para este proyecto se decidió implementar una versión del juego Pong. Pong es un juego inspirado en el tennis de messa, en el cual un jugador mueve su paleta de manera vertical para poder hacer contacto con una bola en movimiento.</p>
+<p><img src="./images/pong_screenshot.jpg" alt="pong"></p>
+<p>El objetivo del juego consiste envitar que la pelota toque la pared defendida por uno y realizar más puntos que el oponente.</p>
+<h3 id="manual-de-usuario">Manual de Usuario</h3>
+<p>El programa se desarrolló utilizando la libreria Pygame. Esta libreria ofrece módulos y herramientas para el desarrollo de juegos con Python. Para inicializar el programa se ejecuta el <code>main.py</code>. Al inicializar el programa se encontrá un menú con varias opciones.</p>
+<p><img src="./images/pong_menu_screenshot.png" alt="menu"></p>
+<p>La primera opción consiste en un modo de Jugador 1 contra Jugador 2. El jugador 1 utilizará las flechas de arriba y abajo para mover si paleta, mientras que el jugador 2 utilizará las teclas <code>w</code> y <code>s</code>.</p>
+<p>Las opciones 2 y 3 son muy similares, ya que se introduce el uso de un agente inteligente. <strong>Estas opciones son para medir el rendimiendo del agente inteligente.</strong></p>
+<p>Sin embargo, cabe destacar que la opción 4, denominada <strong>The Training Center</strong>, es un modo en donde el agente inteligente estará aprendiendo a desenvolverse en el ambiente.</p>
+<p><img src="./images/pong_training_center_screenshot.jpg" alt="training"></p>
+<p>En este modo, el agente inteligente jugará de forma automatica, sin embargo, para acelerar el proceso de aprendizaje se pueden agregar <code>n</code> cantidad de simulaciones en la cajita y acelerar el proceso.</p>
+<p>Asímismo, la opción 5 permite cargar un modelo almacenado en la carpeta <code>model</code>, mientras que la opción 6 permite guardar uno de este tipo después de realizar entrenamiento.</p>
+<h3 id="implementaci%C3%B3n-de-aprendizaje-mec%C3%A1nico">Implementación de Aprendizaje Mecánico</h3>
+<p>Para la implementación del aprendizaje se utilizó la técnica de <em>Deep-Q Learning</em>. Dentro de esta metodología se utilizó una red neuronal con una capa de entrada, una intermedia y una de salida. Mediante la siguiente configuración:</p>
+<ul>
+<li>
+<p>Capa de entrada de 3 neuronas las cuales representan un estado.</p>
+</li>
+<li>
+<p>Capa intermedia de 128 neuronas con activación Tangente hiperbólico para tener valores tando positivos como negativos (de -1 a 1).</p>
+</li>
+<li>
+<p>Capa de salida con activación Leaky Relu para la aproximación de los valores Q con 2 neuronas las cuales representan los dos movimientos disponibles de la paleta (arriba y abajo).</p>
+</li>
+</ul>
+<p>Se utilizó la siguiente representación de un estado para cada jugador para el algoritmo de <em>Deep-Q Learning</em>:</p>
+<p><code>(Distancia Coordenada Y de la paleta hacia la bola, Posición Coordenada Y de la paleta, Coordenada Y de la paleta rival)</code></p>
+<h3 id="car%C3%A1cteristicas-del-agente">Carácteristicas del Agente</h3>
+<p>El agente inteligente tendrá tres opciones disponibles; moverse para arriba o para abajo. El agente decidirá y ejecutará una de estas acción. Cada agente generará una salida del estado, asi como su valor respectivo de recompensa. La entrada de cada agente será la acción determinada por el modelo de aprendizaje mecánico.</p>
+<h2 id="problemas-y-desafios">Problemas y Desafios</h2>
+<ul>
+<li>
+<p>En el entrenamiento dado que la bola tiene un comportamiento continuo genera un problema de tiempo al calcular la recompensa para momentos cortos como el tocar la paleta, ya que el llamado al cálculo de esta puede no darse en el momento justo que se da la acción de la bola y la paleta. Para resolverlo se seleccionaron tamaños de conjuntos de pruebas más pequeños (<em>batch size</em>) cuando se realizaba el entrenamiento por lo que se disminuyeron los tiempos de cada <em>step</em> logrando así que el agente respondiera más rápido para obtener la recompensa.</p>
+</li>
+<li>
+<p>Tiempos de entrenamientos altos ya que un escenario puede tardar entre 4 segundos a 10 segundos aproximadamente. Para resolverlo se comenzaron a hacer pruebas con tiempo anticipado.</p>
+</li>
+</ul>
+<h2 id="resultados">Resultados</h2>
+<p><a href="https://www.youtube.com/watch?v=zazxN9fcpT8" title="Pong results"><img src="https://img.youtube.com/vi/zazxN9fcpT8/0.jpg" alt="Pong results"></a></p>
+<p>En el video, que se puede apreciar al hacer click en la imagen anterior, se muestra el mejor resultado obtenido tras un entrenamiento con 100 iteraciones, <code>batch size</code> de 50, <code>c_iters</code> de 30, <code>learning rate</code> de <code>1e-5</code>, <code>discount factor</code> de <code>1e-5</code>, <code>epsilon greedy</code> de <code>0.6</code> y un <code>decay</code> de <code>1e-8</code>. Con estos parámetros se puede notar que el modelo reacciona correctamente cuando la bola inicia hacia abajo, sin embargo cuando se desplaza hacia arriba la paleta se queda abajo y no defiende.</p>
+<h3 id="conclusiones">Conclusiones</h3>
+<p>A manera de conclusiones, se comprendió por medio de aprendizaje basado en proyecto de como utilizar una red neuronal, un agente inteligente, y una representación de estados de un juego complejo para realizar un sistema <code>Deep Q</code>. Uno de los retos más grandes fue de como representar las recompenzas de los agentes, ya que esto define hacia donde va a converger los valores de la red neuronal.</p>
+
+</body>
+</html>
